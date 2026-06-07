@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тема 6.2 - Символьні строки | CodeMaster C++</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <div class="header-flex">
+        <a href="index.html" class="logo"><div class="logo-icon">C++</div><div class="logo-text">Code<span>Master</span></div></a>
+        <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+      </div>
+    </div>
+    <div class="container">
+      <nav class="main-nav">
+        <a href="index.html">Головна</a><a href="topic1-1.html">Тема 1.1</a><a href="topic1-2.html">Тема 1.2</a><a href="topic2-1.html">Тема 2.1</a><a href="topic2-2.html">Тема 2.2</a><a href="topic2-3.html">Тема 2.3</a><a href="topic3-1.html">Тема 3.1</a><a href="topic4-1.html">Тема 4.1</a><a href="topic4-2.html">Тема 4.2</a><a href="topic5-1.html">Тема 5.1</a><a href="topic5-2.html">Тема 5.2</a><a href="topic6-1.html">Тема 6.1</a><a href="topic6-2.html" class="active">Тема 6.2</a><a href="topic6-3.html">Тема 6.3</a><a href="topic7-1.html">Тема 7.1</a><a href="topic7-2.html">Тема 7.2</a><a href="topic8-1.html">Тема 8.1</a><a href="topic8-2.html">Тема 8.2</a><a href="topic9-1.html">Тема 9.1</a><a href="topic10-1.html">Тема 10.1</a><a href="topic10-2.html">Тема 10.2</a><a href="topic10-3.html">Тема 10.3</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Головна</a> / <a href="index.html#modules">Модуль 6</a> / Тема 6.2</div>
+      <h1>Тема 6.2</h1>
+      <p>Символьні строки. Стандартний ввід-вивід. Функції для роботи зі строками. Строки в функціях і процедурах</p>
+    </div>
+  </div>
+
+  <div class="container content-layout">
+    <aside class="sidebar">
+      <h4>Зміст теми</h4>
+      <ul class="sidebar-nav">
+        <li><a href="#cstrings">C-style строки</a></li>
+        <li><a href="#cstring-funcs">Функції для C-string</a></li>
+        <li><a href="#cppstrings">C++ string клас</a></li>
+        <li><a href="#string-ops">Операції з string</a></li>
+        <li><a href="#string-funcs">Методи string</a></li>
+        <li><a href="#string-functions">Строки у функціях</a></li>
+        <li><a href="#tests">📝 Тести</a></li>
+        <li><a href="#practice">💻 Практичні завдання</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <section id="cstrings">
+        <h2>C-style строки (символьні масиви)</h2>
+        <p>C-style строка — це масив символів, що завершується нульовим символом <code class="inline">'\0'</code>.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">C-style строки</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>// Оголошення C-style строки
+char str1[20] = "Hello";      // 5 символів + '\0'
+char str2[] = "World";        // розмір визначається автоматично (6)
+char str3[20];
+
+// Введення строки
+ cin >> str3;        // зчитує до пробілу
+ cin.getline(str3, 20);  // зчитує рядок включно з пробілами
+
+// Довжина строки
+int len = strlen(str1);   // 5</code></pre>
+        </div>
+      </section>
+
+      <section id="cstring-funcs">
+        <h2>Функції для C-string (заголовок &lt;cstring&gt;)</h2>
+        <table class="content-table">
+          <tr><th>Функція</th><th>Опис</th><th>Приклад</th></tr>
+          <tr><td><code class="inline">strlen(s)</code></td><td>Довжина строки</td><td>strlen("abc") → 3</td></tr>
+          <tr><td><code class="inline">strcpy(dest, src)</code></td><td>Копіювання</td><td>strcpy(a, b)</td></tr>
+          <tr><td><code class="inline">strncpy(dest, src, n)</code></td><td>Копіювання n символів</td><td>strncpy(a, b, 5)</td></tr>
+          <tr><td><code class="inline">strcat(dest, src)</code></td><td>Конкатенація</td><td>strcat(a, b)</td></tr>
+          <tr><td><code class="inline">strcmp(s1, s2)</code></td><td>Порівняння</td><td>strcmp("a","b") < 0</td></tr>
+          <tr><td><code class="inline">strchr(s, c)</code></td><td>Пошук символу</td><td>strchr("abc", 'b')</td></tr>
+          <tr><td><code class="inline">strstr(s1, s2)</code></td><td>Пошук підстроки</td><td>strstr("abcdef", "cd")</td></tr>
+        </table>
+      </section>
+
+      <section id="cppstrings">
+        <h2>C++ string клас (заголовок &lt;string&gt;)</h2>
+        <p>Клас <code class="inline">string</code> з стандартної бібліотеки C++ є набагато зручнішим та безпечнішим за C-style строки.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">C++ string</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>#include &lt;string&gt;
+using namespace std;
+
+string s1 = "Hello";           // ініціалізація
+string s2("World");            // конструктор
+string s3 = s1 + " " + s2;   // конкатенація: "Hello World"
+string s4;                     // пуста строка
+
+// Введення/виведення
+getline(cin, s4);              // зчитування рядка з пробілами
+cout << s1 << endl;
+
+// Довжина
+int len = s1.length();         // або s1.size()</code></pre>
+        </div>
+      </section>
+
+      <section id="string-ops">
+        <h2>Операції з string</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Операції з string</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>string a = "Hello";
+string b = "World";
+
+// Конкатенація
+string c = a + " " + b;     // "Hello World"
+a += "!";                   // "Hello!"
+
+// Порівняння
+if (a == b) { }              // рівність
+if (a != b) { }              // нерівність
+if (a < b) { }               // лексикографічне порівняння
+
+// Доступ до символів
+char ch = a[0];              // 'H'
+a[0] = 'h';                  // зміна символу
+
+// Перетворення в C-string
+const char* cstr = a.c_str();</code></pre>
+        </div>
+      </section>
+
+      <section id="string-funcs">
+        <h2>Методи класу string</h2>
+        <table class="content-table">
+          <tr><th>Метод</th><th>Опис</th><th>Приклад</th></tr>
+          <tr><td><code class="inline">s.length()</code></td><td>Довжина</td><td>"abc".length() → 3</td></tr>
+          <tr><td><code class="inline">s.empty()</code></td><td>Перевірка на пустоту</td><td>"".empty() → true</td></tr>
+          <tr><td><code class="inline">s.substr(pos, len)</code></td><td>Підстрока</td><td>"Hello".substr(1,3) → "ell"</td></tr>
+          <tr><td><code class="inline">s.find(str)</code></td><td>Пошук підстроки</td><td>"Hello".find("ll") → 2</td></tr>
+          <tr><td><code class="inline">s.find(str, pos)</code></td><td>Пошук з позиції</td><td>повертає string::npos якщо не знайдено</td></tr>
+          <tr><td><code class="inline">s.replace(pos, len, str)</code></td><td>Заміна</td><td>s.replace(0, 2, "XX")</td></tr>
+          <tr><td><code class="inline">s.insert(pos, str)</code></td><td>Вставка</td><td>s.insert(0, "Hi ")</td></tr>
+          <tr><td><code class="inline">s.erase(pos, len)</code></td><td>Видалення</td><td>s.erase(0, 3)</td></tr>
+          <tr><td><code class="inline">s.clear()</code></td><td>Очищення</td><td>s.clear()</td></tr>
+          <tr><td><code class="inline">s.compare(str)</code></td><td>Порівняння</td><td>s.compare("abc")</td></tr>
+          <tr><td><code class="inline">s.at(i)</code></td><td>Доступ з перевіркою меж</td><td>s.at(0)</td></tr>
+          <tr><td><code class="inline">s.front()</code></td><td>Перший символ</td><td>s.front()</td></tr>
+          <tr><td><code class="inline">s.back()</code></td><td>Останній символ</td><td>s.back()</td></tr>
+          <tr><td><code class="inline">stoi(s)</code></td><td>String → int</td><td>stoi("42") → 42</td></tr>
+          <tr><td><code class="inline">to_string(n)</code></td><td>int → string</td><td>to_string(42) → "42"</td></tr>
+        </table>
+      </section>
+
+      <section id="string-functions">
+        <h2>Строки у функціях</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Строки у функціях</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>// Передача string за значенням (копія)
+void printString(string s) {
+    cout << s << endl;
+}
+
+// Передача за константним посиланням (рекомендовано)
+void printString(const string& s) {
+    cout << s << endl;
+}
+
+// Повернення string
+string toUpperCase(const string& s) {
+    string result = s;
+    for (int i = 0; i < result.length(); i++) {
+        result[i] = toupper(result[i]);
+    }
+    return result;
+}
+
+// Функція перевірки паліндрому
+bool isPalindrome(const string& s) {
+    int left = 0, right = s.length() - 1;
+    while (left < right) {
+        if (s[left] != s[right]) return false;
+        left++;
+        right--;
+    }
+    return true;
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- TESTS -->
+      <section id="tests">
+        <h2>📝 Тести для самоперевірки</h2>
+        <div id="test-container" class="test-container">
+          <div class="test-question" data-q="1">
+            <div class="test-question-text"><span class="test-question-number">1</span>Який символ завершує C-style строку?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q1" value="a">а) \n</label>
+              <label class="test-option"><input type="radio" name="q1" value="b">б> \0</label>
+              <label class="test-option"><input type="radio" name="q1" value="c">в> \t</label>
+              <label class="test-option"><input type="radio" name="q1" value="d">г> \r</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="2">
+            <div class="test-question-text"><span class="test-question-number">2</span>Яка функція зчитує рядок з пробілами?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q2" value="a">а) cin >></label>
+              <label class="test-option"><input type="radio" name="q2" value="b">б> getline(cin, s)</label>
+              <label class="test-option"><input type="radio" name="q2" value="c">в> cin.read()</label>
+              <label class="test-option"><input type="radio" name="q2" value="d">г> scanf()</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="3">
+            <div class="test-question-text"><span class="test-question-number">3</span>Що повертає string::find, якщо підстроку не знайдено?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q3" value="a">а) -1</label>
+              <label class="test-option"><input type="radio" name="q3" value="b">б> string::npos</label>
+              <label class="test-option"><input type="radio" name="q3" value="c">в> 0</label>
+              <label class="test-option"><input type="radio" name="q3" value="d">г> false</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="4">
+            <div class="test-question-text"><span class="test-question-number">4</span>Як конвертувати int в string?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q4" value="a">а) atoi()</label>
+              <label class="test-option"><input type="radio" name="q4" value="b">б> to_string()</label>
+              <label class="test-option"><input type="radio" name="q4" value="c">в> stoi()</label>
+              <label class="test-option"><input type="radio" name="q4" value="d">г> itoa()</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="5">
+            <div class="test-question-text"><span class="test-question-number">5</span>Яка функція копіює C-string?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q5" value="a">а) strcat</label>
+              <label class="test-option"><input type="radio" name="q5" value="b">б> strcpy</label>
+              <label class="test-option"><input type="radio" name="q5" value="c">в> strcmp</label>
+              <label class="test-option"><input type="radio" name="q5" value="d">г> strlen</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="6">
+            <div class="test-question-text"><span class="test-question-number">6</span>Як передати string у функцію без копіювання?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q6" value="a">а) string s</label>
+              <label class="test-option"><input type="radio" name="q6" value="b">б> const string& s</label>
+              <label class="test-option"><input type="radio" name="q6" value="c">в> string* s</label>
+              <label class="test-option"><input type="radio" name="q6" value="d">г> Обидва b та c</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="7">
+            <div class="test-question-text"><span class="test-question-number">7</span>Що робить s.substr(1, 3) для s="Hello"?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q7" value="a">а) "Hel"</label>
+              <label class="test-option"><input type="radio" name="q7" value="b">б> "ell"</label>
+              <label class="test-option"><input type="radio" name="q7" value="c">в> "ello"</label>
+              <label class="test-option"><input type="radio" name="q7" value="d">г> "H"</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="8">
+            <div class="test-question-text"><span class="test-question-number">8</span>Яка різниця між strlen та length()?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q8" value="a">а) strlen — для C-string, length() — для C++ string</label>
+              <label class="test-option"><input type="radio" name="q8" value="b">б> Немає різниці</label>
+              <label class="test-option"><input type="radio" name="q8" value="c">в> strlen швидше</label>
+              <label class="test-option"><input type="radio" name="q8" value="d">г> length() враховує \0</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="9">
+            <div class="test-question-text"><span class="test-question-number">9</span>Що робить strcmp("abc", "def")?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q9" value="a">а) Повертає 0</label>
+              <label class="test-option"><input type="radio" name="q9" value="b">б> Повертає від'ємне число</label>
+              <label class="test-option"><input type="radio" name="q9" value="c">в> Повертає додатне число</label>
+              <label class="test-option"><input type="radio" name="q9" value="d">г> Повертає true</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="10">
+            <div class="test-question-text"><span class="test-question-number">10</span>Який заголовок потрібен для класу string?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q10" value="a">а) &lt;cstring&gt;</label>
+              <label class="test-option"><input type="radio" name="q10" value="b">б> &lt;string&gt;</label>
+              <label class="test-option"><input type="radio" name="q10" value="c">в> &lt;strings&gt;</label>
+              <label class="test-option"><input type="radio" name="q10" value="d">г> &lt;str&gt;</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="11">
+            <div class="test-question-text"><span class="test-question-number">11</span>Що робить s.clear()?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q11" value="a">а) Видаляє останній символ</label>
+              <label class="test-option"><input type="radio" name="q11" value="b">б> Робить строку пустою</label>
+              <label class="test-option"><input type="radio" name="q11" value="c">в) Видаляє перший символ</label>
+              <label class="test-option"><input type="radio" name="q11" value="d">г: Звільняє пам'ять</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="12">
+            <div class="test-question-text"><span class="test-question-number">12</span>Як перевірити, чи пуста строка?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q12" value="a">а) if (s == "")</label>
+              <label class="test-option"><input type="radio" name="q12" value="b">б> if (s.empty())</label>
+              <label class="test-option"><input type="radio" name="q12" value="c">в> if (s.length() == 0)</label>
+              <label class="test-option"><input type="radio" name="q12" value="d">г> Всі варіанти</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="13">
+            <div class="test-question-text"><span class="test-question-number">13</span>Що робить stoi("42")?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q13" value="a">а) "42"</label>
+              <label class="test-option"><input type="radio" name="q13" value="b">б> 42</label>
+              <label class="test-option"><input type="radio" name="q13" value="c">в> 4</label>
+              <label class="test-option"><input type="radio" name="q13" value="d">г> Помилка</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="14">
+            <div class="test-question-text"><span class="test-question-number">14</span>Як об'єднати два string?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q14" value="a">а) strcat(s1, s2)</label>
+              <label class="test-option"><input type="radio" name="q14" value="b">б> s1 + s2</label>
+              <label class="test-option"><input type="radio" name="q14" value="c">в> s1.append(s2)</label>
+              <label class="test-option"><input type="radio" name="q14" value="d">г> b та c</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="15">
+            <div class="test-question-text"><span class="test-question-number">15</span>Що виведе cout << "abc"[1]?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q15" value="a">а) abc</label>
+              <label class="test-option"><input type="radio" name="q15" value="b">б> b</label>
+              <label class="test-option"><input type="radio" name="q15" value="c">в> a</label>
+              <label class="test-option"><input type="radio" name="q15" value="d">г> 98</label>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="checkTest()" id="check-btn">Перевірити відповіді</button>
+        <div id="test-result"></div>
+      </section>
+
+      <section id="practice">
+        <h2>💻 Практичні завдання</h2>
+        <div class="task-item"><span class="task-number">1</span><span class="task-title">Підрахунок слів</span><p class="task-desc">Напишіть функцію, яка підраховує кількість слів у рядку. Словом вважається послідовність символів, відмінних від пробілу.</p></div>
+        <div class="task-item"><span class="task-number">2</span><span class="task-title">Перевертання рядка</span><p class="task-desc">Напишіть функцію, яка перевертає рядок (реверс). Реалізуйте для C-string та C++ string.</p></div>
+        <div class="task-item"><span class="task-number">3</span><span class="task-title">Підрахунок голосних</span><p class="task-desc">Напишіть функцію, яка підраховує кількість голосних літер у рядку (українські та англійські).</p></div>
+        <div class="task-item"><span class="task-number">4</span><span class="task-title">Заміна символів</span><p class="task-desc">Напишіть функцію replaceAll(s, from, to), яка замінює всі входження підстроки from на to у рядку s.</p></div>
+        <div class="task-item"><span class="task-number">5</span><span class="task-title">Валідація email</span><p class="task-desc">Напишіть функцію, яка перевіряє, чи є рядок коректною email-адресою (наявність @ та домену).</p></div>
+        <div class="task-item"><span class="task-number">6</span><span class="task-title">Caesar cipher</span><p class="task-desc">Реалізуйте шифр Цезаря для рядків (зсув на k позицій). Зробіть функції шифрування та дешифрування.</p></div>
+        <div class="task-item"><span class="task-number">7</span><span class="task-title">Анаграма</span><p class="task-desc">Напишіть функцію, яка перевіряє, чи є два рядки анаграмами (містять однакові літери в різному порядку).</p></div>
+        <div class="task-item"><span class="task-number">8</span><span class="task-title">Перетворення регістру</span><p class="task-desc">Реалізуйте функції toUpper та toLower для рядків. Обробіть як латиницю, так і кирилицю.</p></div>
+        <div class="task-item"><span class="task-number">9</span><span class="task-title">Парсер чисел з рядка</span><p class="task-desc">Напишіть функцію, яка зчитує всі числа з рядка та зберігає їх у масив (наприклад: "12, 45, 78" → [12, 45, 78]).</p></div>
+        <div class="task-item"><span class="task-number">10</span><span class="task-title">Бібліотека StringUtils</span><p class="task-desc">Створіть модуль stringutils.h/cpp з функціями: trim, split, join, startsWith, endsWith, contains, reverse. Протестуйте кожну функцію.</p></div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col"><h4>CodeMaster C++</h4><p>Навчальний курс з програмування мовою C++.</p></div>
+        <div class="footer-col"><h4>Навігація</h4><p><a href="index.html">Головна</a><br><a href="topic6-1.html">← Попередня тема</a><br><a href="topic6-3.html">Наступна тема →</a></p></div>
+        <div class="footer-col"><h4>Контакти</h4><p>© 2025 CodeMaster. Всі права захищено.</p></div>
+      </div>
+      <div class="footer-bottom"><p>Створено з метою навчання програмуванню мовою C++</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const correctAnswers = { q1:'b', q2:'b', q3:'b', q4:'b', q5:'b', q6:'d', q7:'b', q8:'a', q9:'b', q10:'b', q11:'b', q12:'d', q13:'b', q14:'d', q15:'b' };
+    function checkTest() {
+      let score = 0, total = 15;
+      for (let i = 1; i <= total; i++) {
+        const q = document.querySelectorAll('.test-question')[i-1];
+        const selected = document.querySelector('input[name="q'+i+'"]:checked');
+        const options = q.querySelectorAll('.test-option');
+        options.forEach(o => { o.classList.add('disabled'); });
+        if (selected) {
+          if (selected.value === correctAnswers['q'+i]) { selected.parentElement.classList.add('correct'); score++; }
+          else { selected.parentElement.classList.add('incorrect'); options.forEach(o => { if(o.querySelector('input').value === correctAnswers['q'+i]) o.classList.add('correct'); }); }
+        } else { options.forEach(o => { if(o.querySelector('input').value === correctAnswers['q'+i]) o.classList.add('correct'); }); }
+      }
+      const resultDiv = document.getElementById('test-result');
+      let msg = score >= 13 ? 'Відмінний результат!' : score >= 9 ? 'Добре!' : score >= 6 ? 'Задовільно' : 'Потрібно повторити матеріал';
+      resultDiv.innerHTML = '<div class="test-results"><div class="test-results-score">'+score+'/'+total+'</div><div class="test-results-text">'+msg+'</div></div>';
+      document.getElementById('check-btn').style.display = 'none';
+    }
+    document.querySelectorAll('.code-copy').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const code = this.closest('.code-block').querySelector('pre').innerText;
+        navigator.clipboard.writeText(code).then(() => { this.textContent = 'Скопійовано!'; setTimeout(() => this.textContent = 'Копіювати', 1500); });
+      });
+    });
+  </script>
+</body>
+</html>

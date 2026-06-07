@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тема 8.2 - Масиви покажчиків. Покажчики на функцію | CodeMaster C++</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <div class="header-flex">
+        <a href="index.html" class="logo"><div class="logo-icon">C++</div><div class="logo-text">Code<span>Master</span></div></a>
+        <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+      </div>
+    </div>
+    <div class="container">
+      <nav class="main-nav">
+        <a href="index.html">Головна</a><a href="topic1-1.html">Тема 1.1</a><a href="topic1-2.html">Тема 1.2</a><a href="topic2-1.html">Тема 2.1</a><a href="topic2-2.html">Тема 2.2</a><a href="topic2-3.html">Тема 2.3</a><a href="topic3-1.html">Тема 3.1</a><a href="topic4-1.html">Тема 4.1</a><a href="topic4-2.html">Тема 4.2</a><a href="topic5-1.html">Тема 5.1</a><a href="topic5-2.html">Тема 5.2</a><a href="topic6-1.html">Тема 6.1</a><a href="topic6-2.html">Тема 6.2</a><a href="topic6-3.html">Тема 6.3</a><a href="topic7-1.html">Тема 7.1</a><a href="topic7-2.html">Тема 7.2</a><a href="topic8-1.html">Тема 8.1</a><a href="topic8-2.html" class="active">Тема 8.2</a><a href="topic9-1.html">Тема 9.1</a><a href="topic10-1.html">Тема 10.1</a><a href="topic10-2.html">Тема 10.2</a><a href="topic10-3.html">Тема 10.3</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Головна</a> / <a href="index.html#modules">Модуль 8</a> / Тема 8.2</div>
+      <h1>Тема 8.2</h1>
+      <p>Масиви покажчиків. Покажчики на функцію</p>
+    </div>
+  </div>
+
+  <div class="container content-layout">
+    <aside class="sidebar">
+      <h4>Зміст теми</h4>
+      <ul class="sidebar-nav">
+        <li><a href="#array">Масив вказівників</a></li>
+        <li><a href="#pointer-pointer">Вказівник на вказівник</a></li>
+        <li><a href="#string-array">Масив рядків</a></li>
+        <li><a href="#function-ptr">Вказівник на функцію</a></li>
+        <li><a href="#callback">Функції зворотного виклику</a></li>
+        <li><a href="#tests">📝 Тести</a></li>
+        <li><a href="#practice">💻 Практичні завдання</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <section id="array">
+        <h2>Масив вказівників</h2>
+        <p><strong>Масив вказівників</strong> — це масив, елементами якого є вказівники. Кожен елемент може вказувати на окремий об'єкт у пам'яті.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Масив вказівників</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>int a = 10, b = 20, c = 30;
+int* arr[3] = {&a, &b, &c};
+
+// Доступ до значень
+cout << *arr[0] << endl;  // 10
+cout << *arr[1] << endl;  // 20
+cout << *arr[2] << endl;  // 30
+
+// Зміна значення
+*arr[1] = 100;            // b = 100</code></pre>
+        </div>
+      </section>
+
+      <section id="pointer-pointer">
+        <h2>Вказівник на вказівник</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Вказівник на вказівник</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>int x = 42;
+int* p = &x;       // вказівник на x
+int** pp = &p;     // вказівник на вказівник
+
+cout << x << endl;    // 42
+cout << *p << endl;   // 42
+cout << **pp << endl; // 42
+
+**pp = 100;           // x = 100</code></pre>
+        </div>
+      </section>
+
+      <section id="string-array">
+        <h2>Масив рядків через вказівники</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Масив рядків</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>// Масив C-style рядків
+const char* days[] = {
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+};
+
+for (int i = 0; i < 7; i++)
+    cout << days[i] << endl;
+
+// Масив вказівників на string (C++)
+string names[] = {"Anna", "Boris", "Clara"};
+string* ptrs[3];
+for (int i = 0; i < 3; i++)
+    ptrs[i] = &names[i];</code></pre>
+        </div>
+      </section>
+
+      <section id="function-ptr">
+        <h2>Вказівник на функцію</h2>
+        <p><strong>Вказівник на функцію</strong> зберігає адресу функції і дозволяє викликати її через цей вказівник.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Вказівник на функцію</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>// Оголошення: тип_повернення (*ім'я)(параметри);
+int add(int a, int b) { return a + b; }
+int sub(int a, int b) { return a - b; }
+int mul(int a, int b) { return a * b; }
+
+int main() {
+    // Вказівник на функцію
+    int (*operation)(int, int);
+    
+    operation = add;
+    cout << operation(3, 4) << endl;  // 7
+    
+    operation = sub;
+    cout << operation(3, 4) << endl;  // -1
+    
+    operation = mul;
+    cout << operation(3, 4) << endl;  // 12
+    
+    return 0;
+}</code></pre>
+        </div>
+      </section>
+
+      <section id="callback">
+        <h2>Функції зворотного виклику (callbacks)</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Callback</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>// Функція приймає вказівник на функцію
+void processArray(int arr[], int n, int (*func)(int)) {
+    for (int i = 0; i < n; i++)
+        arr[i] = func(arr[i]);
+}
+
+int square(int x) { return x * x; }
+int cube(int x) { return x * x * x; }
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    
+    processArray(arr, 5, square);  // підносить до квадрата
+    processArray(arr, 5, cube);    // підносить до куба
+    
+    return 0;
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- TESTS -->
+      <section id="tests">
+        <h2>📝 Тести для самоперевірки</h2>
+        <div id="test-container" class="test-container">
+          <div class="test-question" data-q="1">
+            <div class="test-question-text"><span class="test-question-number">1</span>Який синтаксис масиву вказівників на int?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q1" value="a">а) int* arr[10];</label>
+              <label class="test-option"><input type="radio" name="q1" value="b">б> int (*arr)[10];</label>
+              <label class="test-option"><input type="radio" name="q1" value="c">в> int arr*[10];</label>
+              <label class="test-option"><input type="radio" name="q1" value="d">г> int arr[10]*;</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="2">
+            <div class="test-question-text"><span class="test-question-number">2</span>Що таке вказівник на вказівник?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q2" value="a">а) int* p;</label>
+              <label class="test-option"><input type="radio" name="q2" value="b">б> int** p;</label>
+              <label class="test-option"><input type="radio" name="q2" value="c">в> int& p;</label>
+              <label class="test-option"><input type="radio" name="q2" value="d">г> int&& p;</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="3">
+            <div class="test-question-text"><span class="test-question-number">3</span>Як оголосити вказівник на функцію int f(int)?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q3" value="a">а) int* f(int);</label>
+              <label class="test-option"><input type="radio" name="q3" value="b">б> int (*f)(int);</label>
+              <label class="test-option"><input type="radio" name="q3" value="c">в> int *f(int);</label>
+              <label class="test-option"><input type="radio" name="q3" value="d">г> int& f(int);</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="4">
+            <div class="test-question-text"><span class="test-question-number">4</span>Як викликати функцію через вказівник f?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q4" value="a">а) f.call(5)</label>
+              <label class="test-option"><input type="radio" name="q4" value="b">б> (*f)(5)</label>
+              <label class="test-option"><input type="radio" name="q4" value="c">в> f(5)</label>
+              <label class="test-option"><input type="radio" name="q4" value="d">г> b та c</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="5">
+            <div class="test-question-text"><span class="test-question-number">5</span>Яке значення **pp, якщо *pp = &x, а x = 10?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q5" value="a">а) Адреса pp</label>
+              <label class="test-option"><input type="radio" name="q5" value="b">б> 10</label>
+              <label class="test-option"><input type="radio" name="q5" value="c">в> Адреса x</label>
+              <label class="test-option"><input type="radio" name="q5" value="d">г> nullptr</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="6">
+            <div class="test-question-text"><span class="test-question-number">6</span>Для чого використовують вказівники на функції?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q6" value="a">а) Для швидшого виклику</label>
+              <label class="test-option"><input type="radio" name="q6" value="b">б> Для передачі функції як параметра</label>
+              <label class="test-option"><input type="radio" name="q6" value="c">в> Для збереження функції у файлі</label>
+              <label class="test-option"><input type="radio" name="q6" value="d">г> Для видалення функції</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="7">
+            <div class="test-question-text"><span class="test-question-number">7</span>Як передати функцію callback у функцію?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q7" value="a">а) Як int</label>
+              <label class="test-option"><input type="radio" name="q7" value="b">б> Як вказівник на функцію</label>
+              <label class="test-option"><input type="radio" name="q7" value="c">в> Як string</label>
+              <label class="test-option"><input type="radio" name="q7" value="d">г> Не можна</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="8">
+            <div class="test-question-text"><span class="test-question-number">8</span>Що таке callback-функція?</span>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q8" value="a">а) Рекурсивна функція</label>
+              <label class="test-option"><input type="radio" name="q8" value="b">б> Функція, передана як аргумент для виклику всередині</label>
+              <label class="test-option"><input type="radio" name="q8" value="c">в> Функція без параметрів</label>
+              <label class="test-option"><input type="radio" name="q8" value="d">г> Головна функція</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="9">
+            <div class="test-question-text"><span class="test-question-number">9</span>Скільки рівнів вкладеності вказівників можливо?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q9" value="a">а) Тільки 2</label>
+              <label class="test-option"><input type="radio" name="q9" value="b">б> Теоретично необмежено</label>
+              <label class="test-option"><input type="radio" name="q9" value="c">в> Тільки 1</label>
+              <label class="test-option"><input type="radio" name="q9" value="d">г> Максимум 3</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="10">
+            <div class="test-question-text"><span class="test-question-number">10</span>Який тип qsort використовує для порівняння?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q10" value="a">а) Вказівник на функцію порівняння</label>
+              <label class="test-option"><input type="radio" name="q10" value="b">б> Ціле число</label>
+              <label class="test-option"><input type="radio" name="q10" value="c">в> Рядок</label>
+              <label class="test-option"><input type="radio" name="q10" value="d">г> Структуру</label>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="checkTest()" id="check-btn">Перевірити відповіді</button>
+        <div id="test-result"></div>
+      </section>
+
+      <section id="practice">
+        <h2>💻 Практичні завдання</h2>
+        <div class="task-item"><span class="task-number">1</span><span class="task-title">Масив рядків</span><p class="task-desc">Створіть масив вказівників на C-style рядки. Виведіть їх у алфавітному порядку, використовуючи strcmp.</p></div>
+        <div class="task-item"><span class="task-number">2</span><span class="task-title">Сортування через callback</span><p class="task-desc">Реалізуйте власну функцію sort, яка приймає масив та вказівник на функцію порівняння (ascending/descending).</p></div>
+        <div class="task-item"><span class="task-number">3</span><span class="task-title">Динамічний масив рядків</span><p class="task-desc">Створіть динамічний масив вказівників на рядки (char**). Додайте, видаліть, виведіть рядки. Звільніть пам'ять.</p></div>
+        <div class="task-item"><span class="task-number">4</span><span class="task-title">Меню операцій</span><p class="task-desc">Створіть меню арифметичних операцій (+, -, *, /) з використанням масиву вказівників на функції.</p></div>
+        <div class="task-item"><span class="task-number">5</span><span class="task-title">Обробка масиву з callback</span><p class="task-desc">Напишіть функцію mapArray, яка застосовує передану функцію до кожного елемента масиву.</p></div>
+        <div class="task-item"><span class="task-number">6</span><span class="task-title">Фільтрація через callback</span><p class="task-desc">Напишіть функцію filterArray, яка повертає новий масив з елементами, що задовольняють умову (predicate).</p></div>
+        <div class="task-item"><span class="task-number">7</span><span class="task-title">Матриця через вказівник на вказівник</span><p class="task-desc">Створіть двовимірний динамічний масив через int**. Реалізуйте введення, виведення, транспонування.</p></div>
+        <div class="task-item"><span class="task-number">8</span><span class="task-title">qsort для структур</span><p class="task-desc">Використайте std::qsort для сортування масиву структур Student за різними полями через різні функції порівняння.</p></div>
+        <div class="task-item"><span class="task-number">9</span><span class="task-title"> reduce/fold</span><p class="task-desc">Напишіть функцію reduceArray, яка згортає масив в одне значення за допомогою переданої функції (сума, добуток, максимум).</p></div>
+        <div class="task-item"><span class="task-number">10</span><span class="task-title">Диспетчер функцій</span><p class="task-desc">Створіть систему, де рядок-команда відображається у вказівник на функцію через map. Реалізуйте 

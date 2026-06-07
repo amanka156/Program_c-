@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тема 7.2 - Масиви структур | CodeMaster C++</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <div class="header-flex">
+        <a href="index.html" class="logo"><div class="logo-icon">C++</div><div class="logo-text">Code<span>Master</span></div></a>
+        <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+      </div>
+    </div>
+    <div class="container">
+      <nav class="main-nav">
+        <a href="index.html">Головна</a><a href="topic1-1.html">Тема 1.1</a><a href="topic1-2.html">Тема 1.2</a><a href="topic2-1.html">Тема 2.1</a><a href="topic2-2.html">Тема 2.2</a><a href="topic2-3.html">Тема 2.3</a><a href="topic3-1.html">Тема 3.1</a><a href="topic4-1.html">Тема 4.1</a><a href="topic4-2.html">Тема 4.2</a><a href="topic5-1.html">Тема 5.1</a><a href="topic5-2.html">Тема 5.2</a><a href="topic6-1.html">Тема 6.1</a><a href="topic6-2.html">Тема 6.2</a><a href="topic6-3.html">Тема 6.3</a><a href="topic7-1.html">Тема 7.1</a><a href="topic7-2.html" class="active">Тема 7.2</a><a href="topic8-1.html">Тема 8.1</a><a href="topic8-2.html">Тема 8.2</a><a href="topic9-1.html">Тема 9.1</a><a href="topic10-1.html">Тема 10.1</a><a href="topic10-2.html">Тема 10.2</a><a href="topic10-3.html">Тема 10.3</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Головна</a> / <a href="index.html#modules">Модуль 7</a> / Тема 7.2</div>
+      <h1>Тема 7.2</h1>
+      <p>Масиви структур</p>
+    </div>
+  </div>
+
+  <div class="container content-layout">
+    <aside class="sidebar">
+      <h4>Зміст теми</h4>
+      <ul class="sidebar-nav">
+        <li><a href="#concept">Масив структур</a></li>
+        <li><a href="#declaration">Оголошення масиву структур</a></li>
+        <li><a href="#input-output">Введення та виведення</a></li>
+        <li><a href="#search">Пошук та фільтрація</a></li>
+        <li><a href="#sort">Сортування</a></li>
+        <li><a href="#file">Збереження у файл</a></li>
+        <li><a href="#tests">📝 Тести</a></li>
+        <li><a href="#practice">💻 Практичні завдання</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <section id="concept">
+        <h2>Масив структур</h2>
+        <p><strong>Масив структур</strong> — це масив, елементами якого є структури. Це дозволяє зберігати та обробляти набір об'єктів одного типу (наприклад, список студентів, каталог товарів).</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Масив структур</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>struct Student {
+    string name;
+    int age;
+    double avgGrade;
+};
+
+// Масив з 100 студентів
+Student group[100];
+
+// Доступ до членів
+group[0].name = "Іван";
+group[0].age = 20;
+group[0].avgGrade = 4.5;
+
+// Ініціалізація
+Student smallGroup[3] = {
+    {"Anna", 19, 4.8},
+    {"Boris", 20, 3.9},
+    {"Clara", 19, 4.2}
+};</code></pre>
+        </div>
+      </section>
+
+      <section id="declaration">
+        <h2>Оголошення масиву структур</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Оголошення</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>// Оголошення з фіксованим розміром
+struct Product {
+    string name;
+    double price;
+    int quantity;
+};
+
+const int MAX_PRODUCTS = 1000;
+Product catalog[MAX_PRODUCTS];
+int productCount = 0;  // фактична кількість</code></pre>
+        </div>
+      </section>
+
+      <section id="input-output">
+        <h2>Введення та виведення</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Введення/виведення</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>void inputStudents(Student arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << "Студент #" << i + 1 << endl;
+        cout << "Ім'я: ";
+        cin.ignore();
+        getline(cin, arr[i].name);
+        cout << "Вік: ";
+        cin >> arr[i].age;
+        cout << "Середній бал: ";
+        cin >> arr[i].avgGrade;
+    }
+}
+
+void printStudents(const Student arr[], int n) {
+    cout << "\n--- Список студентів ---" << endl;
+    for (int i = 0; i < n; i++) {
+        cout << i + 1 << ". " << arr[i].name
+             << ", " << arr[i].age << " років"
+             << ", бал: " << arr[i].avgGrade << endl;
+    }
+}</code></pre>
+        </div>
+      </section>
+
+      <section id="search">
+        <h2>Пошук та фільтрація</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Пошук</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>// Пошук за іменем
+int findByName(const Student arr[], int n, const string& name) {
+    for (int i = 0; i < n; i++)
+        if (arr[i].name == name)
+            return i;
+    return -1;
+}
+
+// Фільтрація за критерієм
+void printExcellent(const Student arr[], int n) {
+    cout << "Відмінники (бал >= 4.5):" << endl;
+    for (int i = 0; i < n; i++)
+        if (arr[i].avgGrade >= 4.5)
+            cout << arr[i].name << endl;
+}
+
+// Пошук максимуму
+int findBestStudent(const Student arr[], int n) {
+    int bestIdx = 0;
+    for (int i = 1; i < n; i++)
+        if (arr[i].avgGrade > arr[bestIdx].avgGrade)
+            bestIdx = i;
+    return bestIdx;
+}</code></pre>
+        </div>
+      </section>
+
+      <section id="sort">
+        <h2>Сортування масиву структур</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Сортування</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>// Сортування за балом (спадання) — Bubble Sort
+void sortByGrade(Student arr[], int n) {
+    for (int i = 0; i < n - 1; i++)
+        for (int j = 0; j < n - 1 - i; j++)
+            if (arr[j].avgGrade < arr[j+1].avgGrade) {
+                Student tmp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = tmp;
+            }
+}
+
+// Сортування за ім'ям
+void sortByName(Student arr[], int n) {
+    for (int i = 0; i < n - 1; i++)
+        for (int j = 0; j < n - 1 - i; j++)
+            if (arr[j].name > arr[j+1].name) {
+                Student tmp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = tmp;
+            }
+}</code></pre>
+        </div>
+      </section>
+
+      <section id="file">
+        <h2>Збереження масиву структур у файл</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Робота з файлом</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>#include &lt;fstream&gt;
+
+void saveToFile(const Student arr[], int n, const string& filename) {
+    ofstream fout(filename);
+    fout << n << endl;
+    for (int i = 0; i < n; i++) {
+        fout << arr[i].name << endl;
+        fout << arr[i].age << endl;
+        fout << arr[i].avgGrade << endl;
+    }
+    fout.close();
+}
+
+void loadFromFile(Student arr[], int& n, const string& filename) {
+    ifstream fin(filename);
+    fin >> n;
+    fin.ignore();
+    for (int i = 0; i < n; i++) {
+        getline(fin, arr[i].name);
+        fin >> arr[i].age;
+        fin >> arr[i].avgGrade;
+        fin.ignore();
+    }
+    fin.close();
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- TESTS -->
+      <section id="tests">
+        <h2>📝 Тести для самоперевірки</h2>
+        <div id="test-container" class="test-container">
+          <div class="test-question" data-q="1">
+            <div class="test-question-text"><span class="test-question-number">1</span>Як оголосити масив структур?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q1" value="a">а) struct arr[10];</label>
+              <label class="test-option"><input type="radio" name="q1" value="b">б> Student arr[10];</label>
+              <label class="test-option"><input type="radio" name="q1" value="c">в> array Student[10];</label>
+              <label class="test-option"><input type="radio" name="q1" value="d">г> Student[10] arr;</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="2">
+            <div class="test-question-text"><span class="test-question-number">2</span>Як отримати доступ до поля name другого студента?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q2" value="a">а) arr[1].name</label>
+              <label class="test-option"><input type="radio" name="q2" value="b">б> arr[2].name</label>
+              <label class="test-option"><input type="radio" name="q2" value="c">в> arr.name[1]</label>
+              <label class="test-option"><input type="radio" name="q2" value="d">г> arr->name</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="3">
+            <div class="test-question-text"><span class="test-question-number">3</span>Як обміняти місцями два елементи масиву структур?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q3" value="a">а) Поміняти кожне поле окремо</label>
+              <label class="test-option"><input type="radio" name="q3" value="b">б> Student tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;</label>
+              <label class="test-option"><input type="radio" name="q3" value="c">в> arr[i] = arr[j]</label>
+              <label class="test-option"><input type="radio" name="q3" value="d">г> Не можна обмінювати</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="4">
+            <div class="test-question-text"><span class="test-question-number">4</span>Скільки пам'яті займає масив з 100 структур, кожна 32 байти?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q4" value="a">а) 32 байти</label>
+              <label class="test-option"><input type="radio" name="q4" value="b">б> 3200 байт</label>
+              <label class="test-option"><input type="radio" name="q4" value="c">в> 100 байт</label>
+              <label class="test-option"><input type="radio" name="q4" value="d">г> 320 байт</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="5">
+            <div class="test-question-text"><span class="test-question-number">5</span>Як передати масив структур у функцію?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q5" value="a">а) func(Student arr[])</label>
+              <label class="test-option"><input type="radio" name="q5" value="b">б> func(Student* arr)</label>
+              <label class="test-option"><input type="radio" name="q5" value="c">в> func(Student arr[N])</label>
+              <label class="test-option"><input type="radio" name="q5" value="d">г> Всі варіанти</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="6">
+            <div class="test-question-text"><span class="test-question-number">6</span>Чи можна ініціалізувати масив структур при оголошенні?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q6" value="a">а) Так</label>
+              <label class="test-option"><input type="radio" name="q6" value="b">б> Ні</label>
+              <label class="test-option"><input type="radio" name="q6" value="c">в> Тільки з C++11</label>
+              <label class="test-option"><input type="radio" name="q6" value="d">г> Тільки динамічно</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="7">
+            <div class="test-question-text"><span class="test-question-number">7</span>Як сортувати масив структур?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q7" value="a">а) Тільки вручну</label>
+              <label class="test-option"><input type="radio" name="q7" value="b">б> Будь-яким алгоритмом сортування за певним полем</label>
+              <label class="test-option"><input type="radio" name="q7" value="c">в> Не можна</label>
+              <label class="test-option"><input type="radio" name="q7" value="d">г> Тільки qsort</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="8">
+            <div class="test-question-text"><span class="test-question-number">8</span>Що означає const Student arr[] у параметрі?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q8" value="a">а) Масив не можна змінювати</label>
+              <label class="test-option"><input type="radio" name="q8" value="b">б> Елементи масиву не можна змінювати</label>
+              <label class="test-option"><input type="radio" name="q8" value="c">в> Масив порожній</label>
+              <label class="test-option"><input type="radio" name="q8" value="d">г> Масив константного розміру</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="9">
+            <div class="test-question-text"><span class="test-question-number">9</span>Як зберегти масив структур у текстовий файл?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q9" value="a">а) Записати кожне поле кожної структури</label>
+              <label class="test-option"><input type="radio" name="q9" value="b">б> fwrite(arr, sizeof(Student), n, file)</label>
+              <label class="test-option"><input type="radio" name="q9" value="c">в> Тільки через серіалізацію</label>
+              <label class="test-option"><input type="radio" name="q9" value="d">г> Не можна</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="10">
+            <div class="test-question-text"><span class="test-question-number">10</span>Чи можна створити масив вказівників на структури?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q10" value="a">а) Так</label>
+              <label class="test-option"><input type="radio" name="q10" value="b">б> Ні</label>
+              <label class="test-option"><input type="radio" name="q10" value="c">в> Тільки динамічний</label>
+              <label class="test-option"><input type="radio" name="q10" value="d">г> Тільки в C++11</label>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="checkTest()" id="check-btn">Перевірити відповіді</button>
+        <div id="test-result"></div>
+      </section>
+
+      <section id="practice">
+        <h2>💻 Практичні завдання</h2>
+        <div class="task-item"><span class="task-number">1</span><span class="task-title">Бібліотека книг</span><p class="task-desc">Створіть масив з 50 книг (Book: назва, автор, рік, жанр). Реалізуйте пошук за автором, фільтрацію за роком, сортування за назвою.</p></div>
+        <div class="task-item"><span class="task-number">2</span><span class="task-title">Залізничні квитки</span><p class="task-desc">Створіть масив квитків (номер, пункт відправлення, пункт прибуття, дата, ціна). Пошук за напрямком, сортування за ціною.</p></div>
+        <div class="task-item"><span class="task-number">3</span><span class="task-title">Електронний журнал</span><p class="task-desc">Створіть журнал оцінок для 30 студентів з 5 предметів. Обчисліть середній бал кожного студента та кожного предмета.</p></div>
+        <div class="task-item"><span class="task-number">4</span><span class="task-title">Інвентаризація складу</span><p class="task-desc">Створіть масив товарів (назва, артикул, кількість, ціна). Функції: додавання, видалення, пошук за артикулом, загальна вартість.</p></div>
+        <div class="task-item"><span class="task-number">5</span><span class="task-title">Спортивні змагання</span><p class="task-desc">Створіть масив команд (назва, кількість ігор, перемог, нічиїх, поразок, очки). Сортування за очками, визначення чемпіону.</p></div>
+        <div class="task-item"><span class="task-number">6</span><span class="task-title">Записна книжка</span><p class="task-desc">Створіть масив контактів (ім'я, телефон, email, адреса). Пошук за іменем, сортування, збереження/завантаження з файлу.</p></div>
+        <div class="task-item"><span class="task-number">7</span><span class="task-title">Автосалон</span><p class="task-desc">Створіть масив автомобілів (марка, модель, рік, ціна, пробіг). Фільтрація за ціною, сортування за роком випуску.</p></div>
+        <div class="task-item"><span class="task-number">8</span><span class="task-title">Аптека</span><p class="task-desc">Створіть масив ліків (назва, виробник, ціна, термін придатності, кількість). Пошук за назвою, видалення прострочених, сортування за ціною.</p></div>
+        <div class="task-item"><span class="task-number">9</span><span class="task-title">Кінотеатр</span><p class="task-desc">Створіть масив фільмів (назва, режисер, рік, жанр, рейтинг). Топ-10 за рейтингом, пошук за жанром, сортування за роком.</p></div>
+        <div class="task-item"><span class="task-number">10</span><span class="task-title">Університет</span><p class="task-desc">Створіть систему обліку студентів: додавання, видалення, редагування, пошук, сортування за різними критеріями, збереження у файл.</p></div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col"><h4>CodeMaster C++</h4><p>Навчальний курс з програмування мовою C++.</p></div>
+        <div class="footer-col"><h4>Навігація</h4><p><a href="index.html">Головна</a><br><a href="topic7-1.html">← Попередня тема</a><br><a href="topic8-1.html">Наступна тема →</a></p></div>
+        <div class="footer-col"><h4>Контакти</h4><p>© 2025 CodeMaster. Всі права захищено.</p></div>
+      </div>
+      <div class="footer-bottom"><p>Створено з метою навчання програмуванню мовою C++</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const correctAnswers = { q1:'b', q2:'a', q3:'b', q4:'b', q5:'d', q6:'a', q7:'b', q8:'b', q9:'a', q10:'a' };
+    function checkTest() {
+      let score = 0, total = 10;
+      for (let i = 1; i <= total; i++) {
+        const q = document.querySelectorAll('.test-question')[i-1];
+        const selected = document.querySelector('input[name="q'+i+'"]:checked');
+        const options = q.querySelectorAll('.test-option');
+        options.forEach(o => { o.classList.add('disabled'); });
+        if (selected) {
+          if (selected.value === correctAnswers['q'+i]) { selected.parentElement.classList.add('correct'); score++; }
+          else { selected.parentElement.classList.add('incorrect'); options.forEach(o => { if(o.querySelector('input').value === correctAnswers['q'+i]) o.classList.add('correct'); }); }
+        } else { options.forEach(o => { if(o.querySelector('input').value === correctAnswers['q'+i]) o.classList.add('correct'); }); }
+      }
+      const resultDiv = document.getElementById('test-result');
+      let msg = score >= 9 ? 'Відмінний результат!' : score >= 7 ? 'Добре!' : score >= 5 ? 'Задовільно' : 'Потрібно повторити матеріал';
+      resultDiv.innerHTML = '<div class="test-results"><div class="test-results-score">'+score+'/'+total+'</div><div class="test-results-text">'+msg+'</div></div>';
+      document.getElementById('check-btn').style.display = 'none';
+    }
+    document.querySelectorAll('.code-copy').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const code = this.closest('.code-block').querySelector('pre').innerText;
+        navigator.clipboard.writeText(code).then(() => { this.textContent = 'Скопійовано!'; setTimeout(() => this.textContent = 'Копіювати', 1500); });
+      });
+    });
+  </script>
+</body>
+</html>

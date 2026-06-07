@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тема 1.1 - Мова програмування, IDE, історія та класифікація | CodeMaster C++</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <div class="header-flex">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">C++</div>
+          <div class="logo-text">Code<span>Master</span></div>
+        </a>
+        <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+      </div>
+    </div>
+    <div class="container">
+      <nav class="main-nav">
+        <a href="index.html">Головна</a>
+        <a href="topic1-1.html" class="active">Тема 1.1</a>
+        <a href="topic1-2.html">Тема 1.2</a>
+        <a href="topic2-1.html">Тема 2.1</a>
+        <a href="topic2-2.html">Тема 2.2</a>
+        <a href="topic2-3.html">Тема 2.3</a>
+        <a href="topic3-1.html">Тема 3.1</a>
+        <a href="topic4-1.html">Тема 4.1</a>
+        <a href="topic4-2.html">Тема 4.2</a>
+        <a href="topic5-1.html">Тема 5.1</a>
+        <a href="topic5-2.html">Тема 5.2</a>
+        <a href="topic6-1.html">Тема 6.1</a>
+        <a href="topic6-2.html">Тема 6.2</a>
+        <a href="topic6-3.html">Тема 6.3</a>
+        <a href="topic7-1.html">Тема 7.1</a>
+        <a href="topic7-2.html">Тема 7.2</a>
+        <a href="topic8-1.html">Тема 8.1</a>
+        <a href="topic8-2.html">Тема 8.2</a>
+        <a href="topic9-1.html">Тема 9.1</a>
+        <a href="topic10-1.html">Тема 10.1</a>
+        <a href="topic10-2.html">Тема 10.2</a>
+        <a href="topic10-3.html">Тема 10.3</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Головна</a> / <a href="index.html#modules">Модуль 1</a> / Тема 1.1
+      </div>
+      <h1>Тема 1.1</h1>
+      <p>Мова програмування, інтегроване середовище розробки. Історія і класифікація мов програмування</p>
+    </div>
+  </div>
+
+  <div class="container content-layout">
+    <aside class="sidebar">
+      <h4>Зміст теми</h4>
+      <ul class="sidebar-nav">
+        <li><a href="#what-is">Що таке мова програмування</a></li>
+        <li><a href="#ide">Інтегроване середовище розробки</a></li>
+        <li><a href="#history">Історія мов програмування</a></li>
+        <li><a href="#classification">Класифікація мов</a></li>
+        <li><a href="#generations">Покоління мов</a></li>
+        <li><a href="#tests">📝 Тести</a></li>
+        <li><a href="#practice">💻 Практичні завдання</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <section id="what-is">
+        <h2>Що таке мова програмування</h2>
+        <p><strong>Мова програмування</strong> — це штучна мова, створена для передачі команд комп'ютерам. Вона визначає набір лексичних, синтаксичних і семантичних правил, що використовуються при написанні комп'ютерних програм.</p>
+        <p>Мова програмування дозволяє програмісту точно визначити, на які дані буде оперувати комп'ютер, як ці дані зберігатимуться і передаватимуться, і які дії слід виконувати над ними залежно від обставин.</p>
+        <div class="highlight-box">
+          <div class="highlight-box-title">🔑 Ключове визначення</div>
+          <p><strong>Мова програмування</strong> — формальна знакова система, призначена для опису алгоритмів у формі, придатній для виконання обчислювальною машиною.</p>
+        </div>
+        <img src="images/topic1-history.png" alt="Класифікація мов програмування" style="width:100%;border-radius:8px;margin:20px 0;">
+        <p>Мова програмування характеризується трьома основними компонентами:</p>
+        <ul>
+          <li><strong>Алфавіт</strong> — набір допустимих символів</li>
+          <li><strong>Синтаксис</strong> — правила побудови мовних конструкцій</li>
+          <li><strong>Семантика</strong> — правила тлумачення конструкцій</li>
+        </ul>
+      </section>
+
+      <section id="ide">
+        <h2>Інтегроване середовище розробки (IDE)</h2>
+        <p><strong>Інтегроване середовище розробки (IDE)</strong> — це програмний комплекс, що включає редактор вихідного коду, компілятор, засоби автоматизації збирання та відладчик.</p>
+        <p>Основні складові IDE:</p>
+        <ul>
+          <li><strong>Текстовий редактор</strong> — для написання коду з підсвічуванням синтаксису</li>
+          <li><strong>Компілятор</strong> — для перетворення коду в машинні інструкції</li>
+          <li><strong>Відладчик (Debugger)</strong> — для пошуку та виправлення помилок</li>
+          <li><strong>Бібліотеки</strong> — готові модулі та функції</li>
+          <li><strong>Інструменти автоматизації</strong> — для збирання та розгортання проєктів</li>
+        </ul>
+        <div class="highlight-box highlight-box-success">
+          <div class="highlight-box-title">✅ Популярні IDE для C++</div>
+          <ul>
+            <li><strong>Visual Studio</strong> — потужне середовище від Microsoft</li>
+            <li><strong>Code::Blocks</strong> — безкоштовне кросплатформенне IDE</li>
+            <li><strong>CLion</strong> — професійне IDE від JetBrains</li>
+            <li><strong>Dev-C++</strong> — просте і зручне для початківців</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="history">
+        <h2>Історія мов програмування</h2>
+        <p>Розвиток мов програмування розпочався у 1940-х роках. Розглянемо основні віхи:</p>
+        <h3>Перше покоління (1940-1950)</h3>
+        <p>Перші комп'ютери програмувались безпосередньо у машинних кодах — послідовностях двійкових чисел. Це було надзвичайно складно і незручно.</p>
+        <h3>Друге покоління (1950-1960)</h3>
+        <p>З'явилися мови асемблера, які використовували символічні імені замість числових кодів операцій. У цей період були створені перші високорівневі мови — Fortran (1957) та COBOL (1959).</p>
+        <h3>Третє покоління (1960-1970)</h3>
+        <p>Період створення універсальних мов програмування: ALGOL (1960), BASIC (1964), Pascal (1970), C (1972). Мова C, розроблена Деннісом Рітчі в Bell Labs, стала основою для багатьох сучасних мов.</p>
+        <h3>Четверте покоління (1980-1990)</h3>
+        <p>Поява об'єктно-орієнтованого програмування: C++ (1985, Б'ярн Страуструп), Objective-C (1986), а пізніше — Java (1995). C++ розширив мову C механізмами класів, успадкування, поліморфізму та інкапсуляції.</p>
+        <h3>П'яте покоління (1990-дотепер)</h3>
+        <p>Розвиток скриптових мов (Python, JavaScript, PHP), функціональних мов (Haskell) та мов для спеціалізованих задач. C++ продовжує активно розвиватись — стандарти C++11, C++14, C++17, C++20 та C++23.</p>
+      </section>
+
+      <section id="classification">
+        <h2>Класифікація мов програмування</h2>
+        <p>Мови програмування можна класифікувати за різними критеріями:</p>
+        <h3>1. За рівнем абстракції</h3>
+        <table class="content-table">
+          <tr><th>Тип</th><th>Опис</th><th>Приклади</th></tr>
+          <tr><td>Машинні мови</td><td>Коди операцій процесора</td><td>Двійковий код</td></tr>
+          <tr><td>Мови низького рівня</td><td>Асемблер, близькі до машинних</td><td>ASM x86, ARM</td></tr>
+          <tr><td>Мови високого рівня</td><td>Абстракція від апаратури</td><td>C, C++, Java, Python</td></tr>
+          <tr><td>Мови дуже високого рівня</td><td>Максимальна абстракція</td><td>SQL, Python, R</td></tr>
+        </table>
+        <h3>2. За парадигмою програмування</h3>
+        <table class="content-table">
+          <tr><th>Парадигма</th><th>Опис</th><th>Приклади</th></tr>
+          <tr><td>Процедурна</td><td>Програма як послідовність процедур</td><td>C, Pascal, Fortran</td></tr>
+          <tr><td>Об'єктно-орієнтована</td><td>Взаємодія об'єктів через повідомлення</td><td>C++, Java, C#</td></tr>
+          <tr><td>Функціональна</td><td>Обчислення як застосування функцій</td><td>Haskell, Lisp, F#</td></tr>
+          <tr><td>Логічна</td><td>Програма як набір фактів і правил</td><td>Prolog</td></tr>
+          <tr><td>Структурна</td><td>Блокова організація коду</td><td>Pascal, C</td></tr>
+        </table>
+        <h3>3. За способом виконання</h3>
+        <ul>
+          <li><strong>Компільовані</strong> — перетворюються в машинний код перед виконанням (C, C++, Pascal, Rust)</li>
+          <li><strong>Інтерпретовані</strong> — виконуються рядок за рядком (Python, JavaScript, PHP)</li>
+          <li><strong>Змішані</strong> — компілюються в байт-код, потім інтерпретуються (Java, C#)</li>
+        </ul>
+        <img src="images/topic1-compiler.png" alt="Компіляція та інтерпретація" style="width:100%;border-radius:8px;margin:20px 0;">
+        <h3>4. За призначенням</h3>
+        <ul>
+          <li><strong>Універсальні</strong> — C, C++, Python, Java</li>
+          <li><strong>Системні</strong> — C, Rust, Go (для ОС та драйверів)</li>
+          <li><strong>Web-розробка</strong> — JavaScript, PHP, TypeScript</li>
+          <li><strong>Наукові/математичні</strong> — Fortran, MATLAB, R</li>
+          <li><strong>Штучний інтелект</strong> — Python, Prolog, Lisp</li>
+        </ul>
+      </section>
+
+      <section id="generations">
+        <h2>Покоління мов програмування</h2>
+        <table class="content-table">
+          <tr><th>Покоління</th><th>Період</th><th>Характеристика</th><th>Приклади</th></tr>
+          <tr><td>1GL</td><td>1940-1950</td><td>Машинні коди, двійкові інструкції</td><td>Машинний код</td></tr>
+          <tr><td>2GL</td><td>1950-1960</td><td>Асемблер, символічні імена</td><td>Assembly</td></tr>
+          <tr><td>3GL</td><td>1960-1980</td><td>Високорівневі мови, структурне програмування</td><td>Fortran, COBOL, C, Pascal</td></tr>
+          <tr><td>4GL</td><td>1980-2000</td><td>Об'єктно-орієнтовані, візуальні середовища</td><td>C++, Java, Delphi</td></tr>
+          <tr><td>5GL</td><td>2000-сьогодні</td><td>Обмеження-орієнтовані, декларативні</td><td>Prolog, Haskell, SQL</td></tr>
+        </table>
+        <div class="highlight-box">
+          <div class="highlight-box-title">📌 Важливо знати</div>
+          <p>C++ відноситься до мов <strong>третього-четвертого покоління</strong>. Це високорівнева мова з елементами низькорівневого програмування, яка підтримує процедурну, об'єктно-орієнтовану та узагальнену (generics) парадигми програмування.</p>
+        </div>
+      </section>
+
+      <!-- TESTS -->
+      <section id="tests">
+        <h2>📝 Тести для самоперевірки</h2>
+        <div id="test-container" class="test-container">
+          <div class="test-question" data-q="1">
+            <div class="test-question-text"><span class="test-question-number">1</span>Що таке мова програмування?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q1" value="a">а) Природна мова для спілкування між людьми</label>
+              <label class="test-option"><input type="radio" name="q1" value="b">б) Штучна мова для передачі команд комп'ютерам</label>
+              <label class="test-option"><input type="radio" name="q1" value="c">в) Мова для створення баз даних</label>
+              <label class="test-option"><input type="radio" name="q1" value="d">г) Тільки мова розмітки веб-сторінок</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="2">
+            <div class="test-question-text"><span class="test-question-number">2</span>Які три основні компоненти характеризують мову програмування?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q2" value="a">а) Алфавіт, синтаксис, семантика</label>
+              <label class="test-option"><input type="radio" name="q2" value="b">б) Код, текст, зображення</label>
+              <label class="test-option"><input type="radio" name="q2" value="c">в) Змінна, функція, клас</label>
+              <label class="test-option"><input type="radio" name="q2" value="d">г) Компілятор, інтерпретатор, відладчик</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="3">
+            <div class="test-question-text"><span class="test-question-number">3</span>Що таке IDE?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q3" value="a">а) Інтернет-движок електронної пошти</label>
+              <label class="test-option"><input type="radio" name="q3" value="b">б) Інтегроване середовище розробки</label>
+              <label class="test-option"><input type="radio" name="q3" value="c">в) Інтерфейс додаткового елементу</label>
+              <label class="test-option"><input type="radio" name="q3" value="d">г) Ідентифікатор електронного документа</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="4">
+            <div class="test-question-text"><span class="test-question-number">4</span>Яка мова була створена Деннісом Рітчі в 1972 році?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q4" value="a">а) C++</label>
+              <label class="test-option"><input type="radio" name="q4" value="b">б) Pascal</label>
+              <label class="test-option"><input type="radio" name="q4" value="c">в) Мова C</label>
+              <label class="test-option"><input type="radio" name="q4" value="d">г) Fortran</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="5">
+            <div class="test-question-text"><span class="test-question-number">5</span>Хто створив мову C++ і коли?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q5" value="a">а) Денніс Рітчі, 1972</label>
+              <label class="test-option"><input type="radio" name="q5" value="b">б) Б'ярн Страуструп, 1985</label>
+              <label class="test-option"><input type="radio" name="q5" value="c">в) Джеймс Гослінг, 1995</label>
+              <label class="test-option"><input type="radio" name="q5" value="d">г) Брендан Айк, 1995</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="6">
+            <div class="test-question-text"><span class="test-question-number">6</span>До якого покоління належить C++?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q6" value="a">а) Тільки 3-є покоління</label>
+              <label class="test-option"><input type="radio" name="q6" value="b">б) Тільки 4-е покоління</label>
+              <label class="test-option"><input type="radio" name="q6" value="c">в) 3-є-4-е покоління</label>
+              <label class="test-option"><input type="radio" name="q6" value="d">г) 5-е покоління</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="7">
+            <div class="test-question-text"><span class="test-question-number">7</span>Яка мова відноситься до мов низького рівня?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q7" value="a">а) Python</label>
+              <label class="test-option"><input type="radio" name="q7" value="b">б) Java</label>
+              <label class="test-option"><input type="radio" name="q7" value="c">в) Асемблер</label>
+              <label class="test-option"><input type="radio" name="q7" value="d">г) C#</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="8">
+            <div class="test-question-text"><span class="test-question-number">8</span>Що таке синтаксис мови програмування?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q8" value="a">а) Правила тлумачення конструкцій</label>
+              <label class="test-option"><input type="radio" name="q8" value="b">б) Правила побудови мовних конструкцій</label>
+              <label class="test-option"><input type="radio" name="q8" value="c">в) Набір допустимих символів</label>
+              <label class="test-option"><input type="radio" name="q8" value="d">г) Швидкість виконання програми</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="9">
+            <div class="test-question-text"><span class="test-question-number">9</span>Яка парадигма програмування використовує класи та об'єкти?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q9" value="a">а) Процедурна</label>
+              <label class="test-option"><input type="radio" name="q9" value="b">б) Функціональна</label>
+              <label class="test-option"><input type="radio" name="q9" value="c">в) Об'єктно-орієнтована</label>
+              <label class="test-option"><input type="radio" name="q9" value="d">г) Логічна</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="10">
+            <div class="test-question-text"><span class="test-question-number">10</span>Яка мова була створена першою для наукових обчислень?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q10" value="a">а) COBOL</label>
+              <label class="test-option"><input type="radio" name="q10" value="b">б) Fortran</label>
+              <label class="test-option"><input type="radio" name="q10" value="c">в) Pascal</label>
+              <label class="test-option"><input type="radio" name="q10" value="d">г) ALGOL</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="11">
+            <div class="test-question-text"><span class="test-question-number">11</span>Що таке компілятор?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q11" value="a">а) Програма, яка виконує код рядок за рядком</label>
+              <label class="test-option"><input type="radio" name="q11" value="b">б) Програма, що перетворює вихідний код у машинний</label>
+              <label class="test-option"><input type="radio" name="q11" value="c">в) Редактор для написання коду</label>
+              <label class="test-option"><input type="radio" name="q11" value="d">г) Програма для створення баз даних</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="12">
+            <div class="test-question-text"><span class="test-question-number">12</span>Яка мова належить до функціональної парадигми?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q12" value="a">а) C++</label>
+              <label class="test-option"><input type="radio" name="q12" value="b">б) Java</label>
+              <label class="test-option"><input type="radio" name="q12" value="c">в) Haskell</label>
+              <label class="test-option"><input type="radio" name="q12" value="d">г) Pascal</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="13">
+            <div class="test-question-text"><span class="test-question-number">13</span>До якого типу за призначенням належить C++?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q13" value="a">а) Тільки системна</label>
+              <label class="test-option"><input type="radio" name="q13" value="b">б) Універсальна</label>
+              <label class="test-option"><input type="radio" name="q13" value="c">в) Тільки Web</label>
+              <label class="test-option"><input type="radio" name="q13" value="d">г) Тільки наукова</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="14">
+            <div class="test-question-text"><span class="test-question-number">14</span>Що таке семантика мови програмування?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q14" value="a">а) Набір допустимих символів</label>
+              <label class="test-option"><input type="radio" name="q14" value="b">б) Правила тлумачення конструкцій</label>
+              <label class="test-option"><input type="radio" name="q14" value="c">в) Правила побудови конструкцій</label>
+              <label class="test-option"><input type="radio" name="q14" value="d">г) Швидкість компіляції</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="15">
+            <div class="test-question-text"><span class="test-question-number">15</span>Коли було створено стандарт C++11?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q15" value="a">а) 2000</label>
+              <label class="test-option"><input type="radio" name="q15" value="b">б) 2011</label>
+              <label class="test-option"><input type="radio" name="q15" value="c">в) 1998</label>
+              <label class="test-option"><input type="radio" name="q15" value="d">г) 2020</label>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="checkTest()" id="check-btn">Перевірити відповіді</button>
+        <div id="test-result"></div>
+      </section>
+
+      <!-- PRACTICE -->
+      <section id="practice">
+        <h2>💻 Практичні завдання</h2>
+        <div class="task-item">
+          <span class="task-number">1</span>
+          <span class="task-title">Дослідження IDE</span>
+          <p class="task-desc">Встановіть одне з IDE для C++ (Code::Blocks, Visual Studio або Dev-C++). Опишіть у звіті: інтерфейс, основні компоненти, можливості. Зробіть скріншот головного вікна.</p>
+        </div>
+        <div class="task-item">
+          <span class="task-number">2</span>
+          <span class="task-title">Таймлайн мов програмування</span>
+          <p class="task-desc">Створіть хронологічну таблицю з 10 найважливіших мов програмування. Для кожної мови вкажіть: рік створення, автора, основне призначення та особливості.</p>
+        </div>
+        <div class="task-item">
+          <span class="task-number">3</span>
+          <span class="task-title">Порівняльний аналіз парадигм</span>
+          <p class="task-desc">Створіть порівняльну таблицю процедурної, об'єктно-орієнтованої та функціональної парадигм програмування за критеріями: підхід до даних, повторне використання коду, складність вивчення.</p>
+        </div>
+        <div class="task-item">
+          <span class="task-number">4</span>
+          <span class="task-title">Класифікація мов</span>
+          <p class="task-desc">Класифікуйте 15 мов програмування (C, C++, Python, Java, JavaScript, Haskell, Prolog, Fortran, COBOL, Rust, Go, PHP, Swift, Kotlin, R) за рівнем абстракції та парадигмою. Оформіть у вигляді таблиці.</p>
+        </div>
+        <div class="task-item">
+          <span class="task-number">5</span>
+          <span class="task-title">Презентація: Еволюція C++</span>
+          <p class="task-desc">Створіть презентацію про еволюцію C++ від C with Classes до сучасного C++23. Опишіть ключові нововведення кожного стандарту.</p>
+        </div>
+        <div class="task-item">
+          <span class="task-number">6</span>
+          <span class="task-title">Дослідження компільованих мов</span>
+          <p class="task-desc">Порівняйте процес компіляції в мовах C, C++, Java та C#. Які етапи є спільними, а які відрізняються? Опишіть переваги та недоліки кожного підходу.</p>
+        </div>
+        <div class="task-item">
+          <span class="task-number">7</span>
+          <span class="task-title">Аналіз застосувань C++</span>
+          <p class="task-desc">Дослідіть 5 відомих програмних продуктів, написаних на C++ (наприклад: Windows, Chrome, Photoshop, MySQL, Unreal Engine). Опишіть, чому саме C++ був обраний для розробки.</p>
+        </div>
+        <div class="task-item">
+          <span class="task-number">8</span>
+          <span class="task-title">Інтерв'ю з програмістом</span>
+          <p class="task-desc">Підготуйте список з 10 запитань для інтерв'ю з досвідченим C++ розробником про переваги та недоліки мови, найкращі практики та поради для початківців.</p>
+        </div>
+        <div class="task-item">
+          <span class="task-number">9</span>
+          <span class="task-title">Прогноз розвитку мов</span>
+          <p class="task-desc">На основі досліджень зробіть прогноз розвитку мов програмування на найближчі 10 років. Які мови на вашу думку стануть популярнішими, а які втратять позиції?</p>
+        </div>
+        <div class="task-item">
+          <span class="task-number">10</span>
+          <span class="task-title">Mind map мов програмування</span>
+          <p class="task-desc">Створіть ментальну карту (mind map) всіх відомих вам мов програмування згрупованих за категоріями: системні, web, мобільні, наукові, ігрові. Використайте будь-який онлайн-інструмент.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h4>CodeMaster C++</h4>
+          <p>Навчальний курс з програмування мовою C++.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Навігація</h4>
+          <p><a href="index.html">Головна</a><br><a href="topic1-2.html">Наступна тема →</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Контакти</h4>
+          <p>© 2025 CodeMaster. Всі права захищено.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Створено з метою навчання програмуванню мовою C++</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const correctAnswers = { q1:'b', q2:'a', q3:'b', q4:'c', q5:'b', q6:'c', q7:'c', q8:'b', q9:'c', q10:'b', q11:'b', q12:'c', q13:'b', q14:'b', q15:'b' };
+    function checkTest() {
+      let score = 0, total = 15;
+      for (let i = 1; i <= total; i++) {
+        const q = document.querySelectorAll('.test-question')[i-1];
+        const selected = document.querySelector('input[name="q'+i+'"]:checked');
+        const options = q.querySelectorAll('.test-option');
+        options.forEach(o => { o.classList.add('disabled'); });
+        if (selected) {
+          if (selected.value === correctAnswers['q'+i]) {
+            selected.parentElement.classList.add('correct'); score++;
+          } else {
+            selected.parentElement.classList.add('incorrect');
+            options.forEach(o => { if(o.querySelector('input').value === correctAnswers['q'+i]) o.classList.add('correct'); });
+          }
+        } else {
+          options.forEach(o => { if(o.querySelector('input').value === correctAnswers['q'+i]) o.classList.add('correct'); });
+        }
+      }
+      const resultDiv = document.getElementById('test-result');
+      let msg = score >= 13 ? 'Відмінний результат!' : score >= 9 ? 'Добре!' : score >= 6 ? 'Задовільно' : 'Потрібно повторити матеріал';
+      resultDiv.innerHTML = '<div class="test-results"><div class="test-results-score">'+score+'/'+total+'</div><div class="test-results-text">'+msg+'</div></div>';
+      document.getElementById('check-btn').style.display = 'none';
+    }
+    // Code copy functionality
+    document.querySelectorAll('.code-copy').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const code = this.closest('.code-block').querySelector('pre').innerText;
+        navigator.clipboard.writeText(code).then(() => { this.textContent = 'Скопійовано!'; setTimeout(() => this.textContent = 'Копіювати', 1500); });
+      });
+    });
+  </script>
+</body>
+</html>

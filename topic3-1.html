@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тема 3.1 - Алгоритмічний вибір альтернатив (if-else, switch) | CodeMaster C++</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <div class="header-flex">
+        <a href="index.html" class="logo"><div class="logo-icon">C++</div><div class="logo-text">Code<span>Master</span></div></a>
+        <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+      </div>
+    </div>
+    <div class="container">
+      <nav class="main-nav">
+        <a href="index.html">Головна</a><a href="topic1-1.html">Тема 1.1</a><a href="topic1-2.html">Тема 1.2</a><a href="topic2-1.html">Тема 2.1</a><a href="topic2-2.html">Тема 2.2</a><a href="topic2-3.html">Тема 2.3</a><a href="topic3-1.html" class="active">Тема 3.1</a><a href="topic4-1.html">Тема 4.1</a><a href="topic4-2.html">Тема 4.2</a><a href="topic5-1.html">Тема 5.1</a><a href="topic5-2.html">Тема 5.2</a><a href="topic6-1.html">Тема 6.1</a><a href="topic6-2.html">Тема 6.2</a><a href="topic6-3.html">Тема 6.3</a><a href="topic7-1.html">Тема 7.1</a><a href="topic7-2.html">Тема 7.2</a><a href="topic8-1.html">Тема 8.1</a><a href="topic8-2.html">Тема 8.2</a><a href="topic9-1.html">Тема 9.1</a><a href="topic10-1.html">Тема 10.1</a><a href="topic10-2.html">Тема 10.2</a><a href="topic10-3.html">Тема 10.3</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Головна</a> / <a href="index.html#modules">Модуль 3</a> / Тема 3.1</div>
+      <h1>Тема 3.1</h1>
+      <p>Алгоритмічний вибір альтернатив (Умовний оператор if-else. Множинний вибір switch)</p>
+    </div>
+  </div>
+
+  <div class="container content-layout">
+    <aside class="sidebar">
+      <h4>Зміст теми</h4>
+      <ul class="sidebar-nav">
+        <li><a href="#conditions">Логічні вирази та оператори порівняння</a></li>
+        <li><a href="#if">Оператор if</a></li>
+        <li><a href="#if-else">Оператор if-else</a></li>
+        <li><a href="#nested">Вкладені умовні оператори</a></li>
+        <li><a href="#elseif">Ланцюжок if-else-if</a></li>
+        <li><a href="#switch">Оператор switch</a></li>
+        <li><a href="#ternary">Тернарний оператор</a></li>
+        <li><a href="#tests">📝 Тести</a></li>
+        <li><a href="#practice">💻 Практичні завдання</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <section id="conditions">
+        <h2>Логічні вирази та оператори порівняння</h2>
+        <p><strong>Логічний вираз</strong> — це вираз, результатом якого є значення типу <code class="inline">bool</code>: <code class="inline">true</code> (істина) або <code class="inline">false</code> (хибність).</p>
+        <h3>Оператори порівняння (реляційні):</h3>
+        <table class="content-table">
+          <tr><th>Оператор</th><th>Опис</th><th>Приклад</th><th>Результат</th></tr>
+          <tr><td><code class="inline">==</code></td><td>Дорівнює</td><td><code class="inline">5 == 5</code></td><td>true</td></tr>
+          <tr><td><code class="inline">!=</code></td><td>Не дорівнює</td><td><code class="inline">5 != 3</code></td><td>true</td></tr>
+          <tr><td><code class="inline">></code></td><td>Більше</td><td><code class="inline">5 > 3</code></td><td>true</td></tr>
+          <tr><td><code class="inline"><</code></td><td>Менше</td><td><code class="inline">5 < 3</code></td><td>false</td></tr>
+          <tr><td><code class="inline">>=</code></td><td>Більше або дорівнює</td><td><code class="inline">5 >= 5</code></td><td>true</td></tr>
+          <tr><td><code class="inline"><=</code></td><td>Менше або дорівнює</td><td><code class="inline">5 <= 3</code></td><td>false</td></tr>
+        </table>
+        <h3>Логічні оператори:</h3>
+        <table class="content-table">
+          <tr><th>Оператор</th><th>Опис</th><th>Приклад</th></tr>
+          <tr><td><code class="inline">&&</code></td><td>Логічне І (AND)</td><td><code class="inline">(a > 0) && (a < 10)</code></td></tr>
+          <tr><td><code class="inline">||</code></td><td>Логічне АБО (OR)</td><td><code class="inline">(a < 0) || (a > 100)</code></td></tr>
+          <tr><td><code class="inline">!</code></td><td>Логічне НЕ (NOT)</td><td><code class="inline">!(a == 0)</code></td></tr>
+        </table>
+        <h3>Таблиця істинності:</h3>
+        <table class="content-table">
+          <tr><th>A</th><th>B</th><th>A && B</th><th>A || B</th><th>!A</th></tr>
+          <tr><td>true</td><td>true</td><td>true</td><td>true</td><td>false</td></tr>
+          <tr><td>true</td><td>false</td><td>false</td><td>true</td><td>false</td></tr>
+          <tr><td>false</td><td>true</td><td>false</td><td>true</td><td>true</td></tr>
+          <tr><td>false</td><td>false</td><td>false</td><td>false</td><td>true</td></tr>
+        </table>
+        <div class="highlight-box highlight-box-warning">
+          <div class="highlight-box-title">⚠️ Часта помилка</div>
+          <p>Не плутайте оператор присвоєння <code class="inline">=</code> з оператором порівняння <code class="inline">==</code>! Запис <code class="inline">if (a = 5)</code> присвоїть a значення 5 і завжди буде істинним, тоді як <code class="inline">if (a == 5)</code> правильно перевірить, чи дорівнює a п'яти.</p>
+        </div>
+      </section>
+
+      <section id="if">
+        <h2>Оператор if (якщо)</h2>
+        <p>Оператор <code class="inline">if</code> дозволяє виконати блок коду тільки за певної умови.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Синтаксис if</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>if (умова) {
+    // блок коду, що виконується, якщо умова істинна (true)
+}</code></pre>
+        </div>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Приклад if</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int age;
+    cout << "Введіть ваш вік: ";
+    cin >> age;
+    
+    if (age >= 18) {
+        cout << "Ви повнолітній!" << endl;
+    }
+    
+    if (age < 18) {
+        cout << "Ви неповнолітній." << endl;
+    }
+    
+    return 0;
+}</code></pre>
+        </div>
+      </section>
+
+      <section id="if-else">
+        <h2>Оператор if-else</h2>
+        <p>Оператор <code class="inline">if-else</code> дозволяє вибрати одну з двох альтернатив: виконати блок <code class="inline">if</code>, якщо умова істинна, або блок <code class="inline">else</code>, якщо умова хибна.</p>
+        <img src="images/topic3-conditions.png" alt="Схема if-else та switch" style="width:100%;border-radius:8px;margin:20px 0;">
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Синтаксис if-else</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>if (умова) {
+    // блок коду, якщо умова true
+} else {
+    // блок коду, якщо умова false
+}</code></pre>
+        </div>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Приклад if-else</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int number;
+    cout << "Введіть число: ";
+    cin >> number;
+    
+    if (number % 2 == 0) {
+        cout << "Число " << number << " є парним." << endl;
+    } else {
+        cout << "Число " << number << " є непарним." << endl;
+    }
+    
+    return 0;
+}</code></pre>
+        </div>
+      </section>
+
+      <section id="nested">
+        <h2>Вкладені умовні оператори</h2>
+        <p>Умовні оператори можуть бути вкладеними один в одного — блок <code class="inline">if</code> або <code class="inline">else</code> може містити інші умовні оператори.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Вкладені if</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int a, b, c;
+    cout << "Введіть три числа: ";
+    cin >> a >> b >> c;
+    
+    int max;
+    if (a > b) {
+        if (a > c) {
+            max = a;
+        } else {
+            max = c;
+        }
+    } else {
+        if (b > c) {
+            max = b;
+        } else {
+            max = c;
+        }
+    }
+    
+    cout << "Максимум: " << max << endl;
+    return 0;
+}</code></pre>
+        </div>
+        <div class="highlight-box">
+          <div class="highlight-box-title">🔑 Правило</div>
+          <p><code class="inline">else</code> завжди відноситься до <strong>найближчого</strong> попереднього <code class="inline">if</code>, що не має свого <code class="inline">else</code>. Для уникнення плутанини використовуйте фігурні дужки {} навіть для однієї інструкції.</p>
+        </div>
+      </section>
+
+      <section id="elseif">
+        <h2>Ланцюжок if-else-if</h2>
+        <p>Для перевірки кількох взаємовиключних умов використовується ланцюжок <code class="inline">if-else-if</code>.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">if-else-if</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int score;
+    cout << "Введіть бал (0-100): ";
+    cin >> score;
+    
+    if (score >= 90) {
+        cout << "Оцінка: Відмінно (A)" << endl;
+    } else if (score >= 80) {
+        cout << "Оцінка: Добре (B)" << endl;
+    } else if (score >= 70) {
+        cout << "Оцінка: Задовільно (C)" << endl;
+    } else if (score >= 60) {
+        cout << "Оцінка: Нижче середнього (D)" << endl;
+    } else {
+        cout << "Оцінка: Незадовільно (F)" << endl;
+    }
+    
+    return 0;
+}</code></pre>
+        </div>
+      </section>
+
+      <section id="switch">
+        <h2>Оператор switch (множинний вибір)</h2>
+        <p>Оператор <code class="inline">switch</code> дозволяє вибрати одну з кількох альтернатив на основі значення виразу. Він зручний, коли потрібно порівняти змінну з низкою константних значень.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Синтаксис switch</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>switch (вираз) {
+    case константа1:
+        // інструкції
+        break;
+    case константа2:
+        // інструкції
+        break;
+    // ... інші case
+    default:
+        // інструкції за замовчуванням
+}</code></pre>
+        </div>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Приклад switch</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int day;
+    cout << "Введіть номер дня тижня (1-7): ";
+    cin >> day;
+    
+    switch (day) {
+        case 1:
+            cout << "Понеділок" << endl;
+            break;
+        case 2:
+            cout << "Вівторок" << endl;
+            break;
+        case 3:
+            cout << "Середа" << endl;
+            break;
+        case 4:
+            cout << "Четвер" << endl;
+            break;
+        case 5:
+            cout << "П'ятниця" << endl;
+            break;
+        case 6:
+            cout << "Субота" << endl;
+            break;
+        case 7:
+            cout << "Неділя" << endl;
+            break;
+        default:
+            cout << "Невірний номер дня!" << endl;
+    }
+    
+    return 0;
+}</code></pre>
+        </div>
+        <h3>Особливості switch:</h3>
+        <ul>
+          <li>Вираз у <code class="inline">switch</code> має бути цілочисельним, символьним або перерахуванням</li>
+          <li>Значення <code class="inline">case</code> мають бути константами</li>
+          <li><strong>break</strong> — вихід з switch. Без break виконання "провалюється" до наступного case</li>
+          <li><strong>default</strong> — виконується, якщо жоден case не підходить</li>
+        </ul>
+        <h3>Приклад з "провалюванням" (fall-through):</h3>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Fall-through в switch</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>char grade;
+cout << "Введіть оцінку (A-F): ";
+cin >> grade;
+
+switch (grade) {
+    case 'A':
+    case 'B':
+    case 'C':
+        cout << "Зараховано!" << endl;
+        break;
+    case 'D':
+    case 'F':
+        cout << "Не зараховано." << endl;
+        break;
+    default:
+        cout << "Невірна оцінка." << endl;
+}</code></pre>
+        </div>
+      </section>
+
+      <section id="ternary">
+        <h2>Тернарний оператор (? :)</h2>
+        <p>Тернарний (триадичний) оператор — це скорочена форма запису if-else для простих виразів. Має формат:</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Синтаксис</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>умова ? вираз_якщо_true : вираз_якщо_false;</code></pre>
+        </div>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Приклади</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>int a = 10, b = 20;
+int max = (a > b) ? a : b;  // max = 20
+
+// Еквівалент:
+int max;
+if (a > b) {
+    max = a;
+} else {
+    max = b;
+}
+
+// Вкладений тернарний оператор
+int sign = (x > 0) ? 1 : (x < 0) ? -1 : 0;</code></pre>
+        </div>
+        <div class="highlight-box">
+          <div class="highlight-box-title">🔑 Рекомендація</div>
+          <p>Тернарний оператор зручний для простих присвоєнь, але не зловживайте вкладеними тернарними операторами — вони роблять код важким для читання. Для складних умов використовуйте if-else.</p>
+        </div>
+      </section>
+
+      <!-- TESTS -->
+      <section id="tests">
+        <h2>📝 Тести для самоперевірки</h2>
+        <div id="test-container" class="test-container">
+          <div class="test-question" data-q="1">
+            <div class="test-question-text"><span class="test-question-number">1</span>Який оператор перевіряє рівність у C++?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q1" value="a">а) =</label>
+              <label class="test-option"><input type="radio" name="q1" value="b">б) ==</label>
+              <label class="test-option"><input type="radio" name="q1" value="c">в) ===</label>
+              <label class="test-option"><input type="radio" name="q1" value="d">г) eq</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="2">
+            <div class="test-question-text"><span class="test-question-number">2</span>Який результат виразу (5 > 3) && (2 < 4)?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q2" value="a">а) false</label>
+              <label class="test-option"><input type="radio" name="q2" value="b">б) true</label>
+              <label class="test-option"><input type="radio" name="q2" value="c">в) 0</label>
+              <label class="test-option"><input type="radio" name="q2" value="d">г) 1</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="3">
+            <div class="test-question-text"><span class="test-question-number">3</span>Що виведе: if (0) cout << "Yes"; else cout << "No";</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q3" value="a">а) Yes</label>
+              <label class="test-option"><input type="radio" name="q3" value="b">б) No</label>
+              <label class="test-option"><input type="radio" name="q3" value="c">в) Нічого</label>
+              <label class="test-option"><input type="radio" name="q3" value="d">г) Помилка</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="4">
+            <div class="test-question-text"><span class="test-question-number">4</span>Який тип виразу можна використовувати в switch?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q4" value="a">а) double</label>
+              <label class="test-option"><input type="radio" name="q4" value="b">б) string</label>
+              <label class="test-option"><input type="radio" name="q4" value="c">в) int або char</label>
+              <label class="test-option"><input type="radio" name="q4" value="d">г) float</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="5">
+            <div class="test-question-text"><span class="test-question-number">5</span>Що робить оператор break у switch?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q5" value="a">а) Завершує програму</label>
+              <label class="test-option"><input type="radio" name="q5" value="b">б) Виходить з switch</label>
+              <label class="test-option"><input type="radio" name="q5" value="c">в) Пропускає наступний case</label>
+              <label class="test-option"><input type="radio" name="q5" value="d">г) Переходить до default</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="6">
+            <div class="test-question-text"><span class="test-question-number">6</span>Скільки операндів має тернарний оператор?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q6" value="a">а) 2</label>
+              <label class="test-option"><input type="radio" name="q6" value="b">б) 3</label>
+              <label class="test-option"><input type="radio" name="q6" value="c">в) 1</label>
+              <label class="test-option"><input type="radio" name="q6" value="d">г) 4</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="7">
+            <div class="test-question-text"><span class="test-question-number">7</span>Який результат: !(5 == 5) || (3 > 7)?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q7" value="a">а) true</label>
+              <label class="test-option"><input type="radio" name="q7" value="b">б) false</label>
+              <label class="test-option"><input type="radio" name="q7" value="c">в) 0</label>
+              <label class="test-option"><input type="radio" name="q7" value="d">г) 1</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="8">
+            <div class="test-question-text"><span class="test-question-number">8</span>Що станеться без break у case?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q8" value="a">а) Помилка компіляції</label>
+              <label class="test-option"><input type="radio" name="q8" value="b">б) Виконання "провалиться" в наступний case</label>
+              <label class="test-option"><input type="radio" name="q8" value="c">в) Перехід до default</label>
+              <label class="test-option"><input type="radio" name="q8" value="d">г) Завершення switch</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="9">
+            <div class="test-question-text"><span class="test-question-number">9</span>Який оператор — логічне НЕ?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q9" value="a">а) &&</label>
+              <label class="test-option"><input type="radio" name="q9" value="b">б) ||</label>
+              <label class="test-option"><input type="radio" name="q9" value="c">в) !</label>
+              <label class="test-option"><input type="radio" name="q9" value="d">г) ~</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="10">
+            <div class="test-question-text"><span class="test-question-number">10</span>Що еквівалентно: max = (a > b) ? a : b;?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q10" value="a">а) if (a > b) max = a;</label>
+              <label class="test-option"><input type="radio" name="q10" value="b">б) if (a > b) max = a; else max = b;</label>
+              <label class="test-option"><input type="radio" name="q10" value="c">в) max = a > b;</label>
+              <label class="test-option"><input type="radio" name="q10" value="d">г) max = a + b;</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="11">
+            <div class="test-question-text"><span class="test-question-number">11</span>Який результат (10 >= 10) && (5 < 3)?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q11" value="a">а) true</label>
+              <label class="test-option"><input type="radio" name="q11" value="b">б) false</label>
+              <label class="test-option"><input type="radio" name="q11" value="c">в) 1</label>
+              <label class="test-option"><input type="radio" name="q11" value="d">г) 0</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="12">
+            <div class="test-question-text"><span class="test-question-number">12</span>Може switch працювати з рядками string?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q12" value="a">а) Так, починаючи з C++11</label>
+              <label class="test-option"><input type="radio" name="q12" value="b">б) Ні, тільки цілі типи</label>
+              <label class="test-option"><input type="radio" name="q12" value="c">в) Так, завжди</label>
+              <label class="test-option"><input type="radio" name="q12" value="d">г) Тільки в C++20</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="13">
+            <div class="test-question-text"><span class="test-question-number">13</span>Що робить default у switch?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q13" value="a">а) Визначає тип змінної</label>
+              <label class="test-option"><input type="radio" name="q13" value="b">б) Виконується, якщо жоден case не підходить</label>
+              <label class="test-option"><input type="radio" name="q13" value="c">в) Завершує switch</label>
+              <label class="test-option"><input type="radio" name="q13" value="d">г) Визначає значення за замовчуванням</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="14">
+            <div class="test-question-text"><span class="test-question-number">14</span>Скільки гілок else може мати один if?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q14" value="a">а) 0 або 1</label>
+              <label class="test-option"><input type="radio" name="q14" value="b">б) Необмежено</label>
+              <label class="test-option"><input type="radio" name="q14" value="c">в) Тільки 1</label>
+              <label class="test-option"><input type="radio" name="q14" value="d">г) Тільки 0</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="15">
+            <div class="test-question-text"><span class="test-question-number">15</span>Який результат виразу: (true && false) || (true || false)?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q15" value="a">а) false</label>
+              <label class="test-option"><input type="radio" name="q15" value="b">б) true</label>
+              <label class="test-option"><input type="radio" name="q15" value="c">в) 0</label>
+              <label class="test-option"><input type="radio" name="q15" value="d">г) undefined</label>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="checkTest()" id="check-btn">Перевірити відповіді</button>
+        <div id="test-result"></div>
+      </section>
+
+      <section id="practice">
+        <h2>💻 Практичні завдання</h2>
+        <div class="task-item"><span class="task-number">1</span><span class="task-title">Порівняння трьох чисел</span><p class="task-desc">Напишіть програму, яка визначає найбільше та найменше з трьох введених чисел, використовуючи вкладені if.</p></div>
+        <div class="task-item"><span class="task-number">2</span><span class="task-title">Калькулятор з операцією</span><p class="task-desc">Напишіть програму, яка зчитує два числа та символ операції (+, -, *, /, %) і виконує відповідну операцію. Обробіть ділення на нуль.</p></div>
+        <div class="task-item"><span class="task-number">3</span><span class="task-title">Визначення року</span><p class="task-desc">Напишіть програму, яка перевіряє, чи є рік високосним. Рік високосний, якщо він ділиться на 4, але не ділиться на 100, або ділиться на 400.</p></div>
+        <div class="task-item"><span class="task-number">4</span><span class="task-title">Перевірка трикутника</span><p class="task-desc">Напишіть програму, яка перевіряє, чи можна побудувати трикутник з трьох заданих сторін. Якщо так — визначте його тип (рівносторонній, рівнобедрений, різносторонній).</p></div>
+        <div class="task-item"><span class="task-number">5</span><span class="task-title">Перевірка паліндрому</span><p class="task-desc">Напишіть програму, яка перевіряє, чи є тризначне число паліндромом (читається однаково зліва направо і справа наліво).</p></div>
+        <div class="task-item"><span class="task-number">6</span><span class="task-title">Меню конвертації</span><p class="task-desc">Напишіть програму з меню: 1 — Цельсій→Фаренгейт, 2 — Фаренгейт→Цельсій, 3 — Цельсій→Кельвін. Використайте switch.</p></div>
+        <div class="task-item"><span class="task-number">7</span><span class="task-title">Визначення дати</span><p class="task-desc">Напишіть програму, яка за номером дня у році (1-365) та роком визначає місяць та день місяця. Врахуйте високосний рік.</p></div>
+        <div class="task-item"><span class="task-number">8</span><span class="task-title">Квитки на транспорт</span><p class="task-desc">Напишіть програму для розрахунку вартості квитка: діти до 6 років — безкоштовно, 6-18 — 50% знижка, 18-60 — повна ціна, 60+ — 30% знижка.</p></div>
+        <div class="task-item"><span class="task-number">9</span><span class="task-title">Сортування трьох чисел</span><p class="task-desc">Напишіть програму, яка розміщує три введені числа у порядку зростання без використання масивів та циклів.</p></div>
+        <div class="task-item"><span class="task-number">10</span><span class="task-title">Індекс маси тіла</span><p class="task-desc">Напишіть програму, яка обчислює ІМТ = маса(кг)/ріст²(м) та виводить категорію: недовага(<18.5), норма(18.5-25), зайва вага(25-30), ожиріння(>30).</p></div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col"><h4>CodeMaster C++</h4><p>Навчальний курс з програмування мовою C++.</p></div>
+        <div class="footer-col"><h4>Навігація</h4><p><a href="index.html">Головна</a><br><a href="topic2-3.html">← Попередня тема</a><br><a href="topic4-1.html">Наступна тема →</a></p></div>
+        <div class="footer-col"><h4>Контакти</h4><p>© 2025 CodeMaster. Всі права захищено.</p></div>
+      </div>
+      <div class="footer-bottom"><p>Створено з метою навчання програмуванню мовою C++</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const correctAnswers = { q1:'b', q2:'b', q3:'b', q4:'c', q5:'b', q6:'b', q7:'b', q8:'b', q9:'c', q10:'b', q11:'b', q12:'b', q13:'b', q14:'a', q15:'b' };
+    function checkTest() {
+      let score = 0, total = 15;
+      for (let i = 1; i <= total; i++) {
+        const q = document.querySelectorAll('.test-question')[i-1];
+        const selected = document.querySelector('input[name="q'+i+'"]:checked');
+        const options = q.querySelectorAll('.test-option');
+        options.forEach(o => { o.classList.add('disabled'); });
+        if (selected) {
+          if (selected.value === correctAnswers['q'+i]) { selected.parentElement.classList.add('correct'); score++; }
+          else { selected.parentElement.classList.add('incorrect'); options.forEach(o => { if(o.querySelector('input').value === correctAnswers['q'+i]) o.classList.add('correct'); }); }
+        } else { options.forEach(o => { if(o.querySelector('input').value === correctAnswers['q'+i]) o.classList.add('correct'); }); }
+      }
+      const resultDiv = document.getElementById('test-result');
+      let msg = score >= 13 ? 'Відмінний результат!' : score >= 9 ? 'Добре!' : score >= 6 ? 'Задовільно' : 'Потрібно повторити матеріал';
+      resultDiv.innerHTML = '<div class="test-results"><div class="test-results-score">'+score+'/'+total+'</div><div class="test-results-text">'+msg+'</div></div>';
+      document.getElementById('check-btn').style.display = 'none';
+    }
+    document.querySelectorAll('.code-copy').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const code = this.closest('.code-block').querySelector('pre').innerText;
+        navigator.clipboard.writeText(code).then(() => { this.textContent = 'Скопійовано!'; setTimeout(() => this.textContent = 'Копіювати', 1500); });
+      });
+    });
+  </script>
+</body>
+</html>

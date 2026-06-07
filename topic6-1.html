@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тема 6.1 - Одновимірні масиви | CodeMaster C++</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <div class="header-flex">
+        <a href="index.html" class="logo"><div class="logo-icon">C++</div><div class="logo-text">Code<span>Master</span></div></a>
+        <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+      </div>
+    </div>
+    <div class="container">
+      <nav class="main-nav">
+        <a href="index.html">Головна</a><a href="topic1-1.html">Тема 1.1</a><a href="topic1-2.html">Тема 1.2</a><a href="topic2-1.html">Тема 2.1</a><a href="topic2-2.html">Тема 2.2</a><a href="topic2-3.html">Тема 2.3</a><a href="topic3-1.html">Тема 3.1</a><a href="topic4-1.html">Тема 4.1</a><a href="topic4-2.html">Тема 4.2</a><a href="topic5-1.html">Тема 5.1</a><a href="topic5-2.html">Тема 5.2</a><a href="topic6-1.html" class="active">Тема 6.1</a><a href="topic6-2.html">Тема 6.2</a><a href="topic6-3.html">Тема 6.3</a><a href="topic7-1.html">Тема 7.1</a><a href="topic7-2.html">Тема 7.2</a><a href="topic8-1.html">Тема 8.1</a><a href="topic8-2.html">Тема 8.2</a><a href="topic9-1.html">Тема 9.1</a><a href="topic10-1.html">Тема 10.1</a><a href="topic10-2.html">Тема 10.2</a><a href="topic10-3.html">Тема 10.3</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Головна</a> / <a href="index.html#modules">Модуль 6</a> / Тема 6.1</div>
+      <h1>Тема 6.1</h1>
+      <p>Одновимірні масиви</p>
+    </div>
+  </div>
+
+  <div class="container content-layout">
+    <aside class="sidebar">
+      <h4>Зміст теми</h4>
+      <ul class="sidebar-nav">
+        <li><a href="#concept">Поняття масиву</a></li>
+        <li><a href="#declaration">Оголошення та ініціалізація</a></li>
+        <li><a href="#input-output">Введення та виведення</a></li>
+        <li><a href="#operations">Операції з масивами</a></li>
+        <li><a href="#search">Пошук у масиві</a></li>
+        <li><a href="#sort">Сортування масивів</a></li>
+        <li><a href="#functions">Масиви у функціях</a></li>
+        <li><a href="#tests">📝 Тести</a></li>
+        <li><a href="#practice">💻 Практичні завдання</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <section id="concept">
+        <h2>Поняття масиву</h2>
+        <p><strong>Масив</strong> — це структура даних, яка зберігає набір елементів одного типу, розміщених у пам'яті послідовно. Елементи масиву доступні за індексом.</p>
+        <p>Основні характеристики масиву:</p>
+        <ul>
+          <li><strong>Фіксований розмір</strong> — розмір визначається при створенні і не змінюється</li>
+          <li><strong>Однотипність</strong> — всі елементи мають однаковий тип</li>
+          <li><strong>Індексація з нуля</strong> — перший елемент має індекс 0</li>
+          <li><strong>Безперервність</strong> — елементи розташовані в пам'яті послідовно</li>
+        </ul>
+        <img src="images/topic6-arrays.png" alt="Структура масиву" style="width:100%;border-radius:8px;margin:20px 0;">
+      </section>
+
+      <section id="declaration">
+        <h2>Оголошення та ініціалізація</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Оголошення масивів</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>// Оголошення масиву
+тип_елементу ім'я_масиву[розмір];
+
+int numbers[5];           // масив з 5 цілих чисел
+double prices[10];        // масив з 10 дійсних чисел
+char letters[26];         // масив з 26 символів
+
+// Ініціалізація при оголошенні
+int arr1[5] = {1, 2, 3, 4, 5};    // явна ініціалізація
+int arr2[] = {10, 20, 30};        // розмір визначається автоматично (3)
+int arr3[5] = {1, 2};             // часткова ініціалізація: {1, 2, 0, 0, 0}
+int arr4[5] = {0};                // всі елементи = 0
+
+// Доступ до елементів
+int first = arr1[0];      // перший елемент (індекс 0)
+int last = arr1[4];       // останній елемент (індекс 4)
+arr1[2] = 100;            // зміна значення</code></pre>
+        </div>
+        <div class="highlight-box highlight-box-warning">
+          <div class="highlight-box-title">⚠️ Важливо</div>
+          <p>Вихід за межі масиву (наприклад, доступ до <code class="inline">arr[5]</code> у масиві розміром 5) призводить до <strong>невизначеної поведінки</strong>. C++ не перевіряє межі масиву автоматично — це відповідальність програміста.</p>
+        </div>
+      </section>
+
+      <section id="input-output">
+        <h2>Введення та виведення масиву</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Введення/виведення масиву</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    const int SIZE = 5;
+    int arr[SIZE];
+    
+    // Введення масиву
+    cout << "Введіть " << SIZE << " чисел:" << endl;
+    for (int i = 0; i < SIZE; i++) {
+        cout << "Елемент [" << i << "]: ";
+        cin >> arr[i];
+    }
+    
+    // Виведення масиву
+    cout << "Масив: ";
+    for (int i = 0; i < SIZE; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    
+    return 0;
+}</code></pre>
+        </div>
+      </section>
+
+      <section id="operations">
+        <h2>Основні операції з масивами</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Операції з масивами</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>const int N = 100;
+int arr[N];
+int n;  // фактична кількість елементів
+
+// Сума елементів
+int sum = 0;
+for (int i = 0; i < n; i++) sum += arr[i];
+
+// Середнє арифметичне
+double avg = (double)sum / n;
+
+// Пошук максимуму
+int maxVal = arr[0];
+int maxIndex = 0;
+for (int i = 1; i < n; i++) {
+    if (arr[i] > maxVal) {
+        maxVal = arr[i];
+        maxIndex = i;
+    }
+}
+
+// Інверсія масиву
+for (int i = 0; i < n / 2; i++) {
+    int temp = arr[i];
+    arr[i] = arr[n - 1 - i];
+    arr[n - 1 - i] = temp;
+}
+
+// Зсув елементів вправо
+int last = arr[n - 1];
+for (int i = n - 1; i > 0; i--) {
+    arr[i] = arr[i - 1];
+}
+arr[0] = last;</code></pre>
+        </div>
+      </section>
+
+      <section id="search">
+        <h2>Пошук у масиві</h2>
+        <h3>Лінійний пошук — O(n)</h3>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Лінійний пошук</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>int linearSearch(int arr[], int n, int key) {
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == key)
+            return i;   // повертаємо індекс
+    }
+    return -1;  // не знайдено
+}</code></pre>
+        </div>
+        <h3>Бінарний пошук — O(log n) (для відсортованих масивів)</h3>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Бінарний пошук</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>int binarySearch(int arr[], int n, int key) {
+    int left = 0, right = n - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == key)
+            return mid;
+        if (arr[mid] < key)
+            left = mid + 1;
+        else
+            right = mid - 1;
+    }
+    return -1;
+}</code></pre>
+        </div>
+      </section>
+
+      <section id="sort">
+        <h2>Сортування масивів</h2>
+        <h3>Сортування бульбашкою (Bubble Sort) — O(n²)</h3>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Bubble Sort</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // обмін
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}</code></pre>
+        </div>
+        <h3>Сортування вибором (Selection Sort) — O(n²)</h3>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Selection Sort</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>void selectionSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIdx = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIdx])
+                minIdx = j;
+        }
+        // обмін знайденого мінімуму з поточною позицією
+        int temp = arr[i];
+        arr[i] = arr[minIdx];
+        arr[minIdx] = temp;
+    }
+}</code></pre>
+        </div>
+        <h3>Сортування вставками (Insertion Sort) — O(n²)</h3>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Insertion Sort</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>void insertionSort(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}</code></pre>
+        </div>
+      </section>
+
+      <section id="functions">
+        <h2>Масиви у функціях</h2>
+        <p>При передачі масиву в функцію передається <strong>вказівник на перший елемент</strong>. Зміни в функції впливають на оригінальний масив.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Масиви у функціях</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>// Функція, що приймає масив
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+
+// Функція, що змінює масив (заповнює нулями)
+void fillZeros(int arr[], int n) {
+    for (int i = 0; i < n; i++)
+        arr[i] = 0;
+}
+
+// Повернення максимуму
+int findMax(int arr[], int n) {
+    int max = arr[0];
+    for (int i = 1; i < n; i++)
+        if (arr[i] > max) max = arr[i];
+    return max;
+}
+
+int main() {
+    int arr[] = {5, 2, 8, 1, 9};
+    int n = 5;
+    printArray(arr, n);
+    cout << "Max: " << findMax(arr, n) << endl;
+    return 0;
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- TESTS -->
+      <section id="tests">
+        <h2>📝 Тести для самоперевірки</h2>
+        <div id="test-container" class="test-container">
+          <div class="test-question" data-q="1">
+            <div class="test-question-text"><span class="test-question-number">1</span>Який індекс має перший елемент масиву в C++?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q1" value="a">а) 1</label>
+              <label class="test-option"><input type="radio" name="q1" value="b">б) 0</label>
+              <label class="test-option"><input type="radio" name="q1" value="c">в) -1</label>
+              <label class="test-option"><input type="radio" name="q1" value="d">г> Розмір - 1</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="2">
+            <div class="test-question-text"><span class="test-question-number">2</span>Що станеться при доступі за межами масиву?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q2" value="a">а) Виключення (exception)</label>
+              <label class="test-option"><input type="radio" name="q2" value="b">б> Невизначена поведінка</label>
+              <label class="test-option"><input type="radio" name="q2" value="c">в> Повернення 0</label>
+              <label class="test-option"><input type="radio" name="q2" value="d">г> Компілятор видасть помилку</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="3">
+            <div class="test-question-text"><span class="test-question-number">3</span>Як передати масив у функцію?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q3" value="a">а) int func(int arr[])</label>
+              <label class="test-option"><input type="radio" name="q3" value="b">б> int func(int arr)</label>
+              <label class="test-option"><input type="radio" name="q3" value="c">в> int func(int* arr)</label>
+              <label class="test-option"><input type="radio" name="q3" value="d">г> Обидва a та c</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="4">
+            <div class="test-question-text"><span class="test-question-number">4</span>Яка складність бінарного пошуку?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q4" value="a">а) O(n)</label>
+              <label class="test-option"><input type="radio" name="q4" value="b">б> O(log n)</label>
+              <label class="test-option"><input type="radio" name="q4" value="c">в> O(n²)</label>
+              <label class="test-option"><input type="radio" name="q4" value="d">г> O(1)</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="5">
+            <div class="test-question-text"><span class="test-question-number">5</span>Яка складність сортування бульбашкою?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q5" value="a">а) O(n)</label>
+              <label class="test-option"><input type="radio" name="q5" value="b">б> O(n log n)</label>
+              <label class="test-option"><input type="radio" name="q5" value="c">в> O(n²)</label>
+              <label class="test-option"><input type="radio" name="q5" value="d">г> O(log n)</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="6">
+            <div class="test-question-text"><span class="test-question-number">6</span>Як правильно ініціалізувати масив нулями?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q6" value="a">а) int arr[10] = {0};</label>
+              <label class="test-option"><input type="radio" name="q6" value="b">б> int arr[10] = 0;</label>
+              <label class="test-option"><input type="radio" name="q6" value="c">в> int arr[10] = { };</label>
+              <label class="test-option"><input type="radio" name="q6" value="d">г> int arr[10] = null;</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="7">
+            <div class="test-question-text"><span class="test-question-number">7</span>Чи можна змінити розмір масиву після створення?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q7" value="a">а) Так, через resize()</label>
+              <label class="test-option"><input type="radio" name="q7" value="b">б> Ні, розмір фіксований</label>
+              <label class="test-option"><input type="radio" name="q7" value="c">в> Тільки динамічний масив</label>
+              <label class="test-option"><input type="radio" name="q7" value="d">г> Через функцію realloc</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="8">
+            <div class="test-question-text"><span class="test-question-number">8</span>Що передається при передачі масиву у функцію?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q8" value="a">а) Копія масиву</label>
+              <label class="test-option"><input type="radio" name="q8" value="b">б> Вказівник на перший елемент</label>
+              <label class="test-option"><input type="radio" name="q8" value="c">в> Копія першого елемента</label>
+              <label class="test-option"><input type="radio" name="q8" value="d">г> Нічого</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="9">
+            <div class="test-question-text"><span class="test-question-number">9</span>Який останній індекс у масиві int arr[10]?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q9" value="a">а) 10</label>
+              <label class="test-option"><input type="radio" name="q9" value="b">б> 9</label>
+              <label class="test-option"><input type="radio" name="q9" value="c">в> 11</label>
+              <label class="test-option"><input type="radio" name="q9" value="d">г> 0</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="10">
+            <div class="test-question-text"><span class="test-question-number">10</span>Яке обмеження має бінарний пошук?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q10" value="a">а) Масив повинен бути відсортований</label>
+              <label class="test-option"><input type="radio" name="q10" value="b">б> Масив повинен бути числовим</label>
+              <label class="test-option"><input type="radio" name="q10" value="c">в> Масив не може мати дублікатів</label>
+              <label class="test-option"><input type="radio" name="q10" value="d">г> Масив повинен бути статичним</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="11">
+            <div class="test-question-text"><span class="test-question-number">11</span>Скільки порівнянь у Bubble Sort для n елементів?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q11" value="a">а) n</label>
+              <label class="test-option"><input type="radio" name="q11" value="b">б> n(n-1)/2</label>
+              <label class="test-option"><input type="radio" name="q11" value="c">в> n log n</label>
+              <label class="test-option"><input type="radio" name="q11" value="d">г> n²</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="12">
+            <div class="test-question-text"><span class="test-question-number">12</span>Як знайти розмір статичного масиву?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q12" value="a">а) arr.length</label>
+              <label class="test-option"><input type="radio" name="q12" value="b">б> sizeof(arr) / sizeof(arr[0])</label>
+              <label class="test-option"><input type="radio" name="q12" value="c">в> arr.size()</label>
+              <label class="test-option"><input type="radio" name="q12" value="d">г> length(arr)</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="13">
+            <div class="test-question-text"><span class="test-question-number">13</span>Який цикл найкраще підходить для обробки масиву?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q13" value="a">а) while</label>
+              <label class="test-option"><input type="radio" name="q13" value="b">б> for</label>
+              <label class="test-option"><input type="radio" name="q13" value="c">в> do-while</label>
+              <label class="test-option"><input type="radio" name="q13" value="d">г> foreach (C++11)</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="14">
+            <div class="test-question-text"><span class="test-question-number">14</span>Що робить Insertion Sort?</span>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q14" value="a">а) Шукає мінімум і ставить на початок</label>
+              <label class="test-option"><input type="radio" name="q14" value="b">б> Порівнює сусідні елементи</label>
+              <label class="test-option"><input type="radio" name="q14" value="c">в> Вставляє елемент у відсортовану частину</label>
+              <label class="test-option"><input type="radio" name="q14" value="d">г> Ділить масив навпіл</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="15">
+            <div class="test-question-text"><span class="test-question-number">15</span>Можна отримати розмір масиву в функції?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q15" value="a">а) Так, через sizeof</label>
+              <label class="test-option"><input type="radio" name="q15" value="b">б> Ні, треба передавати окремо</label>
+              <label class="test-option"><input type="radio" name="q15" value="c">в> Тільки для статичних</label>
+              <label class="test-option"><input type="radio" name="q15" value="d">г> Через arr.length()</label>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="checkTest()" id="check-btn">Перевірити відповіді</button>
+        <div id="test-result"></div>
+      </section>
+
+      <section id="practice">
+        <h2>💻 Практичні завдання</h2>
+        <div class="task-item"><span class="task-number">1</span><span class="task-title">Зворотний порядок</span><p class="task-desc">Напишіть функцію, яка інвертує масив (змінює порядок елементів на зворотний) без використання додаткового масиву.</p></div>
+        <div class="task-item"><span class="task-number">2</span><span class="task-title">Два максимуми</span><p class="task-desc">Знайдіть два найбільші елементи в масиві. Елементи мають бути різними.</p></div>
+        <div class="task-item"><span class="task-number">3</span><span class="task-title">Циклічний зсув</span><p class="task-desc">Реалізуйте циклічний зсув масиву на k позицій вліво та вправо. k може бути більшим за розмір масиву.</p></div>
+        <div class="task-item"><span class="task-number">4</span><span class="task-title">Видалення дублікатів</span><p class="task-desc">Видаліть усі дублікати з масиву. Поверніть новий розмір масиву.</p></div>
+        <div class="task-item"><span class="task-number">5</span><span class="task-title">Злиття двох масивів</span><p class="task-desc">Дано два відсортованих масиви. Об'єднайте їх в один відсортований масив.</p></div>
+        <div class="task-item"><span class="task-number">6</span><span class="task-title">Частотний аналіз</span><p class="task-desc">Порахуйте, скільки разів кожен елемент зустрічається в масиві. Виведіть елемент та його частоту.</p></div>
+        <div class="task-item"><span class="task-number">7</span><span class="task-title">Підмасив з максимальною сумою</span><p class="task-desc">Знайдіть неперервний підмасив з максимальною сумою (алгоритм Кадане).</p></div>
+        <div class="task-item"><span class="task-number">8</span><span class="task-title">Інтерполяційний пошук</span><p class="task-desc">Реалізуйте інтерполяційний пошук — покращення бінарного для рівномірно розподілених даних.</p></div>
+        <div class="task-item"><span class="task-number">9</span><span class="task-title">Quick Sort</span><p class="task-desc">Реалізуйте швидке сортування (Quick Sort) з вибором опорного елемента. Порівняйте швидкість з Bubble Sort.</p></div>
+        <div class="task-item"><span class="task-number">10</span><span class="task-title">Бібліотека роботи з масивами</span><p class="task-desc">Створіть модуль arrayutils з функціями: fillRandom, print, sum, average, findMax, findMin, reverse, sort, search. Оформіть як .h та .cpp файли.</p></div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col"><h4>CodeMaster C++</h4><p>Навчальний курс з програмування мовою C++.</p></div>
+        <div class="footer-col"><h4>Навігація</h4><p><a href="index.html">Головна</a><br><a href="topic5-2.html">← Попередня тема</a><br><a href="topic6-2.html">Наступна тема →</a></p></div>
+        <div class="footer-col"><h4>Контакти</h4><p>© 2025 CodeMaster. Всі права захищено.</p></div>
+      </div>
+      <div class="footer-bottom"><p>Створено з метою навчання програмуванню мовою C++</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const correctAnswers = { q1:'b', q2:'b', q3:'d', q4:'b', q5:'c', q6:'a', q7:'b', q8:'b', q9:'b', q10:'a', q11:'b', q12:'b', q13:'b', q14:'c', q15:'b' };
+    function checkTest() {
+      let score = 0, total = 15;
+      for (let i = 1; i <= total; i++) {
+        const q = document.querySelectorAll('.test-question')[i-1];
+        const selected = document.querySelector('input[name="q'+i+'"]:checked');
+        const options = q.querySelectorAll('.test-option');
+        options.forEach(o => { o.classList.add('disabled'); });
+        if (selected) {
+          if (selected.value === correctAnswers['q'+i]) { selected.parentElement.classList.add('correct'); score++; }
+          else { selected.parentElement.classList.add('incorrect'); options.forEach(o => { if(o.querySelector('input').value === correctAnswers['q'+i]) o.classList.add('correct'); }); }
+        } else { options.forEach(o => { if(o.querySelector('input').value === correctAnswers['q'+i]) o.classList.add('correct'); }); }
+      }
+      const resultDiv = document.getElementById('test-result');
+      let msg = score >= 13 ? 'Відмінний результат!' : score >= 9 ? 'Добре!' : score >= 6 ? 'Задовільно' : 'Потрібно повторити матеріал';
+      resultDiv.innerHTML = '<div class="test-results"><div class="test-results-score">'+score+'/'+total+'</div><div class="test-results-text">'+msg+'</div></div>';
+      document.getElementById('check-btn').style.display = 'none';
+    }
+    document.querySelectorAll('.code-copy').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const code = this.closest('.code-block').querySelector('pre').innerText;
+        navigator.clipboard.writeText(code).then(() => { this.textContent = 'Скопійовано!'; setTimeout(() => this.textContent = 'Копіювати', 1500); });
+      });
+    });
+  </script>
+</body>
+</html>

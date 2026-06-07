@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тема 4.2 - Структура програм. Глобальні та локальні змінні | CodeMaster C++</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <div class="header-flex">
+        <a href="index.html" class="logo"><div class="logo-icon">C++</div><div class="logo-text">Code<span>Master</span></div></a>
+        <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+      </div>
+    </div>
+    <div class="container">
+      <nav class="main-nav">
+        <a href="index.html">Головна</a><a href="topic1-1.html">Тема 1.1</a><a href="topic1-2.html">Тема 1.2</a><a href="topic2-1.html">Тема 2.1</a><a href="topic2-2.html">Тема 2.2</a><a href="topic2-3.html">Тема 2.3</a><a href="topic3-1.html">Тема 3.1</a><a href="topic4-1.html">Тема 4.1</a><a href="topic4-2.html" class="active">Тема 4.2</a><a href="topic5-1.html">Тема 5.1</a><a href="topic5-2.html">Тема 5.2</a><a href="topic6-1.html">Тема 6.1</a><a href="topic6-2.html">Тема 6.2</a><a href="topic6-3.html">Тема 6.3</a><a href="topic7-1.html">Тема 7.1</a><a href="topic7-2.html">Тема 7.2</a><a href="topic8-1.html">Тема 8.1</a><a href="topic8-2.html">Тема 8.2</a><a href="topic9-1.html">Тема 9.1</a><a href="topic10-1.html">Тема 10.1</a><a href="topic10-2.html">Тема 10.2</a><a href="topic10-3.html">Тема 10.3</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Головна</a> / <a href="index.html#modules">Модуль 4</a> / Тема 4.2</div>
+      <h1>Тема 4.2</h1>
+      <p>Структура програм. Складові частини програми. Глобальні та локальні змінні</p>
+    </div>
+  </div>
+
+  <div class="container content-layout">
+    <aside class="sidebar">
+      <h4>Зміст теми</h4>
+      <ul class="sidebar-nav">
+        <li><a href="#structure">Структура програми на C++</a></li>
+        <li><a href="#global-local">Глобальні та локальні змінні</a></li>
+        <li><a href="#scope">Області видимості</a></li>
+        <li><a href="#storage">Класи зберігання</a></li>
+        <li><a href="#lifetime">Час життя змінних</a></li>
+        <li><a href="#multifile">Багатофайлові програми</a></li>
+        <li><a href="#tests">📝 Тести</a></li>
+        <li><a href="#practice">💻 Практичні завдання</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <section id="structure">
+        <h2>Структура програми на C++</h2>
+        <p>Програма на C++ складається з декількох частин, кожна з яких виконує певну роль:</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Структура програми</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>// 1. Коментарі — пояснення для програміста
+/* Це приклад структури програми на C++ */
+
+// 2. Директиви препроцесора
+#include &lt;iostream&gt;    // підключення бібліотек
+#include &lt;cmath&gt;
+using namespace std;      // використання простору імен
+
+// 3. Оголошення глобальних констант
+const double PI = 3.14159;
+const int MAX_SIZE = 1000;
+
+// 4. Оголошення (прототипи) функцій
+void helperFunction();
+int calculate(int a, int b);
+
+// 5. Головна функція — точка входу в програму
+int main() {
+    // Локальні змінні
+    int x = 10;
+    double y = 3.14;
+    
+    // Виклики функцій
+    helperFunction();
+    int result = calculate(x, 5);
+    
+    return 0;  // код завершення
+}
+
+// 6. Визначення функцій
+void helperFunction() {
+    cout << "Допоміжна функція" << endl;
+}
+
+int calculate(int a, int b) {
+    return a + b;
+}</code></pre>
+        </div>
+        <h3>Основні складові частини:</h3>
+        <table class="content-table">
+          <tr><th>Частина</th><th>Призначення</th></tr>
+          <tr><td>Коментарі</td><td>Документація та пояснення коду</td></tr>
+          <tr><td>Директиви препроцесора</td><td>Підключення бібліотек, визначення макросів</td></tr>
+          <tr><td>Глобальні оголошення</td><td>Константи, змінні, прототипи функцій</td></tr>
+          <tr><td>Функція main()</td><td>Головна функція — точка входу</td></tr>
+          <tr><td>Функції користувача</td><td>Підпрограми для розв'язування підзадач</td></tr>
+        </table>
+      </section>
+
+      <section id="global-local">
+        <h2>Глобальні та локальні змінні</h2>
+        <p><strong>Глобальна змінна</strong> — оголошена поза всіма функціями, доступна з будь-якої частини програми (включаючи інші файли через extern).</p>
+        <p><strong>Локальна змінна</strong> — оголошена всередині блоку коду (функції, циклу, умови), доступна тільки в цьому блоці.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Глобальні та локальні змінні</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+// Глобальні змінні
+int globalVar = 100;
+const double PI = 3.14159;
+
+void testFunction() {
+    // Доступ до глобальної змінної
+    cout << "globalVar в функції: " << globalVar << endl;
+    
+    // Локальна змінна
+    int localVar = 50;
+    cout << "localVar: " << localVar << endl;
+}
+
+int main() {
+    cout << "globalVar в main: " << globalVar << endl;
+    
+    // Локальна змінна з тим самим ім'ям
+    int globalVar = 200;   // приховує глобальну!
+    cout << "Локальна globalVar: " << globalVar << endl;
+    cout << "Глобальна globalVar: " << ::globalVar << endl; // :: — доступ до глобальної
+    
+    testFunction();
+    
+    return 0;
+}</code></pre>
+        </div>
+        <div class="highlight-box highlight-box-warning">
+          <div class="highlight-box-title">⚠️ Попередження</div>
+          <p>Використання глобальних змінних не рекомендується, оскільки вони:</p>
+          <ul>
+            <li>Ускладнюють відлагодження та тестування</li>
+            <li>Створюють неявні залежності між функціями</li>
+            <li>Погіршують повторне використання коду</li>
+            <li>Можуть призвести до конфліктів імен</li>
+          </ul>
+          <p>Краще передавати дані через параметри функцій та повертати результати.</p>
+        </div>
+      </section>
+
+      <section id="scope">
+        <h2>Області видимості (Scope)</h2>
+        <p><strong>Область видимості</strong> — це частина програми, де змінна доступна для використання.</p>
+        <h3>Типи областей видимості в C++:</h3>
+        <table class="content-table">
+          <tr><th>Тип</th><th>Опис</th><th>Приклад</th></tr>
+          <tr><td>Локальна (блочна)</td><td>Змінна видима в блоці {}</td><td>Змінна всередині функції</td></tr>
+          <tr><td>Глобальна (файлова)</td><td>Змінна видима у всьому файлі</td><td>Змінна поза функціями</td></tr>
+          <tr><td>Простір імен</td><td>Видимість у межах namespace</td><td>std::cout</td></tr>
+          <tr><td>Параметри функції</td><td>Видимість у тілі функції</td><td>Параметри в заголовку</td></tr>
+        </table>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Області видимості</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int x = 10;  // глобальна змінна
+
+int main() {
+    int x = 20;   // локальна змінна — приховує глобальну
+    
+    {
+        int x = 30;   // вкладена локальна змінна
+        cout << "Внутрішній блок: x = " << x << endl;       // 30
+        cout << "Глобальна: x = " << ::x << endl;           // 10
+    }
+    
+    cout << "Функція main: x = " << x << endl;              // 20
+    
+    return 0;
+}</code></pre>
+        </div>
+      </section>
+
+      <section id="storage">
+        <h2>Класи зберігання (Storage Classes)</h2>
+        <p>Класи зберігання визначають час життя та область видимості змінних.</p>
+        <table class="content-table">
+          <tr><th>Клас</th><th>Ключове слово</th><th>Опис</th></tr>
+          <tr><td>Автоматичний</td><td><code class="inline">auto</code></td><td>Локальна змінна, створюється при вході в блок, знищується при виході (за замовчуванням)</td></tr>
+          <tr><td>Статичний</td><td><code class="inline">static</code></td><td>Зберігає значення між викликами функції; для глобальних — обмежує видимість файлом</td></tr>
+          <tr><td>Зовнішній</td><td><code class="inline">extern</code></td><td>Оголошення змінної, визначеної в іншому файлі</td></tr>
+          <tr><td>Реєстровий</td><td><code class="inline">register</code></td><td>Пропозиція компілятору зберігати змінну в регістрі (застаріле)</td></tr>
+        </table>
+        <h3>Приклад static змінної:</h3>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Static змінна</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+void counter() {
+    static int count = 0;   // ініціалізується тільки один раз!
+    count++;
+    cout << "Виклик номер: " << count << endl;
+}
+
+int main() {
+    counter();  // Виклик номер: 1
+    counter();  // Виклик номер: 2
+    counter();  // Виклик номер: 3
+    return 0;
+}</code></pre>
+        </div>
+      </section>
+
+      <section id="lifetime">
+        <h2>Час життя змінних</h2>
+        <table class="content-table">
+          <tr><th>Тип змінної</th><th>Час життя</th><th>Ініціалізація</th></tr>
+          <tr><td>Локальна (auto)</td><td>Від входу до виходу з блоку</td><td>Не ініціалізується автоматично (сміття)</td></tr>
+          <tr><td>Статична локальна</td><td>Від першого виклику до завершення програми</td><td>Ініціалізується один раз</td></tr>
+          <tr><td>Глобальна</td><td>Від запуску до завершення програми</td><td>Автоматично нулем</td></tr>
+          <tr><td>Статична глобальна</td><td>Від запуску до завершення програми</td><td>Автоматично нулем; видимість тільки у файлі</td></tr>
+          <tr><td>Динамічна</td><td>Керується програмістом (new/delete)</td><td>Не ініціалізується</td></tr>
+        </table>
+      </section>
+
+      <section id="multifile">
+        <h2>Багатофайлові програми</h2>
+        <p>Великі програми розбиваються на кілька файлів для зручності розробки та компіляції:</p>
+        <ul>
+          <li><strong>Заголовкові файли (.h, .hpp)</strong> — прототипи функцій, оголошення класів, константи</li>
+          <li><strong>Файли реалізації (.cpp)</strong> — визначення функцій, глобальні змінні</li>
+          <li><strong>Головний файл (main.cpp)</strong> — функція main(), яка використовує інші модулі</li>
+        </ul>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">mathutils.h — заголовковий файл</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>#ifndef MATHUTILS_H
+#define MATHUTILS_H
+
+// Прототипи функцій
+int add(int a, int b);
+int multiply(int a, int b);
+double power(double base, int exp);
+
+// Константи
+const double PI = 3.14159265359;
+
+#endif</code></pre>
+        </div>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">mathutils.cpp — файл реалізації</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>#include "mathutils.h"
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int multiply(int a, int b) {
+    return a * b;
+}
+
+double power(double base, int exp) {
+    double result = 1.0;
+    for (int i = 0; i < exp; i++)
+        result *= base;
+    return result;
+}</code></pre>
+        </div>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">main.cpp — головний файл</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>#include &lt;iostream&gt;
+#include "mathutils.h"
+using namespace std;
+
+int main() {
+    cout << "2 + 3 = " << add(2, 3) << endl;
+    cout << "2 * 3 = " << multiply(2, 3) << endl;
+    cout << "2^5 = " << power(2, 5) << endl;
+    cout << "PI = " << PI << endl;
+    return 0;
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- TESTS -->
+      <section id="tests">
+        <h2>📝 Тести для самоперевірки</h2>
+        <div id="test-container" class="test-container">
+          <div class="test-question" data-q="1">
+            <div class="test-question-text"><span class="test-question-number">1</span>Де оголошуються глобальні змінні?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q1" value="a">а) Всередині функції</label>
+              <label class="test-option"><input type="radio" name="q1" value="b">б) Поза всіма функціями</label>
+              <label class="test-option"><input type="radio" name="q1" value="c">в) В циклі</label>
+              <label class="test-option"><input type="radio" name="q1" value="d">г) В умові if</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="2">
+            <div class="test-question-text"><span class="test-question-number">2</span>Який час життя у локальної змінної?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q2" value="a">а) До кінця програми</label>
+              <label class="test-option"><input type="radio" name="q2" value="b">б> Від входу до виходу з блоку</label>
+              <label class="test-option"><input type="radio" name="q2" value="c">в> Весь час виконання</label>
+              <label class="test-option"><input type="radio" name="q2" value="d">г> Невизначений</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="3">
+            <div class="test-question-text"><span class="test-question-number">3</span>Як отримати доступ до глобальної змінної, прихованої локальною?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q3" value="a">а) global::variable</label>
+              <label class="test-option"><input type="radio" name="q3" value="b">б> ::variable</label>
+              <label class="test-option"><input type="radio" name="q3" value="c">в> extern variable</label>
+              <label class="test-option"><input type="radio" name="q3" value="d">г> static variable</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="4">
+            <div class="test-question-text"><span class="test-question-number">4</span>Скільки разів ініціалізується static змінна в функції?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q4" value="a">а) При кожному виклику</label>
+              <label class="test-option"><input type="radio" name="q4" value="b">б> Один раз</label>
+              <label class="test-option"><input type="radio" name="q4" value="c">в> Ніколи</label>
+              <label class="test-option"><input type="radio" name="q4" value="d">г> Два рази</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="5">
+            <div class="test-question-text"><span class="test-question-number">5</span>Що робить ключове слово extern?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q5" value="a">а) Оголошує змінну в поточному файлі</label>
+              <label class="test-option"><input type="radio" name="q5" value="b">б> Оголошує змінну, визначену в іншому файлі</label>
+              <label class="test-option"><input type="radio" name="q5" value="c">в> Робить змінну статичною</label>
+              <label class="test-option"><input type="radio" name="q5" value="d">г> Ініціалізує змінну нулем</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="6">
+            <div class="test-question-text"><span class="test-question-number">6</span>Який клас зберігання за замовчуванням для локальних змінних?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q6" value="a">а) static</label>
+              <label class="test-option"><input type="radio" name="q6" value="b">б> auto</label>
+              <label class="test-option"><input type="radio" name="q6" value="c">в> extern</label>
+              <label class="test-option"><input type="radio" name="q6" value="d">г> register</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="7">
+            <div class="test-question-text"><span class="test-question-number">7</span>Що означає static для глобальної змінної?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q7" value="a">а) Змінна не змінюється</label>
+              <label class="test-option"><input type="radio" name="q7" value="b">б> Обмежує видимість файлом</label>
+              <label class="test-option"><input type="radio" name="q7" value="c">в> Робить змінну константою</label>
+              <label class="test-option"><input type="radio" name="q7" value="d">г> Видаляє змінну</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="8">
+            <div class="test-question-text"><span class="test-question-number">8</span>Чи ініціалізуються глобальні змінні автоматично?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q8" value="a">а) Так, нулем</label>
+              <label class="test-option"><input type="radio" name="q8" value="b">б> Ні, містять сміття</label>
+              <label class="test-option"><input type="radio" name="q8" value="c">в> Залежить від компілятора</label>
+              <label class="test-option"><input type="radio" name="q8" value="d">г> Тільки const</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="9">
+            <div class="test-question-text"><span class="test-question-number">9</span>Де розміщуються локальні змінні?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q9" value="a">а) В купі (heap)</label>
+              <label class="test-option"><input type="radio" name="q9" value="b">б> В стеку (stack)</label>
+              <label class="test-option"><input type="radio" name="q9" value="c">в> В сегменті даних</label>
+              <label class="test-option"><input type="radio" name="q9" value="d">г> У файлі</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="10">
+            <div class="test-question-text"><span class="test-question-number">10</span>Яка розширення у заголовкових файлів C++?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q10" value="a">а) .cpp</label>
+              <label class="test-option"><input type="radio" name="q10" value="b">б> .h або .hpp</label>
+              <label class="test-option"><input type="radio" name="q10" value="c">в> .obj</label>
+              <label class="test-option"><input type="radio" name="q10" value="d">г> .exe</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="11">
+            <div class="test-question-text"><span class="test-question-number">11</span>Що робить #ifndef у заголовковому файлі?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q11" value="a">а) Визначає функцію</label>
+              <label class="test-option"><input type="radio" name="q11" value="b">б> Запобігає багаторазовому включенню</label>
+              <label class="test-option"><input type="radio" name="q11" value="c">в> Оголошує клас</label>
+              <label class="test-option"><input type="radio" name="q11" value="d">г> Імпортує бібліотеку</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="12">
+            <div class="test-question-text"><span class="test-question-number">12</span>Чи можна мати локальну та глобальну змінну з однаковим ім'ям?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q12" value="a">а) Так, локальна приховує глобальну</label>
+              <label class="test-option"><input type="radio" name="q12" value="b">б> Ні, це помилка</label>
+              <label class="test-option"><input type="radio" name="q12" value="c">в> Тільки якщо різні типи</label>
+              <label class="test-option"><input type="radio" name="q12" value="d">г> Тільки зі static</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="13">
+            <div class="test-question-text"><span class="test-question-number">13</span>Де зберігаються статичні глобальні змінні?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q13" value="a">а) В стеку</label>
+              <label class="test-option"><input type="radio" name="q13" value="b">б> В сегменті даних</label>
+              <label class="test-option"><input type="radio" name="q13" value="c">в> В купі</label>
+              <label class="test-option"><input type="radio" name="q13" value="d">г> В регістрі</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="14">
+            <div class="test-question-text"><span class="test-question-number">14</span>Який модифікатор робить змінну видимою тільки у файлі?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q14" value="a">а) extern</label>
+              <label class="test-option"><input type="radio" name="q14" value="b">б> static (для глобальної)</label>
+              <label class="test-option"><input type="radio" name="q14" value="c">в> auto</label>
+              <label class="test-option"><input type="radio" name="q14" value="d">г> const</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="15">
+            <div class="test-question-text"><span class="test-question-number">15</span>Що відбудеться з локальною змінною після виходу з функції?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q15" value="a">а) Вона зберігається</label>
+              <label class="test-option"><input type="radio" name="q15" value="b">б> Вона знищується</label>
+              <label class="test-option"><input type="radio" name="q15" value="c">в> Стає глобальною</label>
+              <label class="test-option"><input type="radio" name="q15" value="d">г> Нічого</label>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="checkTest()" id="check-btn">Перевірити відповіді</button>
+        <div id="test-result"></div>
+      </section>
+
+      <section id="practice">
+        <h2>💻 Практичні завдання</h2>
+        <div class="task-item"><span class="task-number">1</span><span class="task-title">Лічильник викликів</span><p class="task-desc">Створіть функцію, яка рахує кількість своїх викликів за допомогою static змінної. Виведіть лічильник після 10 викликів.</p></div>
+        <div class="task-item"><span class="task-number">2</span><span class="task-title">Багатофайловий проєкт</span><p class="task-desc">Розбийте програму на 3 файли: utils.h (прототипи), utils.cpp (реалізація), main.cpp (використання). Функції: min, max, abs.</p></div>
+        <div class="task-item"><span class="task-number">3</span><span class="task-title">Області видимості</span><p class="task-desc">Напишіть програму з 3 рівнями вкладеності блоків {}, на кожному рівні оголосіть змінну з однаковим ім'ям. Виведіть значення кожної змінної та доступ до глобальної через ::.</p></div>
+        <div class="task-item"><span class="task-number">4</span><span class="task-title">Static масив у функції</span><p class="task-desc">Реалізуйте функцію, яка зберігає static масив із 5 чисел. При кожному виклику виводить усі значення масиву та додає нове число (зсув масиву).</p></div>
+        <div class="task-item"><span class="task-number">5</span><span class="task-title">Генератор унікальних ID</span><p class="task-desc">Створіть функцію getNextID(), яка використовує static лічильник для генерації унікальних ідентифікаторів (1, 2, 3...).</p></div>
+        <div class="task-item"><span class="task-number">6</span><span class="task-title">Протект від повторного включення</span><p class="task-desc">Створіть заголовковий файл з використанням #ifndef/#define/#endif та з guard #pragma once. Покажіть на прикладі, чому це важливо.</p></div>
+        <div class="task-item"><span class="task-number">7</span><span class="task-title">Extern змінна</span><p class="task-desc">Створіть два .cpp файли. У одному оголосіть глобальну змінну, в іншому — отримайте до неї доступ через extern. Покажіть як це працює.</p></div>
+        <div class="task-item"><span class="task-number">8</span><span class="task-title">Аналіз пам'яті</span><p class="task-desc">Напишіть програму, яка демонструє розташування різних типів змінних у пам'яті: глобальні, static, локальні, динамічні. Виведіть їх адреси.</p></div>
+        <div class="task-item"><span class="task-number">9</span><span class="task-title">Модульна бібліотека</span><p class="task-desc">Створіть модульну структуру: math.h/cpp (математика), string_utils.h/cpp (робота з рядками), main.cpp. Кожен модуль у своєму просторі імен.</p></div>
+        <div class="task-item"><span class="task-number">10</span><span class="task-title">Проблема глобальних змінних</span><p class="task-desc">Напишіть програму, яка демонструє проблему використання глобальних змінних: створіть ситуацію, коли різні функції неочікувано змінюють глобальний стан. Запропонуйте рішення без глобальних змінних.</p></div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col"><h4>CodeMaster C++</h4><p>Навчальний курс з програмування мовою C++.</p></div>
+        <div class="footer-col"><h4>Навігація</h4><p><a href="index.html">Головна</a><br><a href="topic4-1.html">← Попередня тема</a><br><a href="topic5-1.html">Наступна тема →</a></p></div>
+        <div class="footer-col"><h4>Контакти</h4><p>© 2025 CodeMaster. Всі права захищено.</p></div>
+      </div>
+      <div class="footer-bottom"><p>Створено з метою навчання програмуванню мовою C++</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const correctAnswers = { q1:'b', q2:'b', q3:'b', q4:'b', q5:'b', q6:'b', q7:'b', q8:'a', q9:'b', q10:'b', q11:'b', q12:'a', q13:'b', q14:'b', q15:'b' };
+    function checkTest() {
+      let score = 0, total = 15;
+      for (let i = 1; i <= total; i++) {
+        const q = document.querySelectorAll('.test-question')[i-1];
+        const selected = document.querySelector('input[name="q'+i+'"]:checked');
+        const options = q.querySelectorAll('.test-option');
+        options.forEach(o => { o.classList.add('disabled'); });
+        if (selected) {
+          if (selected.value === correctAnswers['q'+i]) { selected.parentElement.classList.add('correct'); score++; }
+          else { selected.parentElement.classList.add('incorrect'); options.forEach(o => { if(o.querySelector('input').value === correctAnswers['q'+i]) o.classList.add('correct'); }); }
+        } else { options.forEach(o => { if(o.querySelector('input').value === correctAnswers['q'+i]) o.classList.add('correct'); }); }
+      }
+      const resultDiv = document.getElementById('test-result');
+      let msg = score >= 13 ? 'Відмінний результат!' : score >= 9 ? 'Добре!' : score >= 6 ? 'Задовільно' : 'Потрібно повторити матеріал';
+      resultDiv.innerHTML = '<div class="test-results"><div class="test-results-score">'+score+'/'+total+'</div><div class="test-results-text">'+msg+'</div></div>';
+      document.getElementById('check-btn').style.display = 'none';
+    }
+    document.querySelectorAll('.code-copy').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const code = this.closest('.code-block').querySelector('pre').innerText;
+        navigator.clipboard.writeText(code).then(() => { this.textContent = 'Скопійовано!'; setTimeout(() => this.textContent = 'Копіювати', 1500); });
+      });
+    });
+  </script>
+</body>
+</html>

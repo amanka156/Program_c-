@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тема 1.2 - Компілятор, інтерпретатор, компонувальник | CodeMaster C++</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <div class="header-flex">
+        <a href="index.html" class="logo"><div class="logo-icon">C++</div><div class="logo-text">Code<span>Master</span></div></a>
+        <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+      </div>
+    </div>
+    <div class="container">
+      <nav class="main-nav">
+        <a href="index.html">Головна</a><a href="topic1-1.html">Тема 1.1</a><a href="topic1-2.html" class="active">Тема 1.2</a><a href="topic2-1.html">Тема 2.1</a><a href="topic2-2.html">Тема 2.2</a><a href="topic2-3.html">Тема 2.3</a><a href="topic3-1.html">Тема 3.1</a><a href="topic4-1.html">Тема 4.1</a><a href="topic4-2.html">Тема 4.2</a><a href="topic5-1.html">Тема 5.1</a><a href="topic5-2.html">Тема 5.2</a><a href="topic6-1.html">Тема 6.1</a><a href="topic6-2.html">Тема 6.2</a><a href="topic6-3.html">Тема 6.3</a><a href="topic7-1.html">Тема 7.1</a><a href="topic7-2.html">Тема 7.2</a><a href="topic8-1.html">Тема 8.1</a><a href="topic8-2.html">Тема 8.2</a><a href="topic9-1.html">Тема 9.1</a><a href="topic10-1.html">Тема 10.1</a><a href="topic10-2.html">Тема 10.2</a><a href="topic10-3.html">Тема 10.3</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Головна</a> / <a href="index.html#modules">Модуль 1</a> / Тема 1.2</div>
+      <h1>Тема 1.2</h1>
+      <p>Компілятор, інтерпретатор, компонувальник. Структура і способи опису мов програмування високого рівня</p>
+    </div>
+  </div>
+
+  <div class="container content-layout">
+    <aside class="sidebar">
+      <h4>Зміст теми</h4>
+      <ul class="sidebar-nav">
+        <li><a href="#compiler">Компілятор</a></li>
+        <li><a href="#interpreter">Інтерпретатор</a></li>
+        <li><a href="#linker">Компонувальник (Linker)</a></li>
+        <li><a href="#comparison">Порівняння компіляції та інтерпретації</a></li>
+        <li><a href="#structure">Структура мов високого рівня</a></li>
+        <li><a href="#tests">📝 Тести</a></li>
+        <li><a href="#practice">💻 Практичні завдання</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <section id="compiler">
+        <h2>Компілятор</h2>
+        <p><strong>Компілятор (Compiler)</strong> — це програма, що перетворює вихідний код, написаний мовою програмування високого рівня, у машинний код або код на іншій мові (зазвичай мовою низького рівня).</p>
+        <p>Процес компіляції складається з кількох етапів:</p>
+        <ol>
+          <li><strong>Лексичний аналіз</strong> — розбиття вихідного коду на токени (лексеми)</li>
+          <li><strong>Синтаксичний аналіз</strong> — перевірка правильності граматичної будови програми та побудова дерева розбору</li>
+          <li><strong>Семантичний аналіз</strong> — перевірка типів даних та правил використання ідентифікаторів</li>
+          <li><strong>Генерація проміжного коду</strong> — створення внутрішнього представлення програми</li>
+          <li><strong>Оптимізація</strong> — покращення коду за швидкістю та використанням пам'яті</li>
+          <li><strong>Генерація об'єктного коду</strong> — створення файлу з розширенням .obj або .o</li>
+        </ol>
+        <img src="images/topic1-compiler.png" alt="Схема роботи компілятора" style="width:100%;border-radius:8px;margin:20px 0;">
+        <p>Для C++ найпоширеніші компілятори:</p>
+        <ul>
+          <li><strong>GCC (GNU Compiler Collection)</strong> — безкоштовний компілятор для Linux, macOS та Windows</li>
+          <li><strong>Clang</strong> — компілятор проєкту LLVM, відомий високою швидкістю та якістю повідомлень про помилки</li>
+          <li><strong>MSVC (Microsoft Visual C++)</strong> — компілятор від Microsoft для Windows</li>
+          <li><strong>Intel C++ Compiler</strong> — оптимізований для процесорів Intel</li>
+        </ul>
+      </section>
+
+      <section id="interpreter">
+        <h2>Інтерпретатор</h2>
+        <p><strong>Інтерпретатор (Interpreter)</strong> — це програма, що безпосередньо виконує інструкції, написані мовою програмування, без попереднього перетворення їх у машинний код.</p>
+        <p>Основні характеристики інтерпретації:</p>
+        <ul>
+          <li>Виконання відбувається <strong>рядок за рядком</strong></li>
+          <li>Програма виконується відразу після написання — <strong>не потрібна фаза компіляції</strong></li>
+          <li>Зазвичай <strong>повільніше</strong> за компільований код, оскільки кожна інструкція аналізується під час виконання</li>
+          <li><strong>Кросплатформенність</strong> — інтерпретатор абстрагує апаратне забезпечення</li>
+        </ul>
+        <div class="highlight-box">
+          <div class="highlight-box-title">📌 Приклади інтерпретованих мов</div>
+          <p>Python, JavaScript, PHP, Ruby, Perl. Ці мови не компілюються в машинний код безпосередньо, а виконуються спеціальною програмою-інтерпретатором.</p>
+        </div>
+      </section>
+
+      <section id="linker">
+        <h2>Компонувальник (Linker)</h2>
+        <p><strong>Компонувальник (Linker)</strong> — це програма, що об'єднує один або кілька об'єктних файлів (.obj, .o) та бібліотеки в єдиний виконуваний файл.</p>
+        <p>Основні завдання компонувальника:</p>
+        <ul>
+          <li><strong>Роздільне компілювання</strong> — дозволяє компілювати окремі частини програми незалежно</li>
+          <li><strong>Вирішення зовнішніх посилань</strong> — знаходить визначення функцій та змінних, що використовуються в різних файлах</li>
+          <li><strong>Підключення бібліотек</strong> — додає код зі статичних (.lib, .a) або динамічних (.dll, .so) бібліотек</li>
+          <li><strong>Розташування в пам'яті</strong> — визначає адреси для завантаження програми</li>
+        </ul>
+        <h3>Статичне та динамічне компонування</h3>
+        <table class="content-table">
+          <tr><th>Характеристика</th><th>Статичне компонування</th><th>Динамічне компонування</th></tr>
+          <tr><td>Розмір файлу</td><td>Великий (все включено)</td><td>Менший (залежності зовнішні)</td></tr>
+          <tr><td>Залежності</td><td>Не потребує DLL</td><td>Потребує DLL під час виконання</td></tr>
+          <tr><td>Завантаження</td><td>Повний код в одному файлі</td><td>Бібліотеки завантажуються за потреби</td></tr>
+          <tr><td>Розширення бібліотек</td><td>.lib (Windows), .a (Linux)</td><td>.dll (Windows), .so (Linux)</td></tr>
+        </table>
+      </section>
+
+      <section id="comparison">
+        <h2>Порівняння компіляції та інтерпретації</h2>
+        <table class="content-table">
+          <tr><th>Критерій</th><th>Компіляція</th><th>Інтерпретація</th></tr>
+          <tr><td>Швидкість виконання</td><td>Швидше</td><td>Повільніше</td></tr>
+          <tr><td>Час запуску</td><td>Потрібна компіляція</td><td>Миттєвий запуск</td></tr>
+          <tr><td>Діагностика помилок</td><td>Всі помилки на етапі компіляції</td><td>Помилки під час виконання</td></tr>
+          <tr><td>Залежність від платформи</td><td>Машинний код залежить від платформи</td><td>Інтерпретатор забезпечує незалежність</td></tr>
+          <tr><td>Оптимізація</td><td>Можлива агресивна оптимізація</td><td>Обмежена оптимізація</td></tr>
+          <tr><td>Приклади мов</td><td>C, C++, Rust, Go</td><td>Python, JavaScript, PHP</td></tr>
+        </table>
+        <div class="highlight-box highlight-box-success">
+          <div class="highlight-box-title">✅ Позиція C++</div>
+          <p>C++ є <strong>компільованою мовою</strong>. Це означає, що програми на C++ спочатку перетворюються компілятором у машинний код, а потім компонувальником — у виконуваний файл. Завдяки цьому програми на C++ працюють набагато швидше за інтерпретовані мови.</p>
+        </div>
+      </section>
+
+      <section id="structure">
+        <h2>Структура мов програмування високого рівня</h2>
+        <p>Мови програмування високого рівня мають спільну структуру, що складається з наступних компонентів:</p>
+        <h3>1. Алфавіт мови</h3>
+        <p>Алфавіт — це набір допустимих символів, які можна використовувати при написанні програм. Для C++ алфавіт включає:</p>
+        <ul>
+          <li>Великі та малі літери латинського алфавіту: A-Z, a-z</li>
+          <li>Цифри: 0-9</li>
+          <li>Спеціальні символи: + - * / = < > ( ) { } [ ] ; : , . & | ^ ~ ! ? # _ " ' \ % @</li>
+          <li>Пробільні символи: пробіл, табуляція, новий рядок</li>
+        </ul>
+        <h3>2. Лексичні одиниці (токени)</h3>
+        <p>Токени — це найменші значущі елементи програми:</p>
+        <ul>
+          <li><strong>Ключові слова (зарезервовані)</strong> — if, else, while, for, int, class, return тощо</li>
+          <li><strong>Ідентифікатори</strong> — імена змінних, функцій, класів</li>
+          <li><strong>Літерали (константи)</strong> — числові, символьні, рядкові</li>
+          <li><strong>Оператори</strong> — +, -, *, /, =, ==, && тощо</li>
+          <li><strong>Роздільники</strong> — ; , ( ) { }</li>
+        </ul>
+        <h3>3. Синтаксис</h3>
+        <p>Синтаксис — це набір правил, що визначають, як з токенів утворюються правильні конструкції мови. Наприклад:</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">C++ синтаксис</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>// Оголошення змінної
+тип_даних ім'я_змінної;
+
+// Оголошення функції
+тип_повернення ім'я_функції(параметри) {
+    тіло_функції;
+    return значення;
+}
+
+// Умовний оператор
+if (умова) {
+    дії;
+} else {
+    альтернативні_дії;
+}</code></pre>
+        </div>
+        <h3>4. Семантика</h3>
+        <p>Семантика визначає <strong>значення</strong> синтаксичних конструкцій — що саме відбувається при виконанні певного оператора. Наприклад, оператор <code class="inline">a = b + c;</code> має семантику: "зчитати значення b, додати до нього значення c, результат записати в a".</p>
+        <h3>5. Система типів даних</h3>
+        <p>Мови високого рівня надають набір базових типів даних та механізми для створення складних типів:</p>
+        <ul>
+          <li><strong>Скалярні (прості) типи</strong> — int, float, char, bool</li>
+          <li><strong>Складні типи</strong> — масиви, структури, класи, перерахування</li>
+          <li><strong>Вказівні типи</strong> — покажчики, посилання</li>
+        </ul>
+        <h3>6. Керуючі конструкції</h3>
+        <p>Будь-яка мова високого рівня надає конструкції для керування потоком виконання:</p>
+        <ul>
+          <li><strong>Послідовне виконання</strong> — оператори виконуються один за одним</li>
+          <li><strong>Розгалуження</strong> — if, switch (вибір альтернатив)</li>
+          <li><strong>Цикли</strong> — for, while, do-while (повторення)</li>
+          <li><strong>Виклики підпрограм</strong> — функції та процедури</li>
+          <li><strong>Перехід</strong> — break, continue, return, goto</li>
+        </ul>
+      </section>
+
+      <!-- TESTS -->
+      <section id="tests">
+        <h2>📝 Тести для самоперевірки</h2>
+        <div id="test-container" class="test-container">
+          <div class="test-question" data-q="1">
+            <div class="test-question-text"><span class="test-question-number">1</span>Що робить компілятор?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q1" value="a">а) Виконує код рядок за рядком</label>
+              <label class="test-option"><input type="radio" name="q1" value="b">б) Перетворює вихідний код у машинний код</label>
+              <label class="test-option"><input type="radio" name="q1" value="c">в) Зберігає дані на диск</label>
+              <label class="test-option"><input type="radio" name="q1" value="d">г) Шукає помилки в логіці програми</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="2">
+            <div class="test-question-text"><span class="test-question-number">2</span>Який етап компіляції перевіряє правильність граматичної будови програми?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q2" value="a">а) Лексичний аналіз</label>
+              <label class="test-option"><input type="radio" name="q2" value="b">б) Синтаксичний аналіз</label>
+              <label class="test-option"><input type="radio" name="q2" value="c">в) Семантичний аналіз</label>
+              <label class="test-option"><input type="radio" name="q2" value="d">г) Оптимізація</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="3">
+            <div class="test-question-text"><span class="test-question-number">3</span>Що таке компонувальник (Linker)?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q3" value="a">а) Редактор для написання коду</label>
+              <label class="test-option"><input type="radio" name="q3" value="b">б) Програма, що об'єднує об'єктні файли в виконуваний файл</label>
+              <label class="test-option"><input type="radio" name="q3" value="c">в) Програма для тестування</label>
+              <label class="test-option"><input type="radio" name="q3" value="d">г) Оптимізатор коду</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="4">
+            <div class="test-question-text"><span class="test-question-number">4</span>Яке розширення мають об'єктні файли в Windows?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q4" value="a">а) .cpp</label>
+              <label class="test-option"><input type="radio" name="q4" value="b">б) .exe</label>
+              <label class="test-option"><input type="radio" name="q4" value="c">в) .obj</label>
+              <label class="test-option"><input type="radio" name="q4" value="d">г) .dll</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="5">
+            <div class="test-question-text"><span class="test-question-number">5</span>Який формат мають динамічні бібліотеки в Linux?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q5" value="a">а) .dll</label>
+              <label class="test-option"><input type="radio" name="q5" value="b">б) .lib</label>
+              <label class="test-option"><input type="radio" name="q5" value="c">в) .so</label>
+              <label class="test-option"><input type="radio" name="q5" value="d">г) .a</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="6">
+            <div class="test-question-text"><span class="test-question-number">6</span>Чим відрізняється інтерпретатор від компілятора?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q6" value="a">а) Інтерпретатор працює швидше</label>
+              <label class="test-option"><input type="radio" name="q6" value="b">б) Інтерпретатор виконує код рядок за рядком без попередньої компіляції</label>
+              <label class="test-option"><input type="radio" name="q6" value="c">в) Інтерпретатор створює виконуваний файл</label>
+              <label class="test-option"><input type="radio" name="q6" value="d">г) Немає різниці</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="7">
+            <div class="test-question-text"><span class="test-question-number">7</span>Який етап компіляції відповідає за перевірку типів даних?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q7" value="a">а) Лексичний аналіз</label>
+              <label class="test-option"><input type="radio" name="q7" value="b">б) Синтаксичний аналіз</label>
+              <label class="test-option"><input type="radio" name="q7" value="c">в) Семантичний аналіз</label>
+              <label class="test-option"><input type="radio" name="q7" value="d">г) Генерація коду</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="8">
+            <div class="test-question-text"><span class="test-question-number">8</span>Що таке статичне компонування?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q8" value="a">а) Бібліотеки завантажуються під час виконання</label>
+              <label class="test-option"><input type="radio" name="q8" value="b">б>Код бібліотек включається безпосередньо в виконуваний файл</label>
+              <label class="test-option"><input type="radio" name="q8" value="c">в) Використання тільки стандартних бібліотек</label>
+              <label class="test-option"><input type="radio" name="q8" value="d">г) Компонування без оптимізації</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="9">
+            <div class="test-question-text"><span class="test-question-number">9</span>Який популярний компілятор C++ є частиною проєкту GNU?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q9" value="a">а) MSVC</label>
+              <label class="test-option"><input type="radio" name="q9" value="b">б) Clang</label>
+              <label class="test-option"><input type="radio" name="q9" value="c">в) GCC</label>
+              <label class="test-option"><input type="radio" name="q9" value="d">г) Intel C++</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="10">
+            <div class="test-question-text"><span class="test-question-number">10</span>Що є результатом роботи компілятора?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q10" value="a">а) Виконуваний файл (.exe)</label>
+              <label class="test-option"><input type="radio" name="q10" value="b">б>Об'єктний файл (.obj)</label>
+              <label class="test-option"><input type="radio" name="q10" value="c">в) Вихідний код (.cpp)</label>
+              <label class="test-option"><input type="radio" name="q10" value="d">г) Бібліотека (.lib)</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="11">
+            <div class="test-question-text"><span class="test-question-number">11</span>Які символи входять до алфавіту C++?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q11" value="a">а) Тільки літери та цифри</label>
+              <label class="test-option"><input type="radio" name="q11" value="b">б) Літери, цифри та спеціальні символи</label>
+              <label class="test-option"><input type="radio" name="q11" value="c">в>Тільки англійські літери</label>
+              <label class="test-option"><input type="radio" name="q11" value="d">г) Будь-які Unicode символи</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="12">
+            <div class="test-question-text"><span class="test-question-number">12</span>Що таке ключові слова в мові програмування?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q12" value="a">а) Імена, які задає програміст</label>
+              <label class="test-option"><input type="radio" name="q12" value="b">б>Зарезервовані слова зі спеціальним значенням</label>
+              <label class="test-option"><input type="radio" name="q12" value="c">в>Коментарі в коді</label>
+              <label class="test-option"><input type="radio" name="q12" value="d">г>Бібліотечні функції</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="13">
+            <div class="test-question-text"><span class="test-question-number">13</span>Що визначає семантика мови програмування?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q13" value="a">а) Допустимі символи</label>
+              <label class="test-option"><input type="radio" name="q13" value="b">б>Значення синтаксичних конструкцій</label>
+              <label class="test-option"><input type="radio" name="q13" value="c">в>Формат коду</label>
+              <label class="test-option"><input type="radio" name="q13" value="d">г>Швидкість виконання</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="14">
+            <div class="test-question-text"><span class="test-question-number">14</span>Який етап компіляції оптимізує код за швидкістю?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q14" value="a">а) Лексичний аналіз</label>
+              <label class="test-option"><input type="radio" name="q14" value="b">б>Оптимізація</label>
+              <label class="test-option"><input type="radio" name="q14" value="c">в>Генерація проміжного коду</label>
+              <label class="test-option"><input type="radio" name="q14" value="d">г>Семантичний аналіз</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="15">
+            <div class="test-question-text"><span class="test-question-number">15</span>Яка основна перевага динамічного компонування?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q15" value="a">а) Виконуваний файл не залежить від зовнішніх бібліотек</label>
+              <label class="test-option"><input type="radio" name="q15" value="b">б>Менший розмір виконуваного файлу та можливість оновлення бібліотек</label>
+              <label class="test-option"><input type="radio" name="q15" value="c">в>Швидше завантаження програми</label>
+              <label class="test-option"><input type="radio" name="q15" value="d">г>Простота розгортання</label>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="checkTest()" id="check-btn">Перевірити відповіді</button>
+        <div id="test-result"></div>
+      </section>
+
+      <section id="practice">
+        <h2>💻 Практичні завдання</h2>
+        <div class="task-item"><span class="task-number">1</span><span class="task-title">Встановлення Code::Blocks</span><p class="task-desc">Встановіть IDE Code::Blocks з компілятором MinGW. Створіть новий проект "Console Application", скомпілюйте та запустіть просту програму "Hello, World!". Зробіть скріншоти кожного етапу.</p></div>
+        <div class="task-item"><span class="task-number">2</span><span class="task-title">Дослідження етапів компіляції</span><p class="task-desc">Використовуючи компілятор GCC, скомпілюйте програму з опцією -save-temps. Проаналізуйте згенеровані проміжні файли (.i — препроцесор, .s — асемблер, .o — об'єктний). Опишіть кожен файл.</p></div>
+        <div class="task-item"><span class="task-number">3</span><span class="task-title">Статичне vs динамічне компонування</span><p class="task-desc">Напишіть просту програму на C++ та скомпілюйте її двома способами: зі статичним та динамічним компонуванням. Порівняйте розміри отриманих виконуваних файлів та час їх запуску.</p></div>
+        <div class="task-item"><span class="task-number">4</span><span class="task-title">Порівняння GCC та MSVC</span><p class="task-desc">Встановіть обидва компілятори (GCC через MinGW та MSVC через Visual Studio Community). Скомпілюйте одну й ту саму програму обома компіляторами з рівнями оптимізації -O0, -O1, -O2, -O3. Порівняйте час виконання та розмір файлів.</p></div>
+        <div class="task-item"><span class="task-number">5</span><span class="task-title">Дослідження ключових слів C++</span><p class="task-desc">Створіть повний список всіх ключових слів C++ (стандарт C++17). Для кожного ключового слова наведіть приклад використання та поясніть його призначення. Оформіть у вигляді довідника.</p></div>
+        <div class="task-item"><span class="task-number">6</span><span class="task-title">Токени у вихідному коді</span><p class="task-desc">Візьміть програму з 50+ рядків коду та вручну розбийте її на токени: ключові слова, ідентифікатори, літерали, оператори, роздільники. Оформіть у вигляді таблиці з типізацією кожного токена.</p></div>
+        <div class="task-item"><span class="task-number">7</span><span class="task-title">Діаграма роботи компілятора</span><p class="task-desc">Створіть детальну блок-схему роботи C++ компілятора від вихідного файлу .cpp до виконуваного .exe. Покажіть всі 6 етапів із зазначенням проміжних файлів та їх розширень.</p></div>
+        <div class="task-item"><span class="task-number">8</span><span class="task-number">8</span><span class="task-title">Помилки компіляції</span><p class="task-desc">Напишіть 10 програм з навмисними помилками різних типів: лексичними, синтаксичними та семантичними. Для кожної програми вкажіть тип помилки та поясніть повідомлення компілятора.</p></div>
+        <div class="task-item"><span class="task-number">9</span><span class="task-title">Презентація: GCC vs Clang vs MSVC</span><p class="task-desc">Створіть порівняльну презентацію трьох компіляторів C++ за критеріями: швидкість компіляції, якість оптимізації, якість повідомлень про помилки, підтримка стандартів, кросплатформенність, ліцензія.</p></div>
+        <div class="task-item"><span class="task-number">10</span><span class="task-title">Макет структури мови програмування</span><p class="task-desc">Створіть детальну інфографіку, що показує структуру мови програмування високого рівня: алфавіт, токени, синтаксис, семантику, систему типів та керуючі конструкції з прикладами для кожного компонента.</p></div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col"><h4>CodeMaster C++</h4><p>Навчальний курс з програмування мовою C++.</p></div>
+        <div class="footer-col"><h4>Навігація</h4><p><a href="index.html">Головна</a><br><a href="topic1-1.html">← Попередня тема</a><br><a href="topic2-1.html">Наступна тема →</a></p></div>
+        <div class="footer-col"><h4>Контакти</h4><p>© 2025 CodeMaster. Всі права захищено.</p></div>
+      </div>
+      <div class="footer-bottom"><p>Створено з метою навчання програмуванню мовою C++</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const correctAnswers = { q1:'b', q2:'b', q3:'b', q4:'c', q5:'c', q6:'b', q7:'c', q8:'b', q9:'c', q10:'b', q11:'b', q12:'b', q13:'b', q14:'b', q15:'b' };
+    function checkTest() {
+      let score = 0, total = 15;
+      for (let i = 1; i <= total; i++) {
+        const q = document.querySelectorAll('.test-question')[i-1];
+        const selected = document.querySelector('input[name="q'+i+'"]:checked');
+        const options = q.querySelectorAll('.test-option');
+        options.forEach(o => { o.classList.add('disabled'); });
+        if (selected) {
+          if (selected.value === correctAnswers['q'+i]) { selected.parentElement.classList.add('correct'); score++; }
+          else { selected.parentElement.classList.add('incorrect'); options.forEach(o => { if(o.querySelector('input').value === correctAnswers['q'+i]) o.classList.add('correct'); }); }
+        } else { options.forEach(o => { if(o.querySelector('input').value === correctAnswers['q'+i]) o.classList.add('correct'); }); }
+      }
+      const resultDiv = document.getElementById('test-result');
+      let msg = score >= 13 ? 'Відмінний результат!' : score >= 9 ? 'Добре!' : score >= 6 ? 'Задовільно' : 'Потрібно повторити матеріал';
+      resultDiv.innerHTML = '<div class="test-results"><div class="test-results-score">'+score+'/'+total+'</div><div class="test-results-text">'+msg+'</div></div>';
+      document.getElementById('check-btn').style.display = 'none';
+    }
+    document.querySelectorAll('.code-copy').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const code = this.closest('.code-block').querySelector('pre').innerText;
+        navigator.clipboard.writeText(code).then(() => { this.textContent = 'Скопійовано!'; setTimeout(() => this.textContent = 'Копіювати', 1500); });
+      });
+    });
+  </script>
+</body>
+</html>

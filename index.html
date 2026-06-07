@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Навчальний курс C++ | Повний посібник з програмування</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-top">
+      <div class="header-flex">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">C++</div>
+          <div class="logo-text">Code<span>Master</span></div>
+        </a>
+        <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+      </div>
+    </div>
+    <div class="container">
+      <nav class="main-nav">
+        <a href="index.html" class="active">Головна</a>
+        <a href="topic1-1.html">Тема 1.1</a>
+        <a href="topic1-2.html">Тема 1.2</a>
+        <a href="topic2-1.html">Тема 2.1</a>
+        <a href="topic2-2.html">Тема 2.2</a>
+        <a href="topic2-3.html">Тема 2.3</a>
+        <a href="topic3-1.html">Тема 3.1</a>
+        <a href="topic4-1.html">Тема 4.1</a>
+        <a href="topic4-2.html">Тема 4.2</a>
+        <a href="topic5-1.html">Тема 5.1</a>
+        <a href="topic5-2.html">Тема 5.2</a>
+        <a href="topic6-1.html">Тема 6.1</a>
+        <a href="topic6-2.html">Тема 6.2</a>
+        <a href="topic6-3.html">Тема 6.3</a>
+        <a href="topic7-1.html">Тема 7.1</a>
+        <a href="topic7-2.html">Тема 7.2</a>
+        <a href="topic8-1.html">Тема 8.1</a>
+        <a href="topic8-2.html">Тема 8.2</a>
+        <a href="topic9-1.html">Тема 9.1</a>
+        <a href="topic10-1.html">Тема 10.1</a>
+        <a href="topic10-2.html">Тема 10.2</a>
+        <a href="topic10-3.html">Тема 10.3</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div>
+          <div class="hero-badge">🎓 Повний навчальний курс</div>
+          <h1>Опануй мову <span>C++</span></h1>
+          <p class="hero-desc">Від основ до професійного рівня. Структурований курс з 22 тем, інтерактивними тестами та практичними завданнями для закріплення матеріалу.</p>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-number">22</div>
+              <div class="hero-stat-label">Тем</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-number">400+</div>
+              <div class="hero-stat-label">Тестових питань</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-number">200+</div>
+              <div class="hero-stat-label">Практичних задач</div>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a href="#modules" class="btn btn-primary">Почати навчання →</a>
+            <a href="#about" class="btn btn-secondary">Про курс</a>
+          </div>
+        </div>
+        <div style="text-align:center;">
+          <img src="images/hero-bg.png" alt="C++ Programming" style="max-width:100%;border-radius:16px;box-shadow:0 20px 40px rgba(0,0,0,0.3);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Що ви вивчите</h2>
+        <p>Комплексний курс охоплює всі аспекти програмування на C++ — від базового синтаксису до складних структур даних</p>
+      </div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #2563eb;">📐</div>
+          <h3>Базовий синтаксис</h3>
+          <p>Типи даних, змінні, оператори, умовні конструкції та цикли — фундамент для написання програм</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background: linear-gradient(135deg, #f3e8ff, #e9d5ff); color: #7c3aed;">⚙️</div>
+          <h3>Функції та підпрограми</h3>
+          <p>Розробка та використання процедур і функцій, рекурсія, області видимості змінних</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background: linear-gradient(135deg, #fef3c7, #fde68a); color: #d97706;">📊</div>
+          <h3>Масиви та структури</h3>
+          <p>Одновимірні та багатовимірні масиви, структури даних, рядки та їх обробка</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background: linear-gradient(135deg, #ecfdf5, #a7f3d0); color: #059669;">🧠</div>
+          <h3>Динамічна пам'ять</h3>
+          <p>Покажчики, робота з динамічною пам'яттю, масиви покажчиків та покажчики на функції</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background: linear-gradient(135deg, #fee2e2, #fecaca); color: #dc2626;">📁</div>
+          <h3>Файли та потоки</h3>
+          <p>Читання та запис текстових і двійкових файлів, файли послідовного та довільного доступу</p>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background: linear-gradient(135deg, #cffafe, #a5f3fc); color: #0891b2;">🌳</div>
+          <h3>Структури даних</h3>
+          <p>Зв'язні списки, стеки, черги, дерева та графи — основні алгоритмічні конструкції</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modules -->
+  <section id="modules" class="section section-accent">
+    <div class="container">
+      <div class="section-header">
+        <h2>Зміст курсу</h2>
+        <p>22 теми організовані в 10 модулів для систематичного вивчення C++</p>
+      </div>
+
+      <!-- Module 1 -->
+      <div class="module-item open">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="module-title">
+            <div class="module-number">01</div>
+            <div class="module-title-text">
+              <h3>Основні поняття програмування</h3>
+              <span>Мови програмування, компілятори, інтерпретатори</span>
+            </div>
+          </div>
+          <span class="module-toggle">▼</span>
+        </div>
+        <div class="module-topics">
+          <div class="module-topics-inner">
+            <a href="topic1-1.html" class="topic-link">
+              <span class="topic-link-icon">📖</span>
+              <div class="topic-link-text">
+                <strong>Тема 1.1</strong>
+                <span>Мова програмування, інтегроване середовище розробки. Історія і класифікація мов програмування</span>
+              </div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+            <a href="topic1-2.html" class="topic-link">
+              <span class="topic-link-icon">⚙️</span>
+              <div class="topic-link-text">
+                <strong>Тема 1.2</strong>
+                <span>Компілятор, інтерпретатор, компонувальник. Структура і способи опису мов програмування високого рівня</span>
+              </div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 2 -->
+      <div class="module-item">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="module-title">
+            <div class="module-number">02</div>
+            <div class="module-title-text">
+              <h3>Вступ у програмування</h3>
+              <span>Типи даних, змінні, арифметичні операції</span>
+            </div>
+          </div>
+          <span class="module-toggle">▼</span>
+        </div>
+        <div class="module-topics">
+          <div class="module-topics-inner">
+            <a href="topic2-1.html" class="topic-link">
+              <span class="topic-link-icon">📝</span>
+              <div class="topic-link-text"><strong>Тема 2.1</strong><span>Вступ в програмування. Найпростіші програми</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+            <a href="topic2-2.html" class="topic-link">
+              <span class="topic-link-icon">📦</span>
+              <div class="topic-link-text"><strong>Тема 2.2</strong><span>Типи даних і змінні. Знаходження суми двох чисел (ввід і вивід)</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+            <a href="topic2-3.html" class="topic-link">
+              <span class="topic-link-icon">🔢</span>
+              <div class="topic-link-text"><strong>Тема 2.3</strong><span>Арифметичні вирази. Формати для виводу даних</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 3 -->
+      <div class="module-item">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="module-title">
+            <div class="module-number">03</div>
+            <div class="module-title-text">
+              <h3>Алгоритмічний вибір альтернатив</h3>
+              <span>Умовні оператори та розгалуження</span>
+            </div>
+          </div>
+          <span class="module-toggle">▼</span>
+        </div>
+        <div class="module-topics">
+          <div class="module-topics-inner">
+            <a href="topic3-1.html" class="topic-link">
+              <span class="topic-link-icon">🔀</span>
+              <div class="topic-link-text"><strong>Тема 3.1</strong><span>Алгоритмічний вибір альтернатив (if-else, switch)</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 4 -->
+      <div class="module-item">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="module-title">
+            <div class="module-number">04</div>
+            <div class="module-title-text">
+              <h3>Підпрограми та структура програм</h3>
+              <span>Функції, процедури, області видимості</span>
+            </div>
+          </div>
+          <span class="module-toggle">▼</span>
+        </div>
+        <div class="module-topics">
+          <div class="module-topics-inner">
+            <a href="topic4-1.html" class="topic-link">
+              <span class="topic-link-icon">🔧</span>
+              <div class="topic-link-text"><strong>Тема 4.1</strong><span>Підпрограми, їх різновиди та способи використання (Процедури. Функції користувача)</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+            <a href="topic4-2.html" class="topic-link">
+              <span class="topic-link-icon">🏗️</span>
+              <div class="topic-link-text"><strong>Тема 4.2</strong><span>Структура програм. Складові частини програми. Глобальні та локальні змінні</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 5 -->
+      <div class="module-item">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="module-title">
+            <div class="module-number">05</div>
+            <div class="module-title-text">
+              <h3>Алгоритми</h3>
+              <span>Лінійні, розгалужені та циклічні алгоритми</span>
+            </div>
+          </div>
+          <span class="module-toggle">▼</span>
+        </div>
+        <div class="module-topics">
+          <div class="module-topics-inner">
+            <a href="topic5-1.html" class="topic-link">
+              <span class="topic-link-icon">📏</span>
+              <div class="topic-link-text"><strong>Тема 5.1</strong><span>Алгоритми і величини. Лінійні обчислювальні алгоритми</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+            <a href="topic5-2.html" class="topic-link">
+              <span class="topic-link-icon">🔄</span>
+              <div class="topic-link-text"><strong>Тема 5.2</strong><span>Розгалуження і цикли в обчислювальних алгоритмах. Допоміжні алгоритми і процедури</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 6 -->
+      <div class="module-item">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="module-title">
+            <div class="module-number">06</div>
+            <div class="module-title-text">
+              <h3>Масиви та рядки</h3>
+              <span>Одновимірні та багатовимірні масиви, обробка рядків</span>
+            </div>
+          </div>
+          <span class="module-toggle">▼</span>
+        </div>
+        <div class="module-topics">
+          <div class="module-topics-inner">
+            <a href="topic6-1.html" class="topic-link">
+              <span class="topic-link-icon">📊</span>
+              <div class="topic-link-text"><strong>Тема 6.1</strong><span>Одновимірні масиви</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+            <a href="topic6-2.html" class="topic-link">
+              <span class="topic-link-icon">🔤</span>
+              <div class="topic-link-text"><strong>Тема 6.2</strong><span>Символьні строки. Стандартний ввід-вивід. Функції для роботи зі строками</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+            <a href="topic6-3.html" class="topic-link">
+              <span class="topic-link-icon">📈</span>
+              <div class="topic-link-text"><strong>Тема 6.3</strong><span>Багатовимірні масиви</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 7 -->
+      <div class="module-item">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="module-title">
+            <div class="module-number">07</div>
+            <div class="module-title-text">
+              <h3>Структури даних</h3>
+              <span>Власні типи даних та масиви структур</span>
+            </div>
+          </div>
+          <span class="module-toggle">▼</span>
+        </div>
+        <div class="module-topics">
+          <div class="module-topics-inner">
+            <a href="topic7-1.html" class="topic-link">
+              <span class="topic-link-icon">🗂️</span>
+              <div class="topic-link-text"><strong>Тема 7.1</strong><span>Структури</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+            <a href="topic7-2.html" class="topic-link">
+              <span class="topic-link-icon">📋</span>
+              <div class="topic-link-text"><strong>Тема 7.2</strong><span>Масиви структур</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 8 -->
+      <div class="module-item">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="module-title">
+            <div class="module-number">08</div>
+            <div class="module-title-text">
+              <h3>Покажчики</h3>
+              <span>Робота з пам'яттю та адресами</span>
+            </div>
+          </div>
+          <span class="module-toggle">▼</span>
+        </div>
+        <div class="module-topics">
+          <div class="module-topics-inner">
+            <a href="topic8-1.html" class="topic-link">
+              <span class="topic-link-icon">👉</span>
+              <div class="topic-link-text"><strong>Тема 8.1</strong><span>Оголошення і ініціалізація змінної покажчика</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+            <a href="topic8-2.html" class="topic-link">
+              <span class="topic-link-icon">🔗</span>
+              <div class="topic-link-text"><strong>Тема 8.2</strong><span>Масиви покажчиків. Покажчики на функцію</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 9 -->
+      <div class="module-item">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="module-title">
+            <div class="module-number">09</div>
+            <div class="module-title-text">
+              <h3>Робота з файлами</h3>
+              <span>Текстові та двійкові файли</span>
+            </div>
+          </div>
+          <span class="module-toggle">▼</span>
+        </div>
+        <div class="module-topics">
+          <div class="module-topics-inner">
+            <a href="topic9-1.html" class="topic-link">
+              <span class="topic-link-icon">📄</span>
+              <div class="topic-link-text"><strong>Тема 9.1</strong><span>Робота з текстовими файлами</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 10 -->
+      <div class="module-item">
+        <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="module-title">
+            <div class="module-number">10</div>
+            <div class="module-title-text">
+              <h3>Динамічні структури даних</h3>
+              <span>Списки, стеки, дерева, графи</span>
+            </div>
+          </div>
+          <span class="module-toggle">▼</span>
+        </div>
+        <div class="module-topics">
+          <div class="module-topics-inner">
+            <a href="topic10-1.html" class="topic-link">
+              <span class="topic-link-icon">📎</span>
+              <div class="topic-link-text"><strong>Тема 10.1</strong><span>Списки. Зв'язаний список</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+            <a href="topic10-2.html" class="topic-link">
+              <span class="topic-link-icon">🥞</span>
+              <div class="topic-link-text"><strong>Тема 10.2</strong><span>Стеки, черги, деки</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+            <a href="topic10-3.html" class="topic-link">
+              <span class="topic-link-icon">🌲</span>
+              <div class="topic-link-text"><strong>Тема 10.3</strong><span>Дерева</span></div>
+              <span class="topic-link-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h4>CodeMaster C++</h4>
+          <p>Навчальний курс з програмування мовою C++. Від основ до просунутих тем — структури даних, алгоритми та об'єктно-орієнтоване програмування.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Навігація</h4>
+          <p><a href="index.html">Головна</a><br><a href="#modules">Модулі курсу</a><br><a href="#about">Про курс</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Контакти</h4>
+          <p>З питань щодо курсу звертайтесь за електронною поштою.<br>© 2025 CodeMaster. Всі права захищено.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Створено з метою навчання програмуванню мовою C++</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Open first module by default
+    document.querySelectorAll('.module-item')[0].classList.add('open');
+  </script>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тема 2.3 - Арифметичні вирази. Формати для виводу даних | CodeMaster C++</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-top">
+      <div class="header-flex">
+        <a href="index.html" class="logo"><div class="logo-icon">C++</div><div class="logo-text">Code<span>Master</span></div></a>
+        <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')">☰</button>
+      </div>
+    </div>
+    <div class="container">
+      <nav class="main-nav">
+        <a href="index.html">Головна</a><a href="topic1-1.html">Тема 1.1</a><a href="topic1-2.html">Тема 1.2</a><a href="topic2-1.html">Тема 2.1</a><a href="topic2-2.html">Тема 2.2</a><a href="topic2-3.html" class="active">Тема 2.3</a><a href="topic3-1.html">Тема 3.1</a><a href="topic4-1.html">Тема 4.1</a><a href="topic4-2.html">Тема 4.2</a><a href="topic5-1.html">Тема 5.1</a><a href="topic5-2.html">Тема 5.2</a><a href="topic6-1.html">Тема 6.1</a><a href="topic6-2.html">Тема 6.2</a><a href="topic6-3.html">Тема 6.3</a><a href="topic7-1.html">Тема 7.1</a><a href="topic7-2.html">Тема 7.2</a><a href="topic8-1.html">Тема 8.1</a><a href="topic8-2.html">Тема 8.2</a><a href="topic9-1.html">Тема 9.1</a><a href="topic10-1.html">Тема 10.1</a><a href="topic10-2.html">Тема 10.2</a><a href="topic10-3.html">Тема 10.3</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Головна</a> / <a href="index.html#modules">Модуль 2</a> / Тема 2.3</div>
+      <h1>Тема 2.3</h1>
+      <p>Арифметичні вирази. Формати для виводу даних</p>
+    </div>
+  </div>
+
+  <div class="container content-layout">
+    <aside class="sidebar">
+      <h4>Зміст теми</h4>
+      <ul class="sidebar-nav">
+        <li><a href="#operators">Арифметичні оператори</a></li>
+        <li><a href="#expressions">Арифметичні вирази</a></li>
+        <li><a href="#priority">Пріоритет операторів</a></li>
+        <li><a href="#increment">Інкремент та декремент</a></li>
+        <li><a href="#math">Математичні функції</a></li>
+        <li><a href="#output-formats">Формати виводу даних</a></li>
+        <li><a href="#manipulators">Маніпулятори виведення</a></li>
+        <li><a href="#tests">📝 Тести</a></li>
+        <li><a href="#practice">💻 Практичні завдання</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <section id="operators">
+        <h2>Арифметичні оператори</h2>
+        <p>C++ підтримує стандартні арифметичні оператори для роботи з числовими типами даних.</p>
+        <table class="content-table">
+          <tr><th>Оператор</th><th>Операція</th><th>Приклад</th><th>Результат</th></tr>
+          <tr><td><code class="inline">+</code></td><td>Додавання</td><td><code class="inline">5 + 3</code></td><td>8</td></tr>
+          <tr><td><code class="inline">-</code></td><td>Віднімання</td><td><code class="inline">5 - 3</code></td><td>2</td></tr>
+          <tr><td><code class="inline">*</code></td><td>Множення</td><td><code class="inline">5 * 3</code></td><td>15</td></tr>
+          <tr><td><code class="inline">/</code></td><td>Ділення</td><td><code class="inline">5 / 3</code></td><td>1 (цілочисельне)</td></tr>
+          <tr><td><code class="inline">%</code></td><td>Остача від ділення</td><td><code class="inline">5 % 3</code></td><td>2</td></tr>
+        </table>
+        <div class="highlight-box highlight-box-warning">
+          <div class="highlight-box-title">⚠️ Важливо: цілочисельне ділення</div>
+          <p>Якщо обидва операнди цілі, оператор <code class="inline">/</code> виконує <strong>цілочисельне ділення</strong> (дробова частина відкидається). Наприклад, <code class="inline">5 / 2 = 2</code>, а не 2.5. Для отримання дійсного результату, хоча б один операнд має бути дійсного типу: <code class="inline">5.0 / 2 = 2.5</code>.</p>
+        </div>
+        <h3>Скорочені оператори присвоєння:</h3>
+        <table class="content-table">
+          <tr><th>Оператор</th><th>Еквівалент</th><th>Приклад</th></tr>
+          <tr><td><code class="inline">+=</code></td><td><code class="inline">a = a + b</code></td><td><code class="inline">a += 5</code></td></tr>
+          <tr><td><code class="inline">-=</code></td><td><code class="inline">a = a - b</code></td><td><code class="inline">a -= 3</code></td></tr>
+          <tr><td><code class="inline">*=</code></td><td><code class="inline">a = a * b</code></td><td><code class="inline">a *= 2</code></td></tr>
+          <tr><td><code class="inline">/=</code></td><td><code class="inline">a = a / b</code></td><td><code class="inline">a /= 4</code></td></tr>
+          <tr><td><code class="inline">%=</code></td><td><code class="inline">a = a % b</code></td><td><code class="inline">a %= 7</code></td></tr>
+        </table>
+      </section>
+
+      <section id="expressions">
+        <h2>Арифметичні вирази</h2>
+        <p><strong>Вираз</strong> — це комбінація операндів (змінних, констант) та операторів, яка обчислюється в певне значення.</p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Приклади виразів</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>// Прості вирази
+int a = 10, b = 3;
+int sum = a + b;        // 13
+int diff = a - b;       // 7
+int prod = a * b;       // 30
+int quot = a / b;       // 3 (цілочисельне ділення!)
+int rem = a % b;        // 1 (остача від 10/3)
+
+// Складні вирази
+int x = 5, y = 2, z = 3;
+int result = x + y * z;         // 5 + 6 = 11 (спочатку множення!)
+double dresult = (double)x / y; // 2.5 (явне перетворення)
+
+// Вираз у виразі
+int area = (a + b) * (a - b);   // 13 * 7 = 91</code></pre>
+        </div>
+      </section>
+
+      <section id="priority">
+        <h2>Пріоритет арифметичних операторів</h2>
+        <p>Оператори в C++ мають визначений пріоритет виконання. Оператори з вищим пріоритетом виконуються раніше.</p>
+        <table class="content-table">
+          <tr><th>Пріоритет</th><th>Оператори</th><th>Опис</th><th>Порядок</th></tr>
+          <tr><td>1 (найвищий)</td><td><code class="inline">()</code></td><td>Круглі дужки</td><td>Ліворуч → праворуч</td></tr>
+          <tr><td>2</td><td><code class="inline">++</code>, <code class="inline">--</code> (префіксні)</td><td>Інкремент, декремент</td><td>Ліворуч → праворуч</td></tr>
+          <tr><td>3</td><td><code class="inline">*</code>, <code class="inline">/</code>, <code class="inline">%</code></td><td>Множення, ділення, остача</td><td>Ліворуч → праворуч</td></tr>
+          <tr><td>4</td><td><code class="inline">+</code>, <code class="inline">-</code></td><td>Додавання, віднімання</td><td>Ліворуч → праворуч</td></tr>
+          <tr><td>5</td><td><code class="inline">=</code>, <code class="inline">+=</code>, <code class="inline">-=</code> тощо</td><td>Присвоєння</td><td>Праворуч → ліворуч</td></tr>
+        </table>
+        <div class="highlight-box">
+          <div class="highlight-box-title">🔑 Правило</div>
+          <p>Якщо у вас є сумніви щодо порядку обчислень — завжди використовуйте дужки <code class="inline">()</code>. Вони не лише гарантують правильний порядок, але й роблять код зрозумілішим для читачів.</p>
+        </div>
+      </section>
+
+      <section id="increment">
+        <h2>Інкремент та декремент</h2>
+        <p>Інкремент (<code class="inline">++</code>) збільшує значення змінної на 1, декремент (<code class="inline">--</code>) зменшує на 1.</p>
+        <h3>Префіксна форма: спочатку зміна, потім використання</h3>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Префіксна форма</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>int a = 5;
+int b = ++a;   // спочатку a = 6, потім b = 6
+// Результат: a = 6, b = 6</code></pre>
+        </div>
+        <h3>Постфіксна форма: спочатку використання, потім зміна</h3>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Постфіксна форма</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>int a = 5;
+int b = a++;   // спочатку b = 5, потім a = 6
+// Результат: a = 6, b = 5</code></pre>
+        </div>
+        <div class="highlight-box highlight-box-success">
+          <div class="highlight-box-title">✅ Рекомендація</div>
+          <p>У складних виразах використовуйте інкремент/декремент окремо від інших операцій, щоб уникнути плутанини та невизначеної поведінки. Наприклад, замість <code class="inline">arr[i++] = arr[++j]</code> краще розбити на кілька інструкцій.</p>
+        </div>
+      </section>
+
+      <section id="math">
+        <h2>Математичні функції</h2>
+        <p>Для використання математичних функцій необхідно підключити заголовок <code class="inline">&lt;cmath&gt;</code>.</p>
+        <table class="content-table">
+          <tr><th>Функція</th><th>Опис</th><th>Приклад</th></tr>
+          <tr><td><code class="inline">pow(x, y)</code></td><td>x у степені y</td><td><code class="inline">pow(2, 3) = 8</code></td></tr>
+          <tr><td><code class="inline">sqrt(x)</code></td><td>Квадратний корінь</td><td><code class="inline">sqrt(16) = 4</code></td></tr>
+          <tr><td><code class="inline">cbrt(x)</code></td><td>Кубічний корінь</td><td><code class="inline">cbrt(27) = 3</code></td></tr>
+          <tr><td><code class="inline">abs(x)</code></td><td>Модуль (цілий)</td><td><code class="inline">abs(-5) = 5</code></td></tr>
+          <tr><td><code class="inline">fabs(x)</code></td><td>Модуль (дійсний)</td><td><code class="inline">fabs(-3.14) = 3.14</code></td></tr>
+          <tr><td><code class="inline">sin(x)</code></td><td>Синус (x у радіанах)</td><td><code class="inline">sin(0) = 0</code></td></tr>
+          <tr><td><code class="inline">cos(x)</code></td><td>Косинус</td><td><code class="inline">cos(0) = 1</code></td></tr>
+          <tr><td><code class="inline">tan(x)</code></td><td>Тангенс</td><td><code class="inline">tan(0) = 0</code></td></tr>
+          <tr><td><code class="inline">log(x)</code></td><td>Натуральний логарифм</td><td><code class="inline">log(2.718) ≈ 1</code></td></tr>
+          <tr><td><code class="inline">log10(x)</code></td><td>Десятковий логарифм</td><td><code class="inline">log10(100) = 2</code></td></tr>
+          <tr><td><code class="inline">exp(x)</code></td><td>e^x</td><td><code class="inline">exp(1) ≈ 2.718</code></td></tr>
+          <tr><td><code class="inline">ceil(x)</code></td><td>Округлення вгору</td><td><code class="inline">ceil(3.2) = 4</code></td></tr>
+          <tr><td><code class="inline">floor(x)</code></td><td>Округлення вниз</td><td><code class="inline">floor(3.9) = 3</code></td></tr>
+          <tr><td><code class="inline">round(x)</code></td><td>Округлення до найближчого</td><td><code class="inline">round(3.5) = 4</code></td></tr>
+        </table>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Приклад використання cmath</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+int main() {
+    double a = 16.0;
+    double b = 3.0;
+    
+    cout << "sqrt(16) = " << sqrt(a) << endl;
+    cout << "pow(2, 3) = " << pow(2.0, 3.0) << endl;
+    cout << "fabs(-3.14) = " << fabs(-3.14) << endl;
+    cout << "ceil(3.2) = " << ceil(3.2) << endl;
+    cout << "floor(3.9) = " << floor(3.9) << endl;
+    cout << "round(3.5) = " << round(3.5) << endl;
+    
+    return 0;
+}</code></pre>
+        </div>
+      </section>
+
+      <section id="output-formats">
+        <h2>Формати виводу даних</h2>
+        <p>Для форматованого виведення даних у C++ використовуються спеціальні функції та маніпулятори з бібліотеки <code class="inline">&lt;iomanip&gt;</code>.</p>
+        <h3>Основні функції форматування:</h3>
+        <table class="content-table">
+          <tr><th>Маніпулятор/функція</th><th>Опис</th><th>Приклад</th></tr>
+          <tr><td><code class="inline">setw(n)</code></td><td>Встановлює ширину поля виведення в n символів</td><td><code class="inline">cout << setw(10) << 42;</code></td></tr>
+          <tr><td><code class="inline">setprecision(n)</code></td><td>Встановлює кількість значущих цифр</td><td><code class="inline">cout << setprecision(4) << 3.14159;</code></td></tr>
+          <tr><td><code class="inline">fixed</code></td><td>Фіксований формат дійсних чисел</td><td><code class="inline">cout << fixed << 3.14159;</code></td></tr>
+          <tr><td><code class="inline">scientific</code></td><td>Наукова нотація</td><td><code class="inline">cout << scientific << 123.45;</code></td></tr>
+          <tr><td><code class="inline">left</code></td><td>Вирівнювання по лівому краю</td><td><code class="inline">cout << left << setw(10) << "text";</code></td></tr>
+          <tr><td><code class="inline">right</code></td><td>Вирівнювання по правому краю</td><td><code class="inline">cout << right << setw(10) << 42;</code></td></tr>
+          <tr><td><code class="inline">setfill(ch)</code></td><td>Символ заповнення</td><td><code class="inline">cout << setfill('0') << setw(5) << 42;</code></td></tr>
+          <tr><td><code class="inline">showpoint / noshowpoint</code></td><td>Показувати/приховувати десяткову крапку</td><td><code class="inline">cout << showpoint << 5.0;</code></td></tr>
+        </table>
+      </section>
+
+      <section id="manipulators">
+        <h2>Маніпулятори виведення: приклади</h2>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Форматований вивід</span><button class="code-copy">Копіювати</button></div>
+          <pre><code>#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+using namespace std;
+
+int main() {
+    double pi = 3.14159265359;
+    int number = 42;
+    
+    // Ширина поля та вирівнювання
+    cout << "Без форматування: [" << number << "]" << endl;
+    cout << "Ширина 10:        [" << setw(10) << number << "]" << endl;
+    cout << "Ліве вирівнювання:[" << left << setw(10) << number << "]" << endl;
+    cout << "Заповнення '0':   [" << setfill('0') << setw(5) << number << "]" << endl;
+    
+    // Форматування дійсних чисел
+    cout << "\nТочність 4:       " << setprecision(4) << pi << endl;
+    cout << "Фіксований:       " << fixed << setprecision(3) << pi << endl;
+    cout << "Науковий:         " << scientific << pi << endl;
+    
+    // Таблиця
+    cout << "\n--- Таблиця товарів ---" << endl;
+    cout << setfill(' ') << left;
+    cout << setw(15) << "Назва" << setw(10) << "Ціна" << setw(10) << "Кількість" << endl;
+    cout << setw(15) << "Яблука" << setw(10) << 25.50 << setw(10) << 10 << endl;
+    cout << setw(15) << "Груші" << setw(10) << 35.00 << setw(10) << 5 << endl;
+    
+    return 0;
+}</code></pre>
+        </div>
+        <p><strong>Результат:</strong></p>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-title">Результат</span></div>
+          <pre><code>Без форматування: [42]
+Ширина 10:        [        42]
+Ліве вирівнювання:[42        ]
+Заповнення '0':   [00042]
+
+Точність 4:       3.142
+Фіксований:       3.142
+Науковий:         3.142e+00
+
+--- Таблиця товарів ---
+Назва          Ціна      Кількість
+Яблука         25.5      10
+Груші          35        5</code></pre>
+        </div>
+        <div class="highlight-box highlight-box-success">
+          <div class="highlight-box-title">✅ Порада</div>
+          <p>Для виведення грошових сум завжди використовуйте <code class="inline">fixed</code> разом з <code class="inline">setprecision(2)</code>, щоб гарантувати два знаки після коми.</p>
+        </div>
+      </section>
+
+      <!-- TESTS -->
+      <section id="tests">
+        <h2>📝 Тести для самоперевірки</h2>
+        <div id="test-container" class="test-container">
+          <div class="test-question" data-q="1">
+            <div class="test-question-text"><span class="test-question-number">1</span>Скільки буде 7 / 2 в C++ якщо обидва операнди int?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q1" value="a">а) 3.5</label>
+              <label class="test-option"><input type="radio" name="q1" value="b">б) 3</label>
+              <label class="test-option"><input type="radio" name="q1" value="c">в) 4</label>
+              <label class="test-option"><input type="radio" name="q1" value="d">г) 2</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="2">
+            <div class="test-question-text"><span class="test-question-number">2</span>Який оператор дає остачу від ділення?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q2" value="a">а) /</label>
+              <label class="test-option"><input type="radio" name="q2" value="b">б) %</label>
+              <label class="test-option"><input type="radio" name="q2" value="c">в) *</label>
+              <label class="test-option"><input type="radio" name="q2" value="d">г) #</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="3">
+            <div class="test-question-text"><span class="test-question-number">3</span>Що робить оператор ++a (префіксний інкремент)?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q3" value="a">а) Спочатку використовує значення, потім збільшує</label>
+              <label class="test-option"><input type="radio" name="q3" value="b">б) Спочатку збільшує, потім використовує нове значення</label>
+              <label class="test-option"><input type="radio" name="q3" value="c">в) Помилка компіляції</label>
+              <label class="test-option"><input type="radio" name="q3" value="d">г) Нічого не робить</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="4">
+            <div class="test-question-text"><span class="test-question-number">4</span>Який результат виразу 10 % 3?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q4" value="a">а) 3</label>
+              <label class="test-option"><input type="radio" name="q4" value="b">б) 1</label>
+              <label class="test-option"><input type="radio" name="q4" value="c">в) 0</label>
+              <label class="test-option"><input type="radio" name="q4" value="d">г) 3.33</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="5">
+            <div class="test-question-text"><span class="test-question-number">5</span>Який маніпулятор встановлює ширину поля виведення?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q5" value="a">а) setprecision</label>
+              <label class="test-option"><input type="radio" name="q5" value="b">б) setw</label>
+              <label class="test-option"><input type="radio" name="q5" value="c">в) fixed</label>
+              <label class="test-option"><input type="radio" name="q5" value="d">г) setfill</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="6">
+            <div class="test-question-text"><span class="test-question-number">6</span>Який заголовок потрібно підключити для математичних функцій?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q6" value="a">а) &lt;math&gt;</label>
+              <label class="test-option"><input type="radio" name="q6" value="b">б> &lt;cmath&gt;</label>
+              <label class="test-option"><input type="radio" name="q6" value="c">в> &lt;mathlib&gt;</label>
+              <label class="test-option"><input type="radio" name="q6" value="d">г> &lt;algorithm&gt;</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="7">
+            <div class="test-question-text"><span class="test-question-number">7</span>Що робить маніпулятор fixed?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q7" value="a">а) Вирівнює текст по центру</label>
+              <label class="test-option"><input type="radio" name="q7" value="b">б> Встановлює фіксовану кількість знаків після коми</label>
+              <label class="test-option"><input type="radio" name="q7" value="c">в> Фіксує ширину поля</label>
+              <label class="test-option"><input type="radio" name="q7" value="d">г> Відключає форматування</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="8">
+            <div class="test-question-text"><span class="test-question-number">8</span>Який результат виразу 2 + 3 * 4?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q8" value="a">а) 20</label>
+              <label class="test-option"><input type="radio" name="q8" value="b">б> 14</label>
+              <label class="test-option"><input type="radio" name="q8" value="c">в> 24</label>
+              <label class="test-option"><input type="radio" name="q8" value="d">г> 11</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="9">
+            <div class="test-question-text"><span class="test-question-number">9</span>Що робить функція pow(2, 5)?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q9" value="a">а) 2 * 5 = 10</label>
+              <label class="test-option"><input type="radio" name="q9" value="b">б> 2^5 = 32</label>
+              <label class="test-option"><input type="radio" name="q9" value="c">в> 5^2 = 25</label>
+              <label class="test-option"><input type="radio" name="q9" value="d">г> sqrt(10)</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="10">
+            <div class="test-question-text"><span class="test-question-number">10</span>Який заголовок потрібен для маніпуляторів форматування?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q10" value="a">а) &lt;format&gt;</label>
+              <label class="test-option"><input type="radio" name="q10" value="b">б> &lt;iomanip&gt;</label>
+              <label class="test-option"><input type="radio" name="q10" value="c">в> &lt;iostream&gt;</label>
+              <label class="test-option"><input type="radio" name="q10" value="d">г> &lt;string&gt;</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="11">
+            <div class="test-question-text"><span class="test-question-number">11</span>Що буде результатом: int a=5; int b=a++;</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q11" value="a">а) a=5, b=6</label>
+              <label class="test-option"><input type="radio" name="q11" value="b">б> a=6, b=5</label>
+              <label class="test-option"><input type="radio" name="q11" value="c">в> a=6, b=6</label>
+              <label class="test-option"><input type="radio" name="q11" value="d">г> a=5, b=5</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="12">
+            <div class="test-question-text"><span class="test-question-number">12</span>Яка функція округлює число вгору?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q12" value="a">а) floor()</label>
+              <label class="test-option"><input type="radio" name="q12" value="b">б> ceil()</label>
+              <label class="test-option"><input type="radio" name="q12" value="c">в> round()</label>
+              <label class="test-option"><input type="radio" name="q12" value="d">г> abs()</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="13">
+            <div class="test-question-text"><span class="test-question-number">13</span>Який запис еквівалентний a = a + 5?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q13" value="a">а) a + 5 = a</label>
+              <label class="test-option"><input type="radio" name="q13" value="b">б> a += 5</label>
+              <label class="test-option"><input type="radio" name="q13" value="c">в> a == 5</label>
+              <label class="test-option"><input type="radio" name="q13" value="d">г> 5 += a</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="14">
+            <div class="test-question-text"><span class="test-question-number">14</span>Який пріоритет має оператор множення порівняно з додаванням?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q14" value="a">а) Нижчий</label>
+              <label class="test-option"><input type="radio" name="q14" value="b">б> Вищий</label>
+              <label class="test-option"><input type="radio" name="q14" value="c">в> Однаковий</label>
+              <label class="test-option"><input type="radio" name="q14" value="d">г> Залежить від компілятора</label>
+            </div>
+          </div>
+          <div class="test-question" data-q="15">
+            <div class="test-question-text"><span class="test-question-number">15</span>Що робить setfill('0')?</div>
+            <div class="test-options">
+              <label class="test-option"><input type="radio" name="q15" value="a">а) Встановлює точність 0</label>
+              <label class="test-option"><input type="radio" name="q15" value="b">б> Встановлює символ заповнення '0'</label>
+              <label class="test-option"><input type="radio" name="q15" value="c">в> Обнуляє змінну</label>
+              <label class="test-option"><input type="radio" name="q15" value="d">г> Очищає екран</label>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="checkTest()" id="check-btn">Перевірити відповіді</button>
+        <div id="test-result"></div>
+      </section>
+
+      <section id="practice">
+        <h2>💻 Практичні завдання</h2>
+        <div class="task-item"><span class="task-number">1</span><span class="task-title">Калькулятор з меню</span><p class="task-desc">Напишіть програму-калькулятор, яка зчитує два числа та операцію (+, -, *, /, %) і виводить результат з точністю 4 знаки після коми.</p></div>
+        <div class="task-item"><span class="task-number">2</span><span class="task-title">Форматована таблиця чисел</span><p class="task-desc">Виведіть таблицю квадратів та кубів чисел від 1 до 20 у форматі: | Номер | Квадрат | Куб | з вирівнюванням та шириною стовпців 10 символів.</p></div>
+        <div class="task-item"><span class="task-number">3</span><span class="task-title">Розв'язання квадратного рівняння</span><p class="task-desc">Напишіть програму для розв'язання ax² + bx + c = 0. Обробіть всі випадки (D>0, D=0, D<0). Виведіть результати з точністю 3 знаки.</p></div>
+        <div class="task-item"><span class="task-number">4</span><span class="task-title">Конвертер одиниць</span><p class="task-desc">Напишіть програму для конвертації: дюйми→см, фунти→кг, милі→км, градуси→радіани. Використайте форматований вивід у вигляді таблиці.</p></div>
+        <div class="task-item"><span class="task-number">5</span><span class="task-title">Обчислення виразу</span><p class="task-desc">Обчисліть значення виразу: (a+b)²/(c-d) + √(a²+b²) - |a-b| для введених a, b, c, d. Обробіть випадок ділення на нуль.</p></div>
+        <div class="task-item"><span class="task-number">6</span><span class="task-title">Відсотки та знижки</span><p class="task-desc">Напишіть програму, яка обчислює ціну товару зі знижкою. Введіть початкову ціну та відсоток знижки. Виведіть: економію та кінцеву ціну.</p></div>
+        <div class="task-item"><span class="task-number">7</span><span class="task-title">Геометричні обчислення</span><p class="task-desc">Обчисліть площу та периметр прямокутника, площу кола та довжину кола, об'єм кулі. Виведіть результати з точністю 2 знаки після коми.</p></div>
+        <div class="task-item"><span class="task-number">8</span><span class="task-title">Фізичні розрахунки</span><p class="task-desc">Напишіть програму для обчислення: шляху при рівноприскореному русі s = v₀t + at²/2, кінетичної енергії E = mv²/2, сили тяжіння F = mg.</p></div>
+        <div class="task-item"><span class="task-number">9</span><span class="task-title">Перевірка на парність</span><p class="task-desc">Напишіть програму, яка визначає, чи є число парним або непарним, використовуючи оператор %.</p></div>
+        <div class="task-item"><span class="task-number">10</span><span class="task-title">Інверсія числа</span><p class="task-desc">Напишіть програму, яка інвертує (перевертає) тризначне число. Наприклад: 123 → 321. Використайте оператори / та %.</p></div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col"><h4>CodeMaster C++</h4><p>Навчальний курс з програмування мовою C++.</p></div>
+        <div class="footer-col"><h4>Навігація</h4><p><a href="index.html">Головна</a><br><a href="topic2-2.html">← Попередня тема</a><br><a href="topic3-1.html">Наступна тема →</a></p></div>
+        <div class="footer-col"><h4>Контакти</h4><p>© 2025 CodeMaster. Всі права захищено.</p></div>
+      </div>
+      <div class="footer-bottom"><p>Створено з метою навчання програмуванню мовою C++</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const correctAnswers = { q1:'b', q2:'b', q3:'b', q4:'b', q5:'b', q6:'b', q7:'b', q8:'b', q9:'b', q10:'b', q11:'b', q12:'b', q13:'b', q14:'b', q15:'b' };
+    function checkTest() {
+      let score = 0, total = 15;
+      for (let i = 1; i <= total; i++) {
+        const q = document.querySelectorAll('.test-question')[i-1];
+        const selected = document.querySelector('input[name="q'+i+'"]:checked');
+        const options = q.querySelectorAll('.test-option');
+        options.forEach(o => { o.classList.add('disabled'); });
+        if (selected) {
+          if (selected.value === correctAnswers['q'+i]) { selected.parentElement.classList.add('correct'); score++; }
+          else { selected.parentElement.classList.add('incorrect'); options.forEach(o => { if(o.querySelector('input').value === correctAnswers['q'+i]) o.classList.add('correct'); }); }
+        } else { options.forEach(o => { if(o.querySelector('input').value === correctAnswers['q'+i]) o.classList.add('correct'); }); }
+      }
+      const resultDiv = document.getElementById('test-result');
+      let msg = score >= 13 ? 'Відмінний результат!' : score >= 9 ? 'Добре!' : score >= 6 ? 'Задовільно' : 'Потрібно повторити матеріал';
+      resultDiv.innerHTML = '<div class="test-results"><div class="test-results-score">'+score+'/'+total+'</div><div class="test-results-text">'+msg+'</div></div>';
+      document.getElementById('check-btn').style.display = 'none';
+    }
+    document.querySelectorAll('.code-copy').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const code = this.closest('.code-block').querySelector('pre').innerText;
+        navigator.clipboard.writeText(code).then(() => { this.textContent = 'Скопійовано!'; setTimeout(() => this.textContent = 'Копіювати', 1500); });
+      });
+    });
+  </script>
+</body>
+</html>
